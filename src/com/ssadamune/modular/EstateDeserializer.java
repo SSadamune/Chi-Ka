@@ -45,15 +45,11 @@ public class EstateDeserializer implements JsonDeserializer<Estate> {
 
         JsonArray features = jsonObject.get("tokuchoPickupList").getAsJsonArray();
         for (int i = 0; i < features.size(); i++) {
-            switch (features.get(i).getAsString()) {
-                case "即入居可": curestate.setCanMoveInNow(); break;
-                case "内装リフォーム": curestate.setReformed(); break;
-                case "システムキッチン": curestate.setHavingSystemKitchen(); break;
-                case "浴室乾燥機": curestate.setHavingBathroomDryer(); break;
-                case "フローリング張替": curestate.setFlooringChanged(); break;
-                case "リノベーション": curestate.setHavingRenovation(); break;
-                case "エレベーター": curestate.setHavingElevator(); break;
-//                default : System.out.println("unexcpection feature: " + features.get(i).getAsString());
+            String curFeature = features.get(i).getAsString();
+            if(Features.map.containsKey(curFeature)) {
+                curestate.addFeature(Features.map.get(curFeature));
+            } else {
+                System.out.println("unexcpect feature \"" + curFeature + "\"");
             }
         }
 

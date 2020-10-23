@@ -35,7 +35,7 @@ public class SuumoParser {
             // parse the html of ichiran-page
             Document doc = Jsoup.connect(ichiranUrl(todofuken, page)).get();
 
-            // all the link in ichiran-page
+            // all the links in ichiran-page
             Elements links = doc.select("a[href]");
 
             for (Element link : links) {
@@ -52,14 +52,19 @@ public class SuumoParser {
         return ucList;
     }
 
+    private static String bukkengaiyoUrl (String todofuken, int ucCode) {
+        return "https://suumo.jp/ms/chuko/tokyo/sc_" + todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
+    }
+
     public static Estate getEstate(int ucCode) throws IOException {
-        Document doc = Jsoup.connect("https://suumo.jp/ms/chuko/tokyo/sc_toshima/nc_"
-                + ucCode + "/bukkengaiyo/").get();
+        Document doc = Jsoup.connect(bukkengaiyoUrl("toshima", ucCode)).get();
         Element estateJsoup = doc.select("script").first();
 
+        // get json data of estate information
         String estateJson = estateJsoup.data();
         estateJson = estateJson.substring(25, estateJson.length() - 11);
 
+        // parse the json-data
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Estate.class, new EstateDeserializer())
                 .create();

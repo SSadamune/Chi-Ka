@@ -1,5 +1,7 @@
 package com.ssadamune.modular;
 
+import java.util.HashSet;
+
 public class Estate {
     private int id;
     private int areaCode;
@@ -12,13 +14,7 @@ public class Estate {
     private String moveInDate;//入居時期(年月) 即入居可は 000000
     private byte direction;
 
-    private boolean canMoveInNow;
-    private boolean isReformed;
-    private boolean havingSystemKitchen;
-    private boolean havingBathroomDryer;
-    private boolean isFlooringChanged;
-    private boolean havingRenovation;
-    private boolean havingElevator;
+    private HashSet<Integer> features = new HashSet<>();
 
     public int getId() {
         return id;
@@ -80,53 +76,13 @@ public class Estate {
     public void setDirection(byte direction) {
         this.direction = direction;
     }
-
-    public boolean canMoveInNow() {
-        return canMoveInNow;
-    }
-    public void setCanMoveInNow() {
-        this.canMoveInNow = true;
-    }
-    public boolean isReformed() {
-        return isReformed;
-    }
-    public void setReformed() {
-        this.isReformed = true;
-    }
-    public boolean isHavingSystemKitchen() {
-        return havingSystemKitchen;
-    }
-    public void setHavingSystemKitchen() {
-        this.havingSystemKitchen = true;
-    }
-    public boolean isHavingBathroomDryer() {
-        return havingBathroomDryer;
-    }
-    public void setHavingBathroomDryer() {
-        this.havingBathroomDryer = true;
-    }
-    public boolean isFlooringChanged() {
-        return isFlooringChanged;
-    }
-    public void setFlooringChanged() {
-        this.isFlooringChanged = true;
-    }
-    public boolean isHavingRenovation() {
-        return havingRenovation;
-    }
-    public void setHavingRenovation() {
-        this.havingRenovation = true;
-    }
-    public boolean isHavingElevator() {
-        return havingElevator;
-    }
-    public void setHavingElevator() {
-        this.havingElevator = true;
+    public void addFeature(int featureCode) {
+        this.features.add(featureCode);
     }
 
     @Override
     public String toString() {
-        return "property [ 物件ID：" + this.id
+        return "物件 [ ID：" + this.id
                 + ", 地域コード：" + areaCode
                 + ", 都道府県コード：" + todofukenCode
                 + ", 市区郡コード：" + shikugunCode
@@ -136,14 +92,8 @@ public class Estate {
                 + ", 完成時期：" + completeDate
                 + ", 向き：" + direction
                 + " ]\n"
-                + "[ 即入居可：" + canMoveInNow
-                + ", 内装リフォーム：" + isReformed
-                + ", システムキッチン：" + havingSystemKitchen
-                + ", 浴室乾燥機：" + havingBathroomDryer
-                + ", フローリング張替：" + isFlooringChanged
-                + ", リノベーション：" + havingRenovation
-                + ", エレベーター：" + havingElevator
-                + " ]";
+                + "特徴 " + features
+                + "\n";
     }
 
 }
