@@ -1,4 +1,4 @@
-package com.sadaki.modular;
+package com.ssadamune.modular;
 
 import java.io.IOException;
 
@@ -7,6 +7,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class SuumoParser {
     public static Estate getEstate(int ucCode) throws IOException {
@@ -14,11 +15,13 @@ public class SuumoParser {
                 + ucCode + "/bukkengaiyo/").get();
         Element estateJsoup = doc.select("script").first();
 
-        String estateStr = estateJsoup.data();
-        estateStr = estateStr.substring(25, estateStr.length() - 11);
+        String estateJson = estateJsoup.data();
+        estateJson = estateJson.substring(25, estateJson.length() - 11);
 
-        Gson gson = new Gson();
-        Estate curEstate = gson.fromJson(estateStr, Estate.class);
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Estate.class, new EstateDeserializer())
+                .create();
+        Estate curEstate = gson.fromJson(estateJson, Estate.class);
 
         curEstate.setId(ucCode);
         return curEstate;
