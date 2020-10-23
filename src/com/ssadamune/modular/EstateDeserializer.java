@@ -25,6 +25,9 @@ public class EstateDeserializer implements JsonDeserializer<Estate> {
         int todofukenCode = jsonObject.get("todofukenCd").getAsInt();
         curestate.setTodofukenCode(todofukenCode);
 
+        int shikugunCode = jsonObject.get("shikugunCd").getAsInt();
+        curestate.setShikugunCode(shikugunCode);
+
         JsonArray priceArr = jsonObject.get("headerKakakuDisp").getAsJsonArray();
         curestate.setPrice(priceArr.get(0).getAsInt());
 
@@ -50,7 +53,7 @@ public class EstateDeserializer implements JsonDeserializer<Estate> {
                 case "フローリング張替": curestate.setFlooringChanged(); break;
                 case "リノベーション": curestate.setHavingRenovation(); break;
                 case "エレベーター": curestate.setHavingElevator(); break;
-                default : System.out.println("unexcpection feature: " + features.get(i).getAsString());
+//                default : System.out.println("unexcpection feature: " + features.get(i).getAsString());
             }
         }
 

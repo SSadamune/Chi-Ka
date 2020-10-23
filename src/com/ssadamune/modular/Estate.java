@@ -126,7 +126,7 @@ public class Estate {
 
     @Override
     public String toString() {
-        return "Estate [ 物件ID：" + this.id
+        return "property [ 物件ID：" + this.id
                 + ", 地域コード：" + areaCode
                 + ", 都道府県コード：" + todofukenCode
                 + ", 市区郡コード：" + shikugunCode
