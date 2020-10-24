@@ -56,8 +56,8 @@ public class SuumoParser {
         return "https://suumo.jp/ms/chuko/tokyo/sc_" + todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
     }
 
-    public static Estate getEstate(int ucCode) throws IOException {
-        Document doc = Jsoup.connect(bukkengaiyoUrl("toshima", ucCode)).get();
+    public static Estate getEstate(String todofuken, int ucCode) throws IOException {
+        Document doc = Jsoup.connect(bukkengaiyoUrl(todofuken, ucCode)).get();
         Element estateJsoup = doc.select("script").first();
 
         // get json data of estate information

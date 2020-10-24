@@ -15,7 +15,7 @@ public class EstateDeserializer implements JsonDeserializer<Estate> {
     @SuppressWarnings("exports")
     @Override
     public Estate deserialize(JsonElement json, Type tyepOfT, JsonDeserializationContext context)
-            throws JsonParseException {
+            throws JsonParseException{
         JsonObject jsonObject = json.getAsJsonObject();
         Estate curestate = new Estate();
 
@@ -50,7 +50,7 @@ public class EstateDeserializer implements JsonDeserializer<Estate> {
                 curestate.addFeature(Features.map.get(curFeature));
             } else {
                 if (!curFeature.equals("")) {
-                    System.out.println("unexcpect feature: Map.entry(\"" + curFeature + "\", ),");
+                    throw new UnexpectedFeatureException(curFeature);
                 }
             }
         }
