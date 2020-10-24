@@ -49,7 +49,9 @@ public class EstateDeserializer implements JsonDeserializer<Estate> {
             if(Features.map.containsKey(curFeature)) {
                 curestate.addFeature(Features.map.get(curFeature));
             } else {
-                System.out.println("unexcpect feature \"" + curFeature + "\"");
+                if (!curFeature.equals("")) {
+                    System.out.println("unexcpect feature: Map.entry(\"" + curFeature + "\", ),");
+                }
             }
         }
 
