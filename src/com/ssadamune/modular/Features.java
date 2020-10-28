@@ -3,7 +3,7 @@ package com.ssadamune.modular;
 import java.util.Map;
 
 public class Features {
-    public static final Map<String, Integer> map = Map.ofEntries(
+    public static final Map<String, Integer> MAP = Map.ofEntries(
             // 住所・交通
             Map.entry("２沿線以上利用可", 100),
             Map.entry("始発駅", 101),
@@ -23,13 +23,13 @@ public class Features {
             Map.entry("区画整理地内", 127),
             Map.entry("避暑地", 128),
             // 住所・娯楽
-            Map.entry("ゴルフ場が近い", 130),
-            Map.entry("テニスコートが近い", 131),
-            Map.entry("スキー場が近い", 132),
+            Map.entry("ゴルフ場が近い", 140),
+            Map.entry("テニスコートが近い", 141),
+            Map.entry("スキー場が近い", 142),
             // 住所・地形
-            Map.entry("高台に立地", 140),
-            Map.entry("平坦地", 141),
-            Map.entry("駅まで平坦", 142),
+            Map.entry("高台に立地", 150),
+            Map.entry("平坦地", 151),
+            Map.entry("駅まで平坦", 152),
 
             // 方位・採光
             Map.entry("陽当り良好", 200),
@@ -73,16 +73,16 @@ public class Features {
             Map.entry("ハイルーフ駐車場空きあり", 313),
             Map.entry("EV車充電設備", 314),
             // 物件・建物施設
-            Map.entry("宅配ボックス", 330),
-            Map.entry("エレベーター", 331),
-            Map.entry("共有施設充実", 332),
-            Map.entry("２４時間有人管理", 333),
-            Map.entry("キッズルーム・託児所", 334),
-            Map.entry("バリアフリー", 335),
-            Map.entry("屋上", 336),
-            Map.entry("温泉付", 337),
-            Map.entry("共用露天風呂", 337),
-            Map.entry("プール", 338),
+            Map.entry("宅配ボックス", 320),
+            Map.entry("エレベーター", 321),
+            Map.entry("共有施設充実", 322),
+            Map.entry("２４時間有人管理", 323),
+            Map.entry("キッズルーム・託児所", 324),
+            Map.entry("バリアフリー", 325),
+            Map.entry("屋上", 326),
+            Map.entry("温泉付", 327),
+            Map.entry("共用露天風呂", 327),
+            Map.entry("プール", 328),
             // 物件・住宅設備
             Map.entry("高速ネット対応", 340),
             Map.entry("BS・CS・CATV", 341),
@@ -130,6 +130,7 @@ public class Features {
             Map.entry("南庭", 435),
             Map.entry("バルコニー・屋上に水栓あり", 436),
             Map.entry("庭１０坪以上", 437),
+            Map.entry("家庭菜園", 438),
             // 部屋・LDK
             Map.entry("ＬＤＫ１５畳以上", 440),
             Map.entry("ＬＤＫ１８畳以上", 441),

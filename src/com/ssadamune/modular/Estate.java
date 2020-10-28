@@ -10,8 +10,10 @@ public class Estate {
     private int price;
     private String madori;
     private float totalArea;
-    private String completeDate;//完成時期(築年月) e.g. 197610
-    private String moveInDate;//入居時期(年月) 即入居可は 000000
+    //完成時期(築年月) e.g. 197610
+    private String completeDate;
+    //入居時期(年月) 即入居可は 000000
+    private String moveInDate;
     private byte direction;
 
     private HashSet<Integer> features = new HashSet<>();
@@ -86,7 +88,7 @@ public class Estate {
                 + ", 地域コード：" + areaCode
                 + ", 都道府県コード：" + todofukenCode
                 + ", 市区郡コード：" + shikugunCode
-                + ", 価格：" + price
+                + ", 価格：" + price + "万円"
                 + ", 間取り：" + madori
                 + ", 専用面積：" + totalArea
                 + ", 完成時期：" + completeDate

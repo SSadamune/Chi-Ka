@@ -11,7 +11,9 @@ public class Test {
 //        test("nerima", 5);
 //        test("chiyoda", 8);
 //        test("shinjuku", 48);
-        test("setagaya", 56);
+//        test("setagaya", 56);
+//        test("shibuya", 37);
+        test("shinagawa", 31);
     }
 
     private static void test(String todofuken, int endPage) throws IOException{
@@ -26,7 +28,7 @@ public class Test {
                 System.out.println("Map.entry(\"" + ufe.feature() + "\", )," );
             }
             num++;
-            if (num%50==0) System.out.println(num + " properties found in " + todofuken);
+            if (num % 50 == 0) System.out.println(num + " properties found in " + todofuken);
         }
         System.out.println("all the " + num + " properties found in " + endPage + " pages of " + todofuken);
     }
