@@ -1,5 +1,7 @@
 package com.ssadamune.modular;
 
+import static com.ssadamune.modular.Features.*;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -119,8 +121,8 @@ class EstateDeserializer implements JsonDeserializer<Estate> {
         JsonArray features = jsonObject.get("tokuchoPickupList").getAsJsonArray();
         for (int i = 0; i < features.size(); i++) {
             String curFeature = features.get(i).getAsString();
-            if(Features.MAP.containsKey(curFeature)) {
-                curestate.addFeature(Features.MAP.get(curFeature));
+            if(FEATURES.containsKey(curFeature)) {
+                curestate.addFeature(FEATURES.get(curFeature));
             } else {
                 if (!curFeature.equals("")) {
                     throw new UnexpectedFeatureException(curFeature);

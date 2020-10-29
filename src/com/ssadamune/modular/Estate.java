@@ -7,7 +7,7 @@ public class Estate {
     private int areaCode;
     private int todofukenCode;
     private int shikugunCode;
-    private int price;
+    private int price10K;
     private String madori;
     private float totalArea;
     //完成時期(築年月) e.g. 197610
@@ -43,10 +43,10 @@ public class Estate {
         this.shikugunCode = shikugunCode;
     }
     public int getPrice() {
-        return price;
+        return price10K;
     }
     public void setPrice(int price) {
-        this.price = price;
+        this.price10K = price;
     }
     public String getMadori() {
         return madori;
@@ -88,7 +88,7 @@ public class Estate {
                 + ", 地域コード：" + areaCode
                 + ", 都道府県コード：" + todofukenCode
                 + ", 市区郡コード：" + shikugunCode
-                + ", 価格：" + price + "万円"
+                + ", 価格：" + price10K + "万円"
                 + ", 間取り：" + madori
                 + ", 専用面積：" + totalArea
                 + ", 完成時期：" + completeDate

@@ -13,7 +13,7 @@ public class Test {
 //        test("shinjuku", 48);
 //        test("setagaya", 56);
 //        test("shibuya", 37);
-        test("shinagawa", 31);
+        test("shinagawa", 1);
     }
 
     private static void test(String todofuken, int endPage) throws IOException{

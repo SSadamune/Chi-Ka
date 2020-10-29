@@ -3,7 +3,7 @@ package com.ssadamune.modular;
 import java.util.Map;
 
 public class Features {
-    public static final Map<String, Integer> MAP = Map.ofEntries(
+    public static final Map<String, Integer> FEATURES = Map.ofEntries(
             // 住所・交通
             Map.entry("２沿線以上利用可", 100),
             Map.entry("始発駅", 101),
