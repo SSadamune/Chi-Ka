@@ -16,7 +16,7 @@ public class Estate {
     private String moveInDate;
     private byte direction;
 
-    private HashSet<Integer> features = new HashSet<>();
+    private HashSet<String> features = new HashSet<>();
 
     public int getId() {
         return id;
@@ -78,7 +78,7 @@ public class Estate {
     public void setDirection(byte direction) {
         this.direction = direction;
     }
-    public void addFeature(int featureCode) {
+    public void addFeature(String featureCode) {
         this.features.add(featureCode);
     }
 
