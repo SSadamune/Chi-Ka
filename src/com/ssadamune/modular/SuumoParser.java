@@ -115,6 +115,9 @@ class EstateDeserializer implements JsonDeserializer<Estate> {
         String completeDate = jsonObject.get("kanseiDateDisp").getAsString();
         curestate.setCompleteDate(completeDate);
 
+        String moveInDate = jsonObject.get("nyukyoDateDisp").getAsString();
+        curestate.setMoveInDate(moveInDate);
+
         String directionStr = jsonObject.get("muki").getAsString();
         curestate.setDirection(directCode(directionStr));
 

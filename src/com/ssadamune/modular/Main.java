@@ -22,7 +22,7 @@ public class Main {
         int num = 0;
         for(int nc : ncCodes) {
             try {
-                SuumoParser.getEstate(todofuken, nc);
+                System.out.println(SuumoParser.getEstate(todofuken, nc));
             } catch (UnexpectedFeatureException ufe) {
                 System.out.print("unexpected feature at " + nc + ": ");
                 System.out.println("Map.entry(\"" + ufe.feature() + "\", )," );
