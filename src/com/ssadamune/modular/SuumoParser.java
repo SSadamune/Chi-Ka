@@ -68,10 +68,9 @@ public class SuumoParser {
 
     public static Estate getEstate(String todofuken, int ucCode) throws IOException {
         Document doc = Jsoup.connect(bukkengaiyoUrl(todofuken, ucCode)).get();
-        Element estateJsoup = doc.select("script").first();
 
         // get json data of estate information
-        String estateJson = estateJsoup.data();
+        String estateJson = doc.select("script").first().data();
         estateJson = estateJson.substring(25, estateJson.length() - 11);
 
         // parse the json-data
