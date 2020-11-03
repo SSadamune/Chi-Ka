@@ -9,6 +9,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.ssadamune.modular.SuumoParser;
+
 public class Test {
     static void stringJoin() {
         String[] array = {"1", "2", "3"};
@@ -24,7 +26,7 @@ public class Test {
         String hsUrl = "https://suumo.jp/chukoikkodate/tokyo/sc_" + todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
         Document doc = Jsoup.connect(hsUrl).get();
         Elements thtdElements = doc.select("table[summary=表]").first().select("tr > *");
-        StringBuffer json = new StringBuffer("{\n" + "    \"ID\" : " + ucCode + "\n");
+        StringBuffer json = new StringBuffer("{\n" + "    \"ID\" : " + ucCode + ",\n");
         String curItem = "";
         for (Element thtd : thtdElements) {
             if (thtd.is("th")) {
@@ -32,19 +34,21 @@ public class Test {
             } else if (thtd.is("td")) {
                 switch (curItem) {
                 case "私道負担・道路" :
-                    json.append("    \"" + curItem + "\" : \"" + thtd.text() + "\",\n");
+                    String road = thtd.text().equals("-")||thtd.text().equals("無") ? "" : thtd.text();
+                    json.append("    \"" + curItem + "\" : \"" + road + "\",\n");
                     break;
                 case "諸費用" :
                     json.append("    \"" + curItem + "\" : \"" + thtd.text() + "\",\n");
+                    json.append("    \"諸費用合計\" : \"" + expenses(thtd.text()) + "\",\n");
                     break;
                 case "建物面積" :
                 case "土地面積" :
-                    json.append("    \"" + curItem + "\" : " + area(thtd.text()) + ",\n");
+                    json.append("    \"" + curItem + "\" : \"" + area(thtd.text()) + "\",\n");
                     break;
                 case "建ぺい率・容積率" :
                     float[] bf = buildingCoverageFloorAreaRatio(thtd.text());
-                    json.append("    \"建ぺい率\" : " + bf[0] + ",\n");
-                    json.append("    \"容積率\" : " + bf[1] + ",\n");
+                    json.append("    \"建ぺい率\" : \"" + bf[0] + "\",\n");
+                    json.append("    \"容積率\" : \"" + bf[1] + "\",\n");
                     break;
                 case "土地の権利形態" :
                     String[] rf = rightForm(thtd.text());
@@ -62,8 +66,8 @@ public class Test {
     // building area & land area
     static String area(String tdText) {
         // 112.86m2
-        Matcher m = Pattern.compile("(\\D*)(\\d{2,}\\.\\d{2,})(\\D*)").matcher(tdText);
-        return m.find() ? m.group(2) : "not found";
+        Matcher m = Pattern.compile("(\\D*)(\\d{2,}(\\.\\d{1,})?)(\\D*)").matcher(tdText);
+        return m.find() ? m.group(2) : "";
     }
 
     // building coverage ratio / floor area ratio
@@ -96,10 +100,10 @@ public class Test {
             rightForm = "そのほか";
         }
         if (isLeaseRight) {
-            Matcher m = Pattern.compile("(\\D*)((\\d+)(年))?((\\d+)(ヶ月))?").matcher(tdText);
+            Matcher m = Pattern.compile("\\D*((\\d+)年)?((\\d+)ヶ月)?").matcher(tdText);
             if (m.find()) {
-                String year = (m.group(3) == null) ? "0" : m.group(3);
-                String month = (m.group(6) == null) ? "0" : m.group(6);
+                String year = (m.group(2) == null) ? "0" : m.group(2);
+                String month = (m.group(4) == null) ? "0" : m.group(4);
                 landLeasePeriod = year + "-" + month;
             }
         }
@@ -108,23 +112,54 @@ public class Test {
 
     // 諸費用
     static int expenses(String tdText) {
+        // "バイク置場：1000円／月、駐輪場：200円／月"
+        // "地代：4万1250円／月"
         int expenses = 0;
+        Matcher m1 = Pattern.compile("(\\d+)円／月").matcher(tdText);
+        while (m1.find()) {
+            expenses += Integer.parseInt(m1.group(1));
+        }
+        Matcher m2 = Pattern.compile("((\\d+)万)+(\\d*)円／月").matcher(tdText);
+        while (m2.find()) {
+            expenses += Integer.parseInt(m2.group(2)) * 10000;
+        }
         return expenses;
     }
 
     // 管理費, 修繕積立金, 修繕積立基金, 諸費用, 専有面積, その他面積
     // 所在階, 構造・階建て, 敷地面積, 敷地の権利形態, 用途地域
     // その他概要・特記事項
-    static void mansionJsoupTest(String todofuken, int ucCode) throws IOException {
+    static String mansionJsoupTest(String todofuken, int ucCode) throws IOException {
         String msUrl = "https://suumo.jp/ms/chuko/tokyo/sc_" + todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
         Document doc = Jsoup.connect(msUrl).get();
 
-        Elements trElements = doc.select("tr");
-
-        for (Element tr : trElements) {
-            Elements divText = tr.select("div");
-
+        Elements thtdElements = doc.select("table[summary=表]").eq(0).select("tr > *");
+        thtdElements.addAll(doc.select("table[summary=表]").eq(1).select("tr > *"));
+        StringBuffer json = new StringBuffer("{\n" + "    \"ID\" : " + ucCode + ",\n");
+        String curItem = "";
+        for (Element thtd : thtdElements) {
+            if (thtd.is("th")) {
+                curItem = thtd.children().first().text();
+            } else if (thtd.is("td")) {
+                switch (curItem) {
+                case "諸費用" :
+                    json.append("    \"" + curItem + "\" : \"" + thtd.text() + "\",\n");
+                    json.append("    \"諸費用合計\" : \"" + expenses(thtd.text()) + "\",\n");
+                    break;
+                case "敷地面積" :
+                    json.append("    \"" + curItem + "\" : \"" + area(thtd.text()) + "\",\n");
+                    break;
+                case "敷地の権利形態" :
+                    String[] rf = rightForm(thtd.text());
+                    json.append("    \"土地の権利形態\" : \"" + rf[0] + "\",\n");
+                    json.append("    \"借地期間\" : \"" + rf[1] + "\",\n");
+                    break;
+                }
+            }
         }
+        json.append("}");
+        System.out.println(json);
+        return json.toString();
     }
 
     {
@@ -132,10 +167,13 @@ public class Test {
     }
 
     public static void main(String[] args) throws IOException {
-        houseJsoupTest("toshima", 93427000);
-        houseJsoupTest("toshima", 95013699);
-        houseJsoupTest("toshima", 94436214);
-        houseJsoupTest("setagaya", 94826730);
-//        mansionJsoupTest("toshima", 94332373);
+        var houseCodes = SuumoParser.getHousesUcList("setagaya", 3);
+        for (int nc : houseCodes) {
+            houseJsoupTest("setagaya", nc);
+        }
+        var mansionCodes = SuumoParser.getMansionsUcList("setagaya", 1);
+        for (int nc : mansionCodes) {
+            mansionJsoupTest("setagaya", nc);
+        }
     }
 }

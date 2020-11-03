@@ -17,7 +17,7 @@ public class Main {
     }
 
     private static void test(String todofuken, int endPage) throws IOException{
-        var ncCodes = SuumoParser.getUcList(todofuken, endPage);
+        var ncCodes = SuumoParser.getMansionsUcList(todofuken, endPage);
         System.out.println(todofuken + " has " + ncCodes.size() + " properties");
         int num = 0;
         for(int nc : ncCodes) {

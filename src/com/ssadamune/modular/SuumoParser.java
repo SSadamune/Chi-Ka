@@ -26,12 +26,16 @@ import com.google.gson.JsonParseException;
 
 public class SuumoParser {
 
-    private static String ichiranUrl (String todofuken, int page) {
+    private static String mansionIchiranUrl (String todofuken, int page) {
         return "https://suumo.jp/ms/chuko/tokyo/sc_" + todofuken + "/pnz1" + page + ".html";
     }
 
+    private static String houseIchiranUrl (String todofuken, int page) {
+        return "https://suumo.jp/chukoikkodate/tokyo/sc_" + todofuken + "/pnz1" + page + ".html";
+    }
+
     // get a list of uc code by the name of todofuken
-    public static ArrayList<Integer> getUcList(String todofuken, int endPage) throws IOException {
+    public static ArrayList<Integer> getMansionsUcList(String todofuken, int endPage) throws IOException {
         // all the uc-code of this todofuken
         ArrayList<Integer> ucList = new ArrayList<>();
 
@@ -43,7 +47,38 @@ public class SuumoParser {
             Set<Integer> ucSet = new HashSet<>();
 
             // parse the html of ichiran-page
-            Document doc = Jsoup.connect(ichiranUrl(todofuken, page)).get();
+            Document doc = Jsoup.connect(mansionIchiranUrl(todofuken, page)).get();
+
+            // all the links in ichiran-page
+            Elements links = doc.select("a[href]");
+
+            for (Element link : links) {
+                String curLink = link.attr("href");
+                // match current-link and regex-pattern
+                Matcher m = Pattern.compile(pattern).matcher(curLink);
+                if (m.find()) {
+                    // add uc-code into set
+                    ucSet.add(Integer.parseInt(m.group(2)));
+                }
+            }
+            ucList.addAll(ucSet);
+        }
+        return ucList;
+    }
+
+    public static ArrayList<Integer> getHousesUcList(String todofuken, int endPage) throws IOException {
+        // all the uc-code of this todofuken
+        ArrayList<Integer> ucList = new ArrayList<>();
+
+        // regex pattern of link, which included the uc-code
+        String pattern = "(/chukoikkodate/tokyo/sc_" + todofuken + "/nc_)(\\d*)(/)";
+
+        for (int page = 1; page <= endPage; page++) {
+            // all the uc-code of current page, use HashSet to avoid duplicate values
+            Set<Integer> ucSet = new HashSet<>();
+
+            // parse the html of ichiran-page
+            Document doc = Jsoup.connect(houseIchiranUrl(todofuken, page)).get();
 
             // all the links in ichiran-page
             Elements links = doc.select("a[href]");
