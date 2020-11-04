@@ -1,6 +1,7 @@
 package com.ssadamune.exercise;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,13 +34,8 @@ public class Test {
                 curItem = thtd.children().first().text();
             } else if (thtd.is("td")) {
                 switch (curItem) {
-                case "私道負担・道路" :
-                    String road = thtd.text().equals("-")||thtd.text().equals("無") ? "" : thtd.text();
-                    json.append("    \"" + curItem + "\" : \"" + road + "\",\n");
-                    break;
                 case "諸費用" :
-                    json.append("    \"" + curItem + "\" : \"" + thtd.text() + "\",\n");
-                    json.append("    \"諸費用合計\" : \"" + expenses(thtd.text()) + "\",\n");
+                    json.append("    \"諸費用\" : \"" + expenses(thtd.text()) + "\",\n");
                     break;
                 case "建物面積" :
                 case "土地面積" :
@@ -55,6 +51,24 @@ public class Test {
                     json.append("    \"土地の権利形態\" : \"" + rf[0] + "\",\n");
                     json.append("    \"借地期間\" : \"" + rf[1] + "\",\n");
                     break;
+                case "私道負担・道路" :
+                case "構造・工法" :
+                case "用途地域" :
+                case "地目" :
+                    String text = thtd.text().equals("-")||thtd.text().equals("無") ? "" : thtd.text();
+                    json.append("    \"" + curItem + "\" : \"" + text + "\",\n");
+                    break;
+                case "その他制限事項" :
+                    json.append("    \"制限事項\" : " + array2Json(limits(thtd.text())) + ",\n");
+                    break;
+                case "その他概要・特記事項" :
+                    /*
+                    String[][] notices = notices(thtd.text());
+                    json.append("    \"設備\" : " + array2Json(notices[0]) + ",\n");
+                    json.append("    \"駐車場\" : " + array2Json(notices[1]) + ",\n");
+                    */
+                    json.append("    \"特記事項\" : " + array2Json(notices(thtd.text())) + ",\n");
+                    break;
                 }
             }
         }
@@ -64,27 +78,43 @@ public class Test {
     }
 
     // building area & land area
+    // 112.86m2 => 112.86
     static String area(String tdText) {
-        // 112.86m2
-        Matcher m = Pattern.compile("(\\D*)(\\d{2,}(\\.\\d{1,})?)(\\D*)").matcher(tdText);
-        return m.find() ? m.group(2) : "";
+        Matcher m = Pattern.compile("\\D*(\\d{2,}(\\.\\d{1,})?)\\D*").matcher(tdText);
+        return m.find() ? m.group(1) : "";
     }
 
     // building coverage ratio / floor area ratio
+    // "60％・160％" => {0.6, 1.6}
     static float[] buildingCoverageFloorAreaRatio(String tdText) {
-        // "60％・160％"
-        Matcher m = Pattern.compile("(\\D*)(\\d+)(％\\D*)(\\d+)(％\\D*)").matcher(tdText);
+        Matcher m = Pattern.compile("\\D*(\\d+)％\\D*(\\d+)％\\D*").matcher(tdText);
         float[] bcfa = new float[2];
         if (m.find()) {
-            bcfa[0] = (float)Integer.parseInt(m.group(2))/100;
-            bcfa[1] = (float)Integer.parseInt(m.group(4))/100;
+            bcfa[0] = (float)Integer.parseInt(m.group(1))/100;
+            bcfa[1] = (float)Integer.parseInt(m.group(2))/100;
         }
         return bcfa;
     }
 
+    // 諸費用
+    // "バイク置場：1000円／月、駐輪場：200円／月" => 1200
+    // "地代：4万1250円／月" => 41250
+    static int expenses(String tdText) {
+        int expenses = 0;
+        Matcher m1 = Pattern.compile("(\\d+)円／月").matcher(tdText);
+        while (m1.find()) {
+            expenses += Integer.parseInt(m1.group(1));
+        }
+        Matcher m2 = Pattern.compile("(\\d+)万\\d*円／月").matcher(tdText);
+        while (m2.find()) {
+            expenses += Integer.parseInt(m2.group(1)) * 10000;
+        }
+        return expenses;
+    }
+
     // land rights form
+    // "賃借権（旧）、借地期間残存14年8ヶ月" => {"賃借権（旧）", "14-8"}
     static String[] rightForm(String tdText) {
-        // "賃借権（旧）、借地期間残存14年8ヶ月"
         boolean isLeaseRight = false;
         String rightForm;
         String landLeasePeriod = new String();
@@ -110,20 +140,49 @@ public class Test {
         return new String[]{rightForm, landLeasePeriod};
     }
 
-    // 諸費用
-    static int expenses(String tdText) {
-        // "バイク置場：1000円／月、駐輪場：200円／月"
-        // "地代：4万1250円／月"
-        int expenses = 0;
-        Matcher m1 = Pattern.compile("(\\d+)円／月").matcher(tdText);
-        while (m1.find()) {
-            expenses += Integer.parseInt(m1.group(1));
+    // その他制限事項
+    static String[] limits(String tdText) {
+        // "高度地区、準防火地域、風致地区、景観地区、日影制限有"
+        if (tdText.equals("-")||tdText.equals("無")) return null;
+        return tdText.split("、");
+    }
+
+    // その他概要・特記事項
+    // "担当者：朱 楨鏑、設備：公営水道、本下水、都市ガス、駐車場：車庫"
+    /*
+    static String[][] notices(String tdText) {
+        if (tdText.equals("-")||tdText.equals("無")) return null;
+        Matcher m1 = Pattern.compile(".*、?設備：([^：]+)(、.*?：.*)?").matcher(tdText);
+        String setsubi = m1.find() ? m1.group(1) : "";
+        String parking = "";
+        return new String[][] {setsubi.split("、"), parking.split("、")};
+    }
+    */
+
+    // その他概要・特記事項
+    // "担当者：XXX、設備：公営水道、本下水、都市ガス、駐車場：車庫"
+    //          => {"担当者", "設備", "駐車場"}
+    static String[] notices(String tdText) {
+
+        if (tdText.equals("-")||tdText.equals("無")) return null;
+        Matcher m = Pattern.compile("(?:^|、)([^、：]*)：").matcher(tdText);
+        ArrayList<String> noticeArr = new ArrayList<String>();
+        while (m.find()) {
+            noticeArr.add(m.group(1));
         }
-        Matcher m2 = Pattern.compile("((\\d+)万)+(\\d*)円／月").matcher(tdText);
-        while (m2.find()) {
-            expenses += Integer.parseInt(m2.group(2)) * 10000;
+        String[] notices = new String[noticeArr.size()];
+        return noticeArr.toArray(notices);
+    }
+
+
+    static String array2Json(String[] array) {
+        if (array == null || array.length == 0) return "\"\"";
+        StringBuffer jsonArray = new StringBuffer("[");
+        for (String str : array) {
+            jsonArray.append("\"" + str + "\", ");
         }
-        return expenses;
+        jsonArray.append("]");
+        return jsonArray.toString();
     }
 
     // 管理費, 修繕積立金, 修繕積立基金, 諸費用, 専有面積, その他面積
@@ -141,10 +200,9 @@ public class Test {
             if (thtd.is("th")) {
                 curItem = thtd.children().first().text();
             } else if (thtd.is("td")) {
-                switch (curItem) {
+                switch (curItem) {/*
                 case "諸費用" :
-                    json.append("    \"" + curItem + "\" : \"" + thtd.text() + "\",\n");
-                    json.append("    \"諸費用合計\" : \"" + expenses(thtd.text()) + "\",\n");
+                    json.append("    \"諸費用\" : \"" + expenses(thtd.text()) + "\",\n");
                     break;
                 case "敷地面積" :
                     json.append("    \"" + curItem + "\" : \"" + area(thtd.text()) + "\",\n");
@@ -153,7 +211,20 @@ public class Test {
                     String[] rf = rightForm(thtd.text());
                     json.append("    \"土地の権利形態\" : \"" + rf[0] + "\",\n");
                     json.append("    \"借地期間\" : \"" + rf[1] + "\",\n");
+                    break;*/
+                case "その他制限事項" :
+                    json.append("    \"" + curItem + "\" : " + array2Json(limits(thtd.text())) + ",\n");
                     break;
+                case "その他概要・特記事項" :
+                    String[][] notices = notices(thtd.text());
+                    json.append("    \"設備\" : " + array2Json(notices[0]) + ",\n");
+                    json.append("    \"駐車場\" : " + array2Json(notices[1]) + ",\n");
+                    break;
+                    /*
+                    String text = thtd.text().equals("-")||thtd.text().equals("無") ? "" : thtd.text();
+                    json.append("    \"" + curItem + "\" : \"" + text + "\",\n");
+                    break;
+                    */
                 }
             }
         }
@@ -167,13 +238,13 @@ public class Test {
     }
 
     public static void main(String[] args) throws IOException {
-        var houseCodes = SuumoParser.getHousesUcList("setagaya", 3);
+        var houseCodes = SuumoParser.getHousesUcList("setagaya", 1); //50
         for (int nc : houseCodes) {
             houseJsoupTest("setagaya", nc);
-        }
+        }/*
         var mansionCodes = SuumoParser.getMansionsUcList("setagaya", 1);
         for (int nc : mansionCodes) {
             mansionJsoupTest("setagaya", nc);
-        }
+        }*/
     }
 }
