@@ -1,4 +1,4 @@
-package com.ssadamune.modular;
+package com.ssadamune.crawler;
 
 import java.util.HashSet;
 

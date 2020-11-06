@@ -1,6 +1,6 @@
-package com.ssadamune.modular;
+package com.ssadamune.crawler;
 
-import static com.ssadamune.modular.Features.*;
+import static com.ssadamune.crawler.Features.*;
 
 import java.io.IOException;
 import java.lang.reflect.Type;

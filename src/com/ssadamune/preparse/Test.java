@@ -1,4 +1,4 @@
-package com.ssadamune.exercise;
+package com.ssadamune.preparse;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.ssadamune.modular.SuumoParser;
+import com.ssadamune.crawler.SuumoParser;
 
 public class Test {
     static HashMap<String, Integer> Limits = new HashMap<String, Integer>();
@@ -149,7 +149,7 @@ public class Test {
     static String[] limits(String tdText) {
         // "高度地区、準防火地域、風致地区、景観地区、日影制限有"
         if (tdText.equals("-")||tdText.equals("無")) return null;
-        return tdText.split("、");
+        return tdText.split("、|／|■|●|◆|※|・");
     }
 
     // その他概要・特記事項
@@ -239,8 +239,16 @@ public class Test {
     static void add2Map(HashMap<String, Integer> map, String[] items, int ucCode) {
         if (items == null || items.length == 0) return;
         for (String item : items) {
-            map.putIfAbsent(item, ucCode);
+            map.putIfAbsent(item.trim(), ucCode);
         }
+    }
+
+    static void printMap (HashMap<String, Integer> map) {
+        System.out.println("{");
+        map.forEach((item, uc) -> {
+            System.out.println("    " + item + " : " + uc);
+        });
+        System.out.println("}");
     }
 
     {
@@ -248,15 +256,22 @@ public class Test {
     }
 
     public static void main(String[] args) throws IOException {
-        var houseCodes = SuumoParser.getHousesUcList("setagaya", 23); //20
+        int properties = 0;
+        var houseCodes = SuumoParser.getHousesUcList("setagaya", 2); //20
         for (int nc : houseCodes) {
             houseJsoupTest("setagaya", nc);
+            properties += 1;
+            if (properties % 100 == 0) System.out.println(properties +"/"+ houseCodes.size() + " houses parsed");
         }
-        var mansionCodes = SuumoParser.getMansionsUcList("setagaya", 53); //50
+        properties = 0;
+        var mansionCodes = SuumoParser.getMansionsUcList("setagaya", 2); //50
+        System.out.println(mansionCodes.size() + " mansions found");
         for (int nc : mansionCodes) {
             mansionJsoupTest("setagaya", nc);
+            properties += 1;
+            if (properties % 100 == 0) System.out.println(properties +"/"+ mansionCodes.size() + " mansions parsed");
         }
-        System.out.println(Limits);
-        System.out.println(Notices);
+        printMap(Limits);
+        printMap(Notices);
     }
 }
