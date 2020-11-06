@@ -2,7 +2,6 @@ package com.ssadamune.preparse;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,11 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.ssadamune.crawler.SuumoParser;
-
 public class Test {
-    static HashMap<String, Integer> Limits = new HashMap<String, Integer>();
-    static HashMap<String, Integer> Notices = new HashMap<String, Integer>();
 
     static void stringJoin() {
         String[] array = {"1", "2", "3"};
@@ -64,7 +59,7 @@ public class Test {
                     break;*/
                 case "その他制限事項" :
 //                    json.append("    \"制限事項\" : " + array2Json(limits(thtd.text())) + ",\n");
-                    add2Map(Limits, limits(thtd.text()), ucCode);
+
                     break;
                 case "その他概要・特記事項" :
                     /*
@@ -73,7 +68,7 @@ public class Test {
                     json.append("    \"駐車場\" : " + array2Json(notices[1]) + ",\n");
                     */
 //                    json.append("    \"特記事項\" : " + array2Json(notices(thtd.text())) + ",\n");
-                    add2Map(Notices, notices(thtd.text()), ucCode);
+
                     break;
                 }
             }
@@ -218,7 +213,7 @@ public class Test {
                     break;*/
                 case "その他制限事項" :
                     //json.append("    \"制限事項\" : " + array2Json(limits(thtd.text())) + ",\n");
-                    add2Map(Limits, limits(thtd.text()), ucCode);
+
                     break;
                 case "その他概要・特記事項" :
                     /*
@@ -227,7 +222,7 @@ public class Test {
                   json.append("    \"駐車場\" : " + array2Json(notices[1]) + ",\n");
                      */
                     //json.append("    \"特記事項\" : " + array2Json(notices(thtd.text())) + ",\n");
-                    add2Map(Notices, notices(thtd.text()), ucCode);
+
                     break;
                 }
             }
@@ -236,42 +231,11 @@ public class Test {
         return json.toString();
     }
 
-    static void add2Map(HashMap<String, Integer> map, String[] items, int ucCode) {
-        if (items == null || items.length == 0) return;
-        for (String item : items) {
-            map.putIfAbsent(item.trim(), ucCode);
-        }
-    }
-
-    static void printMap (HashMap<String, Integer> map) {
-        System.out.println("{");
-        map.forEach((item, uc) -> {
-            System.out.println("    " + item + " : " + uc);
-        });
-        System.out.println("}");
-    }
-
     {
     // 交通
     }
 
     public static void main(String[] args) throws IOException {
-        int properties = 0;
-        var houseCodes = SuumoParser.getHousesUcList("setagaya", 2); //20
-        for (int nc : houseCodes) {
-            houseJsoupTest("setagaya", nc);
-            properties += 1;
-            if (properties % 100 == 0) System.out.println(properties +"/"+ houseCodes.size() + " houses parsed");
-        }
-        properties = 0;
-        var mansionCodes = SuumoParser.getMansionsUcList("setagaya", 2); //50
-        System.out.println(mansionCodes.size() + " mansions found");
-        for (int nc : mansionCodes) {
-            mansionJsoupTest("setagaya", nc);
-            properties += 1;
-            if (properties % 100 == 0) System.out.println(properties +"/"+ mansionCodes.size() + " mansions parsed");
-        }
-        printMap(Limits);
-        printMap(Notices);
+
     }
 }
