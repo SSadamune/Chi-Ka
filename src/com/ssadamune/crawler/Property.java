@@ -2,7 +2,7 @@ package com.ssadamune.crawler;
 
 import java.util.HashSet;
 
-public class Estate {
+public class Property {
     private int id;
     private int areaCode;
     private int todofukenCode;

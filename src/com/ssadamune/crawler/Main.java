@@ -22,10 +22,11 @@ public class Main {
         int num = 0;
         for(int nc : ncCodes) {
             try {
-                System.out.println(SuumoParser.getEstate(todofuken, nc));
+                System.out.println(SuumoParser.getProperty(todofuken, nc));
             } catch (UnexpectedFeatureException ufe) {
                 System.out.print("unexpected feature at " + nc + ": ");
-                System.out.println("Map.entry(\"" + ufe.feature() + "\", )," );
+                for (String feature : ufe.features())
+                System.out.println("Map.entry(\"" + feature + "\", )," );
             }
             num++;
             if (num % 50 == 0) System.out.println(num + " properties found in " + todofuken);

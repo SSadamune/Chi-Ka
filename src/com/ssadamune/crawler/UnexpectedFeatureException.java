@@ -1,16 +1,20 @@
 package com.ssadamune.crawler;
 
+import java.util.ArrayList;
+
 import com.google.gson.JsonParseException;
 
 public class UnexpectedFeatureException extends JsonParseException {
-    private String featureName;
+    private ArrayList<String> featuresName;
 
-    UnexpectedFeatureException(String feature) {
-        super(feature);
-        this.featureName = feature;
+    public UnexpectedFeatureException(ArrayList<String> features) {
+        super(features.toString());
+        this.featuresName = features;
     }
 
-    public String feature() {
-        return featureName;
+    public String[] features() {
+        String[] arr = new String[this.featuresName.size()];
+        this.featuresName.toArray(arr);
+        return arr;
     }
 }

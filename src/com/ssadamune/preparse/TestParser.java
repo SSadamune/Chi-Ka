@@ -10,7 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class Test {
+public class TestParser {
 
     static void stringJoin() {
         String[] array = {"1", "2", "3"};

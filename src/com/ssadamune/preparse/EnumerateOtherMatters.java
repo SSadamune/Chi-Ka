@@ -18,7 +18,7 @@ import org.jsoup.select.Elements;
 
 import com.ssadamune.crawler.SuumoParser;
 
-public class EnumerateMatters {
+public class EnumerateOtherMatters {
 
     static HashMap<String, String> Limits = new HashMap<String, String>();
     static HashMap<String, String> Notices = new HashMap<String, String>();
@@ -53,7 +53,7 @@ public class EnumerateMatters {
         if (text.equals("-")||text.equals("無")) return new String[][] {{},{}};
         String[][] notices = new String[2][];
         Matcher m1 = Pattern.compile(".*設備：([^：]+)($|(、建築.*)|(、駐車場.*))").matcher(text);
-        if (m1.find()) notices[0] = m1.group(1).split("、");
+        if (m1.find()) notices[0] = m1.group(1).split("、|・|　");
         Matcher m2 = Pattern.compile(".*駐車場：([^：]+)($|(、建築.*))").matcher(text);
         if (m2.find()) notices[1] = m2.group(1).split("、");
         return notices;
@@ -79,7 +79,7 @@ public class EnumerateMatters {
                     add2Map(Limits, limits(thtd.text()), propertyForMap);
                     break;
                 case "その他概要・特記事項" :
-                    // add2Map(Notices, sortNotices(thtd.text()), propertyForMap);
+                    add2Map(Notices, sortNotices(thtd.text()), propertyForMap);
                     String[][] notices = notices(thtd.text());
                     add2Map(Facility, notices[0], propertyForMap);
                     add2Map(Parking, notices[1], propertyForMap);
@@ -89,20 +89,12 @@ public class EnumerateMatters {
         }
     }
 
+    // add all the items from String array to HashMap
     static void add2Map(HashMap<String, String> map, String[] items, String property) {
         if (items == null || items.length == 0) return;
         for (String item : items) {
             if (item.isBlank()==false) map.putIfAbsent(item.trim(), property);
         }
-    }
-
-    static String printMap (HashMap<String, String> map) {
-        StringBuffer str = new StringBuffer("{\n");
-        map.forEach((m, p) -> {
-            str.append("    \"" + m + "\" : " + p + "\n");
-        });
-        str.append("}\n");
-        return str.toString();
     }
 
     // parse the todofuken ichiran page, save the properties into maps
@@ -131,6 +123,15 @@ public class EnumerateMatters {
         System.out.println("=====================");
     }
 
+    static String printMap (HashMap<String, String> map) {
+        StringBuffer str = new StringBuffer("{\n");
+        map.forEach((m, p) -> {
+            str.append("    \"" + m + "\" : " + p + "\n");
+        });
+        str.append("}\n");
+        return str.toString();
+    }
+
     static void writeLog() throws IOException{
         Date dNow = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_hhmmss");
@@ -138,9 +139,10 @@ public class EnumerateMatters {
                 + "EnumerateMatters_" + ft.format(dNow) + ".txt");
         logFile.createNewFile();
         BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
-        bw.write(printMap(Limits));
-        bw.write(printMap(Facility));
-        bw.write(printMap(Parking));
+        bw.write("Notices : " + printMap(Notices));
+        bw.write("Facility : " + printMap(Facility));
+        bw.write("Parking : " + printMap(Parking));
+        bw.write("Limits : " + printMap(Limits));
         bw.close();
         System.out.println("文件创建成功！");
     }
