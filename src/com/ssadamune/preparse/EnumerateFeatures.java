@@ -27,13 +27,18 @@ import com.ssadamune.crawler.Property;
 import com.ssadamune.crawler.SuumoParser;
 import com.ssadamune.crawler.UnexpectedFeatureException;
 
+/*
+ * all files of this package are useless for the Finished project
+ * this file was made to enumerate all the 「特徴PickupList」
+ */
+
 public class EnumerateFeatures {
 
     static HashMap<String, String> UnexpectedFeatures = new HashMap<String, String>();
 
     // parse houses or mansions
-    static void parseProperty(String todofuken, int ucCode, String property) throws IOException {
-        String url = property.equals("house")
+    static void parseProperty(String todofuken, int ucCode, String propertyKind) throws IOException {
+        String url = propertyKind.equals("house")
                 ? "https://suumo.jp/chukoikkodate/tokyo/sc_"
                 : "https://suumo.jp/ms/chuko/tokyo/sc_";
         url += todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
@@ -49,16 +54,16 @@ public class EnumerateFeatures {
                 .create();
 
         // if there is an unexpected feature, add it into Map
-        String propertyForMap = "[\"" + property + "\", \"" + todofuken + "\", \"" + ucCode + "\"]";
+        String propertyForMap = "[\"" + propertyKind + "\", \"" + todofuken + "\", \"" + ucCode + "\"]";
         try {
-            Property curProperty = gson.fromJson(propertyJson, Property.class);
+            gson.fromJson(propertyJson, Property.class);
         } catch (UnexpectedFeatureException ufe) {
             add2Map(UnexpectedFeatures, ufe.features(), propertyForMap);
         }
 
     }
 
-    static void add2Map(HashMap<String, String> map, String[] items, String property) {
+    private static void add2Map(HashMap<String, String> map, String[] items, String property) {
         if (items == null || items.length == 0) return;
         for (String item : items) {
             if (item.isBlank()==false) map.putIfAbsent(item.trim(), property);
@@ -91,7 +96,7 @@ public class EnumerateFeatures {
         System.out.println("=====================");
     }
 
-    static String printMap (HashMap<String, String> map) {
+    private static String printMap (HashMap<String, String> map) {
         StringBuffer str = new StringBuffer("{\n");
         map.forEach((m, p) -> {
             str.append("    \"" + m + "\" : " + p + "\n");
@@ -100,7 +105,7 @@ public class EnumerateFeatures {
         return str.toString();
     }
 
-    static void writeLog() throws IOException{
+    private static void writeLog() throws IOException{
         Date dNow = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_hhmmss");
         File logFile = new File("C:\\Users\\zwieb\\Documents\\MDproject\\MDproject\\log\\"

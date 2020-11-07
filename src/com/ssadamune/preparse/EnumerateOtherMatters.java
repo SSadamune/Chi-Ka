@@ -18,6 +18,11 @@ import org.jsoup.select.Elements;
 
 import com.ssadamune.crawler.SuumoParser;
 
+/*
+ * all files of this package are useless for the Finished project
+ * this file was made to enumerate all the 「その他事項」
+ */
+
 public class EnumerateOtherMatters {
 
     static HashMap<String, String> Limits = new HashMap<String, String>();
@@ -60,8 +65,8 @@ public class EnumerateOtherMatters {
     }
 
     // parse houses or mansions
-    static void parseProperty(String todofuken, int ucCode, String property) throws IOException {
-        String url = property.equals("house")
+    static void parseProperty(String todofuken, int ucCode, String propertyKind) throws IOException {
+        String url = propertyKind.equals("house")
                 ? "https://suumo.jp/chukoikkodate/tokyo/sc_"
                 : "https://suumo.jp/ms/chuko/tokyo/sc_";
         url += todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
@@ -69,7 +74,7 @@ public class EnumerateOtherMatters {
         Document doc = Jsoup.connect(url).get();
         Elements thtdElements = doc.select("table[summary=表]").first().select("tr > *");
         String curItem = "";
-        String propertyForMap = "[\"" + property + "\", \"" + todofuken + "\", \"" + ucCode + "\"]";
+        String propertyForMap = "[\"" + propertyKind + "\", \"" + todofuken + "\", \"" + ucCode + "\"]";
         for (Element thtd : thtdElements) {
             if (thtd.is("th")) {
                 curItem = thtd.children().first().text();
@@ -90,7 +95,7 @@ public class EnumerateOtherMatters {
     }
 
     // add all the items from String array to HashMap
-    static void add2Map(HashMap<String, String> map, String[] items, String property) {
+    private static void add2Map(HashMap<String, String> map, String[] items, String property) {
         if (items == null || items.length == 0) return;
         for (String item : items) {
             if (item.isBlank()==false) map.putIfAbsent(item.trim(), property);
@@ -123,7 +128,7 @@ public class EnumerateOtherMatters {
         System.out.println("=====================");
     }
 
-    static String printMap (HashMap<String, String> map) {
+    private static String printMap (HashMap<String, String> map) {
         StringBuffer str = new StringBuffer("{\n");
         map.forEach((m, p) -> {
             str.append("    \"" + m + "\" : " + p + "\n");
@@ -132,7 +137,7 @@ public class EnumerateOtherMatters {
         return str.toString();
     }
 
-    static void writeLog() throws IOException{
+    private static void writeLog() throws IOException{
         Date dNow = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_hhmmss");
         File logFile = new File("C:\\Users\\zwieb\\Documents\\MDproject\\MDproject\\log\\"

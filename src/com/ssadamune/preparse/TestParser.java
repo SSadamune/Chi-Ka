@@ -1,7 +1,6 @@
 package com.ssadamune.preparse;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,57 +17,71 @@ public class TestParser {
         System.out.println(join);
     }
 
-    // 私道負担・道路, 諸費用, 建物面積, 土地面積, 建ぺい率・容積率
-    // 土地の権利形態, 構造・工法, 用途地域, 地目
-    // その他制限事項, その他概要・特記事項
-    // view-source:https://suumo.jp/chukoikkodate/tokyo/sc_toshima/nc_94436214/bukkengaiyo/
-    static String houseJsoupTest(String todofuken, int ucCode) throws IOException {
-        String hsUrl = "https://suumo.jp/chukoikkodate/tokyo/sc_" + todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
-        Document doc = Jsoup.connect(hsUrl).get();
-        Elements thtdElements = doc.select("table[summary=表]").first().select("tr > *");
+    /*
+     * 私道負担・道路, 諸費用, 建物面積, 土地面積, 建ぺい率・容積率
+     * 土地の権利形態, 構造・工法, 用途地域, 地目
+     * その他制限事項, その他概要・特記事項
+     * view-source:https://suumo.jp/chukoikkodate/tokyo/sc_toshima/nc_94436214/bukkengaiyo/
+     *
+     * 管理費, 修繕積立金, 修繕積立基金, 諸費用, 専有面積, その他面積
+     * 所在階, 構造・階建て, 敷地面積, 敷地の権利形態, 用途地域
+     * その他概要・特記事項
+     * view-source:https://suumo.jp/ms/chuko/tokyo/sc_ota/nc_95081028/bukkengaiyo/
+     */
+    static String parseProperty(String todofuken, int ucCode, String propertyKind) throws IOException {
+        String url = propertyKind.equals("house")
+                ? "https://suumo.jp/chukoikkodate/tokyo/sc_"
+                        : "https://suumo.jp/ms/chuko/tokyo/sc_";
+        url += todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
+
+        Document doc = Jsoup.connect(url).get();
+        Elements thtdElements = doc.select("table[summary=表]").eq(0).select("tr > *");
+        if (propertyKind.equals("mansion")) thtdElements.addAll(doc.select("table[summary=表]").eq(1).select("tr > *"));
+
         StringBuffer json = new StringBuffer("{\n" + "    \"ID\" : " + ucCode + ",\n");
         String curItem = "";
         for (Element thtd : thtdElements) {
             if (thtd.is("th")) {
                 curItem = thtd.children().first().text();
             } else if (thtd.is("td")) {
-                switch (curItem) {/*
+                switch (curItem) {
                 case "諸費用" :
-                    json.append("    \"諸費用\" : \"" + expenses(thtd.text()) + "\",\n");
+                case "管理費" :
+                case "修繕積立金" :
+                    json.append("    \"" + curItem + "\" : \"" + expenses(thtd.text()) + "\",\n");
                     break;
                 case "建物面積" :
                 case "土地面積" :
+                case "敷地面積" :
+                case "専有面積" :
                     json.append("    \"" + curItem + "\" : \"" + area(thtd.text()) + "\",\n");
+                    break;
+                case "土地の権利形態" :
+                case "敷地の権利形態" :
+                    String[] rf = rightForm(thtd.text());
+                    json.append("    \"" + curItem + "\" : \"" + rf[0] + "\",\n");
+                    json.append("    \"借地期間\" : \"" + rf[1] + "\",\n");
                     break;
                 case "建ぺい率・容積率" :
                     float[] bf = buildingCoverageFloorAreaRatio(thtd.text());
                     json.append("    \"建ぺい率\" : \"" + bf[0] + "\",\n");
                     json.append("    \"容積率\" : \"" + bf[1] + "\",\n");
                     break;
-                case "土地の権利形態" :
-                    String[] rf = rightForm(thtd.text());
-                    json.append("    \"土地の権利形態\" : \"" + rf[0] + "\",\n");
-                    json.append("    \"借地期間\" : \"" + rf[1] + "\",\n");
-                    break;
                 case "私道負担・道路" :
                 case "構造・工法" :
                 case "用途地域" :
                 case "地目" :
-                    String text = thtd.text().equals("-")||thtd.text().equals("無") ? "" : thtd.text();
-                    json.append("    \"" + curItem + "\" : \"" + text + "\",\n");
-                    break;*/
+                case "構造・階建て" :
+                case "所在階" :
                 case "その他制限事項" :
-//                    json.append("    \"制限事項\" : " + array2Json(limits(thtd.text())) + ",\n");
-
+                    String text = thtd.text().equals("-")||thtd.text().equals("無") ? "" : thtd.text();
+                    if (text.length() > 50) text = text.substring(0, 50);
+                    json.append("    \"" + curItem + "\" : \"" + text + "\",\n");
                     break;
                 case "その他概要・特記事項" :
-                    /*
                     String[][] notices = notices(thtd.text());
                     json.append("    \"設備\" : " + array2Json(notices[0]) + ",\n");
                     json.append("    \"駐車場\" : " + array2Json(notices[1]) + ",\n");
-                    */
-//                    json.append("    \"特記事項\" : " + array2Json(notices(thtd.text())) + ",\n");
-
                     break;
                 }
             }
@@ -149,29 +162,15 @@ public class TestParser {
 
     // その他概要・特記事項
     // "担当者：朱 楨鏑、設備：公営水道、本下水、都市ガス、駐車場：車庫"
-    /*
-    static String[][] notices(String tdText) {
-        if (tdText.equals("-")||tdText.equals("無")) return null;
-        Matcher m1 = Pattern.compile(".*、?設備：([^：]+)(、.*?：.*)?").matcher(tdText);
-        String setsubi = m1.find() ? m1.group(1) : "";
-        String parking = "";
-        return new String[][] {setsubi.split("、"), parking.split("、")};
-    }
-    */
-
-    // その他概要・特記事項
-    // "担当者：XXX、設備：公営水道、本下水、都市ガス、駐車場：車庫"
-    //          => {"担当者", "設備", "駐車場"}
-    static String[] notices(String tdText) {
-
-        if (tdText.equals("-")||tdText.equals("無")) return null;
-        Matcher m = Pattern.compile("(?:^|、)([^、：]*)：").matcher(tdText);
-        ArrayList<String> noticeArr = new ArrayList<String>();
-        while (m.find()) {
-            noticeArr.add(m.group(1));
-        }
-        String[] notices = new String[noticeArr.size()];
-        return noticeArr.toArray(notices);
+    //          => [["公営水道", "本下水", "都市ガス"], ["車庫"]]
+    static String[][] notices(String text) {
+        if (text.equals("-")||text.equals("無")) return new String[][] {{},{}};
+        String[][] notices = new String[2][];
+        Matcher m1 = Pattern.compile(".*設備：([^：]+)($|(、建築.*)|(、駐車場.*))").matcher(text);
+        if (m1.find()) notices[0] = m1.group(1).split("、|・|　");
+        Matcher m2 = Pattern.compile(".*駐車場：([^：]+)($|(、建築.*))").matcher(text);
+        if (m2.find()) notices[1] = m2.group(1).split("、");
+        return notices;
     }
 
     static String array2Json(String[] array) {
@@ -180,62 +179,16 @@ public class TestParser {
         for (String str : array) {
             jsonArray.append("\"" + str + "\", ");
         }
-        jsonArray.append("]");
-        return jsonArray.toString();
-    }
-
-    // 管理費, 修繕積立金, 修繕積立基金, 諸費用, 専有面積, その他面積
-    // 所在階, 構造・階建て, 敷地面積, 敷地の権利形態, 用途地域
-    // その他概要・特記事項
-    static String mansionJsoupTest(String todofuken, int ucCode) throws IOException {
-        String msUrl = "https://suumo.jp/ms/chuko/tokyo/sc_" + todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
-        Document doc = Jsoup.connect(msUrl).get();
-
-        Elements thtdElements = doc.select("table[summary=表]").eq(0).select("tr > *");
-        thtdElements.addAll(doc.select("table[summary=表]").eq(1).select("tr > *"));
-        StringBuffer json = new StringBuffer("{\n" + "    \"ID\" : " + ucCode + ",\n");
-        String curItem = "";
-        for (Element thtd : thtdElements) {
-            if (thtd.is("th")) {
-                curItem = thtd.children().first().text();
-            } else if (thtd.is("td")) {
-                switch (curItem) {/*
-                case "諸費用" :
-                    json.append("    \"諸費用\" : \"" + expenses(thtd.text()) + "\",\n");
-                    break;
-                case "敷地面積" :
-                    json.append("    \"" + curItem + "\" : \"" + area(thtd.text()) + "\",\n");
-                    break;
-                case "敷地の権利形態" :
-                    String[] rf = rightForm(thtd.text());
-                    json.append("    \"土地の権利形態\" : \"" + rf[0] + "\",\n");
-                    json.append("    \"借地期間\" : \"" + rf[1] + "\",\n");
-                    break;*/
-                case "その他制限事項" :
-                    //json.append("    \"制限事項\" : " + array2Json(limits(thtd.text())) + ",\n");
-
-                    break;
-                case "その他概要・特記事項" :
-                    /*
-                  String[][] notices = notices(thtd.text());
-                  json.append("    \"設備\" : " + array2Json(notices[0]) + ",\n");
-                  json.append("    \"駐車場\" : " + array2Json(notices[1]) + ",\n");
-                     */
-                    //json.append("    \"特記事項\" : " + array2Json(notices(thtd.text())) + ",\n");
-
-                    break;
-                }
-            }
-        }
-        json.append("}");
-        return json.toString();
+        // delete ", " at the end of String
+        return jsonArray.substring(0, jsonArray.length() - 2) + "]";
     }
 
     {
-    // 交通
+        // 交通
     }
 
     public static void main(String[] args) throws IOException {
-
+        System.out.println(parseProperty("ota", 95081028, "mansion"));
+        System.out.println(parseProperty("hachioji", 90966152, "house"));
     }
 }
