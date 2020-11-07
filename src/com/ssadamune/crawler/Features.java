@@ -20,8 +20,8 @@ public class Features {
             Map.entry("緑豊かな住宅地", "124"),
             Map.entry("リバーサイド", "125"),
             Map.entry("大型タウン内", "126"),
-            Map.entry("区画整理地内", "127"),
-            Map.entry("避暑地", "128"),
+            Map.entry("避暑地", "127"),
+            Map.entry("海まで2km以内", "128"),
             // 住所・娯楽
             Map.entry("ゴルフ場が近い", "140"),
             Map.entry("テニスコートが近い", "141"),
@@ -30,6 +30,13 @@ public class Features {
             Map.entry("高台に立地", "150"),
             Map.entry("平坦地", "151"),
             Map.entry("駅まで平坦", "152"),
+            // 住所・土地
+            Map.entry("区画整理地内", "160"),
+            Map.entry("開発分譲地内", "161"),
+            Map.entry("整形地", "162"),
+            Map.entry("角地", "163"),
+            Map.entry("土地50坪以上", "164"),
+            Map.entry("土地100坪以上", "165"),
 
             // 方位・採光
             Map.entry("陽当り良好", "200"),
@@ -53,6 +60,7 @@ public class Features {
             Map.entry("全室南向き", "234"),
             Map.entry("全室南西向き", "235"),
             Map.entry("全室東南向き", "236"),
+            Map.entry("南側道路面す", "237"),
             // 方位・階層
             Map.entry("最上階・上階なし", "240"),
             Map.entry("高層階", "241"),
@@ -61,18 +69,26 @@ public class Features {
 
             // 物件・安全防災
             Map.entry("セキュリティ充実", "300"),
-            Map.entry("耐震基準適合証明書", "301"),
+            Map.entry("地盤調査済", "301"),
             Map.entry("制震・免震・耐震", "302"),
-            Map.entry("設計住宅性能評価書", "303"),
-            Map.entry("建設住宅性能評価書（新築時）", "304"),
-            Map.entry("融雪対策", "305"),
+            Map.entry("融雪対策", "303"),
+            Map.entry("耐震基準適合証明書", "304"),
+            Map.entry("設計住宅性能評価書", "305"),
+            Map.entry("建設住宅性能評価書（新築時）", "306"),
+            Map.entry("建設住宅性能評価書（既存住宅）", "307"),
             // 物件・駐車駐輪
             Map.entry("駐輪場", "310"),
             Map.entry("平面駐車場", "311"),
             Map.entry("自走式駐車場", "312"),
             Map.entry("ハイルーフ駐車場空きあり", "313"),
+            Map.entry("ハイルーフ駐車場", "313"),
             Map.entry("EV車充電設備", "314"),
-            // 物件・建物施設
+            Map.entry("車庫", "315"),
+            Map.entry("シャッター車庫", "316"),
+            Map.entry("地下車庫", "317"),
+            Map.entry("カースペース", "318"),
+            Map.entry("カーポート", "319"),
+            // 物件・マンション施設
             Map.entry("宅配ボックス", "320"),
             Map.entry("エレベーター", "321"),
             Map.entry("共有施設充実", "322"),
@@ -81,21 +97,45 @@ public class Features {
             Map.entry("バリアフリー", "325"),
             Map.entry("屋上", "326"),
             Map.entry("温泉付", "327"),
-            Map.entry("共用露天風呂", "327"),
-            Map.entry("プール", "328"),
+            Map.entry("共用露天風呂", "328"),
+            Map.entry("露天風呂", "328"),
+            Map.entry("プール", "329"),
             // 物件・住宅設備
-            Map.entry("高速ネット対応", "340"),
-            Map.entry("BS・CS・CATV", "341"),
-            Map.entry("ＴＶモニタ付インターホン", "342"),
-            Map.entry("床暖房", "343"),
-            Map.entry("オール電化", "344"),
-            Map.entry("スマートキー", "345"),
-            Map.entry("高気密高断熱住宅", "346"),
+            Map.entry("高速ネット対応", "330"),
+            Map.entry("BS・CS・CATV", "331"),
+            Map.entry("ＴＶモニタ付インターホン", "332"),
+            Map.entry("床暖房", "333"),
+            Map.entry("スマートキー", "334"),
+            Map.entry("高気密高断熱住宅", "335"),
+            // 物件・一戸建て
+            Map.entry("２階建", "340"),
+            Map.entry("３階建以上", "341"),
+            Map.entry("２世帯住宅", "342"),
+            Map.entry("リビング階段", "343"),
+            // 物件・ガス電力
+            Map.entry("オール電化", "350"),
+            Map.entry("東京電力", "351"),
+            Map.entry("太陽光発電システム", "352"),
+            Map.entry("東京ガス", "353"),
+            Map.entry("都市ガス", "354"),
+            Map.entry("プロパンガス", "355"),
+            Map.entry("個別LPG", "356"),
+            Map.entry("個別プロパンガス", "356"),
+            Map.entry("集中LPG", "357"),
+            Map.entry("集中プロパンガス", "357"),
+            // 物件・上下水
+            Map.entry("公営水道", "360"),
+            Map.entry("公共下水", "361"),
+            Map.entry("本下水", "361"),
+            Map.entry("公共上下水", "362"),
+            Map.entry("個別浄化槽", "363"),
+            Map.entry("井戸", "369"),
             // 物件・政策
-            Map.entry("ペット相談", "350"),
-            Map.entry("バイク置場", "351"),
-            Map.entry("２４時間ゴミ出し可", "352"),
-            Map.entry("駐車２台可", "353"),
+            Map.entry("ペット相談", "390"),
+            Map.entry("バイク置場", "391"),
+            Map.entry("２４時間ゴミ出し可", "392"),
+            Map.entry("駐車２台可", "393"),
+            Map.entry("駐車３台以上可", "394"),
 
             // 部屋・リフォーム
             Map.entry("内装リフォーム", "400"),
@@ -127,10 +167,12 @@ public class Features {
             Map.entry("２面以上バルコニー", "432"),
             Map.entry("テラス", "433"),
             Map.entry("専用庭", "434"),
-            Map.entry("南庭", "435"),
+            Map.entry("南庭", "434"),
+            Map.entry("庭", "434"),
+            Map.entry("庭１０坪以上", "435"),
             Map.entry("バルコニー・屋上に水栓あり", "436"),
-            Map.entry("庭１０坪以上", "437"),
-            Map.entry("家庭菜園", "438"),
+            Map.entry("家庭菜園", "437"),
+            Map.entry("前道６ｍ以上", "438"),
             // 部屋・LDK
             Map.entry("ＬＤＫ１５畳以上", "440"),
             Map.entry("ＬＤＫ１８畳以上", "441"),
@@ -165,6 +207,7 @@ public class Features {
             Map.entry("シューズインクローク", "483"),
             Map.entry("パントリー（食器・食品の収納庫）", "484"),
             Map.entry("床下収納", "485"),
+            Map.entry("屋根裏収納", "486"),
 
             // その他
             Map.entry("即入居可", "900"),
@@ -178,8 +221,9 @@ public class Features {
             Map.entry("新築時・増改築時の設計図", "930"),
             Map.entry("建築確認完了検査済証", "940"),
             Map.entry("建築士等の建物検査報告書", "941"),
-            Map.entry("建設住宅性能評価書（既存住宅）", "942"),
             Map.entry("長期優良住宅認定通知書", "943"),
+            Map.entry("法適合状況調査報告書", "944"),
+            Map.entry("空き家バンク登録物件", "950"),
             Map.entry("省エネルギー対策", "999")
             );
 
