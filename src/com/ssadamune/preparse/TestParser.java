@@ -18,7 +18,7 @@ public class TestParser {
     }
 
     /*
-     * 私道負担・道路, 諸費用, 建物面積, 土地面積, 建ぺい率・容積率
+     * 諸費用, 建物面積, 土地面積, 建ぺい率・容積率
      * 土地の権利形態, 構造・工法, 用途地域, 地目
      * その他制限事項, その他概要・特記事項
      * view-source:https://suumo.jp/chukoikkodate/tokyo/sc_toshima/nc_94436214/bukkengaiyo/
@@ -67,6 +67,7 @@ public class TestParser {
                     json.append("    \"建ぺい率\" : \"" + bf[0] + "\",\n");
                     json.append("    \"容積率\" : \"" + bf[1] + "\",\n");
                     break;
+                case "修繕積立基金" :
                 case "私道負担・道路" :
                 case "構造・工法" :
                 case "用途地域" :

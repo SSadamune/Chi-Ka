@@ -92,7 +92,7 @@ public class SuumoParser {
         return "https://suumo.jp/ms/chuko/tokyo/sc_" + todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
     }
 
-    public static Property getProperty(String todofuken, int ucCode) throws IOException {
+    public static Mansion getMansion(String todofuken, int ucCode) throws IOException {
         Document doc = Jsoup.connect(bukkengaiyoUrl(todofuken, ucCode)).get();
 
         // get json data of estate information
@@ -101,9 +101,9 @@ public class SuumoParser {
 
         // parse the json-data
         Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Property.class, new PropertyDeserializer())
+                .registerTypeAdapter(Mansion.class, new PropertyDeserializer())
                 .create();
-        Property curProperty = gson.fromJson(propertyJson, Property.class);
+        Mansion curProperty = gson.fromJson(propertyJson, Mansion.class);
 
         curProperty.setId(ucCode);
         return curProperty;

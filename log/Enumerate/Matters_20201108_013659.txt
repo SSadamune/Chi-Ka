@@ -1,0 +1,47 @@
+設備 : {
+    "本下水" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94943658/bukkengaiyo/
+    "公営水道" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94943658/bukkengaiyo/
+    "都市ガス" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94943658/bukkengaiyo/
+}
+駐車場 : {
+    "車庫" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94819688/bukkengaiyo/
+    "無" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94962145/bukkengaiyo/
+    "地下車庫" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94312148/bukkengaiyo/
+    "カースペース" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94943658/bukkengaiyo/
+}
+制限事項 : {
+    "築年数は「台帳記載事項証明書」によるものです。" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94851109/bukkengaiyo/
+    "風致地区" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94819688/bukkengaiyo/
+    "〇土地面積：路地状部分面積 約５６．３３平米含む。 〇二世帯住宅仕様〇間取り：３ＬＤＫ＋納戸" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94393220/bukkengaiyo/
+    "建築" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95052959/bukkengaiyo/
+    "景観法による規制有" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94943658/bukkengaiyo/
+    "敷地面積の最低限度８０平米" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94364368/bukkengaiyo/
+    "高度地区" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94851109/bukkengaiyo/
+    "日影制限有" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_93612442/bukkengaiyo/
+    "別途私道負担面積13m2有り　　" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95052959/bukkengaiyo/
+    "景観地区" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94080333/bukkengaiyo/
+    "１ＬＤＫ＋納戸" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94393220/bukkengaiyo/
+    "ゆとりある住まい景観ゾーン" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94118318/bukkengaiyo/
+    "平成30年９月リフォーム完了" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94704076/bukkengaiyo/
+    "練馬大泉石神井付近土地区画整理事業を施行すべき区域" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95051036/bukkengaiyo/
+    "景観計画区域" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94364368/bukkengaiyo/
+    "土地区画整理事業を施行すべき区域" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95080250/bukkengaiyo/
+    "高さ最高限度有" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_93612442/bukkengaiyo/
+    "第二種高度地区" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94312148/bukkengaiyo/
+    "43条第1項但書き許可　平成25年12月24日　第201211240号" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94819688/bukkengaiyo/
+    "区画整理事業区域" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_88930872/bukkengaiyo/
+    "増築" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95052959/bukkengaiyo/
+    "建築基準法に定める道路に接していないため" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95052959/bukkengaiyo/
+    "防火地域" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94851109/bukkengaiyo/
+    "駐車場" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_92828095/bukkengaiyo/
+    "敷地面積最低限度有" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94851109/bukkengaiyo/
+    "高さ1.5m以下" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_92828095/bukkengaiyo/
+    "準防火地域" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94943658/bukkengaiyo/
+    "改築は不可" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95052959/bukkengaiyo/
+    "管理会社：一部委託あり（鈴木建物株式会社）" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94695978/bukkengaiyo/
+    "高度利用地区" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94080333/bukkengaiyo/
+    "駐車場：有（車種による制限有り）" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94364368/bukkengaiyo/
+    "敷地面積最高限度有" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95083387/bukkengaiyo/
+    "建物面積" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94851109/bukkengaiyo/
+    "土地区画整理事業を施工すべき区域/練馬大泉石神井付近" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94719049/bukkengaiyo/
+}

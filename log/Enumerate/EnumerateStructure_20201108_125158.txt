@@ -1,0 +1,41 @@
+マンション　構造 : {
+    "RC" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94710497/bukkengaiyo/
+    "SRC" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_95017198/bukkengaiyo/
+    "鉄骨" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_93802893/bukkengaiyo/
+}
+マンション　階建て : {
+    "10階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_95083315/bukkengaiyo/
+    "12階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94750910/bukkengaiyo/
+    "8階地下1階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94826566/bukkengaiyo/
+    "11階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94237081/bukkengaiyo/
+    "14階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94947571/bukkengaiyo/
+    "4階地下1階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_95092224/bukkengaiyo/
+    "13階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94480442/bukkengaiyo/
+    "7階地下1階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94969907/bukkengaiyo/
+    "3階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94924654/bukkengaiyo/
+    "2階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_93173334/bukkengaiyo/
+    "7階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_95017198/bukkengaiyo/
+    "6階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94710497/bukkengaiyo/
+    "5階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94787599/bukkengaiyo/
+    "4階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94059827/bukkengaiyo/
+    "9階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_93802893/bukkengaiyo/
+    "6階地下1階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94747387/bukkengaiyo/
+    "8階建" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94400236/bukkengaiyo/
+    "14階建一部RC" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94568368/bukkengaiyo/
+}
+一戸建て構造・工法 : {
+    "木造2階建（軸組工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94895588/bukkengaiyo/
+    "軽量鉄骨2階建（軸組工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94272511/bukkengaiyo/
+    "軽量鉄骨2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_93953053/bukkengaiyo/
+    "RC2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_95072808/bukkengaiyo/
+    "木造2階地下1階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94792665/bukkengaiyo/
+    "木造2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94896617/bukkengaiyo/
+    "木造1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_95063073/bukkengaiyo/
+    "RC3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_92444457/bukkengaiyo/
+    "木造3階地下1階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94130773/bukkengaiyo/
+    "鉄骨3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94746539/bukkengaiyo/
+    "鉄筋コンクリート造2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94316717/bukkengaiyo/
+}
+修繕積立基金 : {
+    "-" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94710497/bukkengaiyo/
+}

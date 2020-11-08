@@ -72,22 +72,22 @@ public class EnumerateOtherMatters {
         url += todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
 
         Document doc = Jsoup.connect(url).get();
-        Elements thtdElements = doc.select("table[summary=表]").first().select("tr > *");
+        Elements thtdElements = doc.select("table[summary=表]").eq(0).select("tr > *");
+
         String curItem = "";
-        String propertyForMap = "[\"" + propertyKind + "\", \"" + todofuken + "\", \"" + ucCode + "\"]";
         for (Element thtd : thtdElements) {
             if (thtd.is("th")) {
                 curItem = thtd.children().first().text();
             } else if (thtd.is("td")) {
                 switch (curItem) {
                 case "その他制限事項" :
-                    add2Map(Limits, limits(thtd.text()), propertyForMap);
+                    add2Map(Limits, limits(thtd.text()), url);
                     break;
                 case "その他概要・特記事項" :
-                    add2Map(Notices, sortNotices(thtd.text()), propertyForMap);
+                    add2Map(Notices, sortNotices(thtd.text()), url);
                     String[][] notices = notices(thtd.text());
-                    add2Map(Facility, notices[0], propertyForMap);
-                    add2Map(Parking, notices[1], propertyForMap);
+                    add2Map(Facility, notices[0], url);
+                    add2Map(Parking, notices[1], url);
                     break;
                 }
             }

@@ -3,20 +3,20 @@ package com.ssadamune.crawler;
 import java.util.HashSet;
 
 public class Property {
-    private int id;
-    private int areaCode;
-    private int todofukenCode;
-    private int shikugunCode;
-    private int price10K;
-    private String madori;
-    private float totalArea;
+    protected int id;
+    protected int areaCode;
+    protected int todofukenCode;
+    protected int shikugunCode;
+    protected int price10K;
+    protected String madori;
+    protected float totalArea;
     //完成時期(築年月) e.g. 197610
-    private String completeDate;
+    protected String completeDate;
     //入居時期(年月) 即入居可は 000000
-    private String moveInDate;
-    private byte direction;
+    protected String moveInDate;
+    protected byte direction;
 
-    private HashSet<String> features = new HashSet<>();
+    protected HashSet<String> features = new HashSet<>();
 
     public int getId() {
         return id;

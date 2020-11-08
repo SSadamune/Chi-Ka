@@ -12,14 +12,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
-public class PropertyDeserializer implements JsonDeserializer<Property> {
+public class PropertyDeserializer implements JsonDeserializer<Mansion> {
 
     @SuppressWarnings("exports")
     @Override
-    public Property deserialize(JsonElement json, Type tyepOfT, JsonDeserializationContext context)
+    public Mansion deserialize(JsonElement json, Type tyepOfT, JsonDeserializationContext context)
             throws JsonParseException{
         JsonObject jsonObject = json.getAsJsonObject();
-        Property curProperty = new Property();
+        Mansion curProperty = new Mansion();
 
         int areaCode = jsonObject.get("areaCd").getAsInt();
         curProperty.setAreaCode(areaCode);

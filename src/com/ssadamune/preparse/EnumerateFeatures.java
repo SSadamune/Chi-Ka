@@ -23,7 +23,7 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.ssadamune.crawler.Property;
+import com.ssadamune.crawler.Mansion;
 import com.ssadamune.crawler.SuumoParser;
 import com.ssadamune.crawler.UnexpectedFeatureException;
 
@@ -50,15 +50,14 @@ public class EnumerateFeatures {
 
         // parse the json-data
         Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Property.class, new PropertyDeserializer())
+                .registerTypeAdapter(Mansion.class, new PropertyDeserializer())
                 .create();
 
         // if there is an unexpected feature, add it into Map
-        String propertyForMap = "[\"" + propertyKind + "\", \"" + todofuken + "\", \"" + ucCode + "\"]";
         try {
-            gson.fromJson(propertyJson, Property.class);
+            gson.fromJson(propertyJson, Mansion.class);
         } catch (UnexpectedFeatureException ufe) {
-            add2Map(UnexpectedFeatures, ufe.features(), propertyForMap);
+            add2Map(UnexpectedFeatures, ufe.features(), url);
         }
 
     }
@@ -127,13 +126,13 @@ public class EnumerateFeatures {
 
 }
 
-class PropertyDeserializer implements JsonDeserializer<Property> {
+class PropertyDeserializer implements JsonDeserializer<Mansion> {
 
     @Override
-    public Property deserialize(JsonElement json, Type tyepOfT, JsonDeserializationContext context)
+    public Mansion deserialize(JsonElement json, Type tyepOfT, JsonDeserializationContext context)
             throws JsonParseException{
         JsonObject jsonObject = json.getAsJsonObject();
-        Property curProperty = new Property();
+        Mansion curProperty = new Mansion();
 
         JsonArray features = jsonObject.get("tokuchoPickupList").getAsJsonArray();
         for (int i = 0; i < features.size(); i++) {
