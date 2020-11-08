@@ -52,14 +52,14 @@ public class FeaturesCollector implements ICollector{
 
     public void output() throws IOException{
         Date dNow = new Date( );
-        SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_hhmmss");
+        SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_HHmmss");
         File logFile = new File("log\\Enumerate\\"
-                + "Features_" + ft.format(dNow) + ".txt");
+                + ft.format(dNow) + "_Features" + ".txt");
         logFile.createNewFile();
         BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
         bw.write("UnexpectedFeatures : " + printMap(UnexpectedFeatures));
         bw.close();
-        System.out.println("文件创建成功！");
+        System.out.println("Features.log created SUCCESSFULLY!");
     }
 
     @Override
@@ -71,7 +71,7 @@ public class FeaturesCollector implements ICollector{
 
         // parse the json-data
         Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Mansion.class, new PropertyDeserializer())
+                .registerTypeAdapter(Mansion.class, new FeatureDeserializer())
                 .create();
 
         // if there is an unexpected feature, add it into Map
@@ -85,7 +85,7 @@ public class FeaturesCollector implements ICollector{
 
 }
 
-class PropertyDeserializer implements JsonDeserializer<Mansion> {
+class FeatureDeserializer implements JsonDeserializer<Mansion> {
 
     @Override
     public Mansion deserialize(JsonElement json, Type tyepOfT, JsonDeserializationContext context)

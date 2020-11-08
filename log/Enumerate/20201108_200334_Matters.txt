@@ -6,7 +6,6 @@
 駐車場 : {
     "車庫" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94819688/bukkengaiyo/
     "無" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94962145/bukkengaiyo/
-    "地下車庫" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94312148/bukkengaiyo/
     "カースペース" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94943658/bukkengaiyo/
 }
 制限事項 : {
@@ -27,7 +26,6 @@
     "景観計画区域" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94364368/bukkengaiyo/
     "土地区画整理事業を施行すべき区域" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95080250/bukkengaiyo/
     "高さ最高限度有" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_93612442/bukkengaiyo/
-    "第二種高度地区" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94312148/bukkengaiyo/
     "43条第1項但書き許可　平成25年12月24日　第201211240号" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94819688/bukkengaiyo/
     "区画整理事業区域" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_88930872/bukkengaiyo/
     "増築" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95052959/bukkengaiyo/

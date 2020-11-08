@@ -25,10 +25,25 @@ public class SuumoParser {
         return "https://suumo.jp/chukoikkodate/tokyo/sc_" + todofuken + "/pnz1" + page + ".html";
     }
 
+    /*
+     * <ol class="pagination-parts">
+     * <li class=""><a href="/ms/chuko/tokyo/sc_nerima/">1</a></li><li>&nbsp;</li><li>...</li>
+     * <li><a href="/ms/chuko/tokyo/sc_nerima/pnz126.html">26</a></li>
+     * </ol>
+     */
+    private static int maxPage(String url) throws IOException {
+        Document doc = Jsoup.connect(url).get();
+        Elements pages = doc.select("ol[class=pagination-parts]").first().select("li");
+        return Integer.parseInt(pages.last().text());
+    }
+
     // get a list of uc code by the name of todofuken
     public static ArrayList<Integer> getMansionsUcList(String todofuken, int endPage) throws IOException {
         // all the uc-code of this todofuken
         ArrayList<Integer> ucList = new ArrayList<>();
+
+        if (endPage == 0) return ucList;
+        if (endPage > maxPage(mansionIchiranUrl(todofuken, 1))) endPage = maxPage(mansionIchiranUrl(todofuken, 1));
 
         // regex pattern of link, which included the uc-code
         String pattern = "(/ms/chuko/tokyo/sc_" + todofuken + "/nc_)(\\d*)(/)";
@@ -60,6 +75,9 @@ public class SuumoParser {
     public static ArrayList<Integer> getHousesUcList(String todofuken, int endPage) throws IOException {
         // all the uc-code of this todofuken
         ArrayList<Integer> ucList = new ArrayList<>();
+
+        if (endPage == 0) return ucList;
+        if (endPage > maxPage(houseIchiranUrl(todofuken, 1))) endPage = maxPage(houseIchiranUrl(todofuken, 1));
 
         // regex pattern of link, which included the uc-code
         String pattern = "(/chukoikkodate/tokyo/sc_" + todofuken + "/nc_)(\\d*)(/)";
@@ -107,5 +125,9 @@ public class SuumoParser {
 
         curProperty.setId(ucCode);
         return curProperty;
+    }
+
+    public static void main(String[] args) throws IOException {
+        System.out.println(maxPage("https://suumo.jp/ms/chuko/tokyo/sc_nerima/"));
     }
 }

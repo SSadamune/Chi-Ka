@@ -15,10 +15,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-
 /*
  * all files of this package are useless for the Finished project
- * this file was made to enumerate all the 「その他事項」
+ * this file was made to enumerate some table data of properties
  */
 
 class TableDataCollector implements ICollector{
@@ -31,17 +30,13 @@ class TableDataCollector implements ICollector{
     static HashMap<String, String> Madori = new HashMap<String, String>();
     static HashMap<String, String> OtherArea = new HashMap<String, String>();
 
-    // static HashMap<String, String> Notices = new HashMap<String, String>();
+    // static HashMap<String, String> NoticeSorts = new HashMap<String, String>();
     static HashMap<String, String> Limits = new HashMap<String, String>();
     static HashMap<String, String> Facility = new HashMap<String, String>();
     static HashMap<String, String> Parking = new HashMap<String, String>();
 
-    // ================================================================================================
-    // parse houses or mansions
-    
-        
-
-    // ================================================================================================
+    // 「構造・階建て」を解析
+    // "RC55階地下2階建一部鉄骨" => ["RC一部鉄骨", "55階地下2階建"]
     private static String[] structureFloor (String text) {
         String struc = "";
         String floor = "";
@@ -74,6 +69,22 @@ class TableDataCollector implements ICollector{
         return areaArr.toArray(otherAreas);
     }
 
+
+    // 「その他概要・特記事項」を分類
+    // "担当者：XXX、設備：公営水道、本下水、都市ガス、駐車場：車庫"
+    //          => ["担当者", "設備", "駐車場"]
+    /*
+    static String[] sortNotices(String text) {
+        if (text.equals("-")||text.equals("無")) return null;
+        Matcher m = Pattern.compile("(?:^|、)([^、：]*)：").matcher(text);
+        ArrayList<String> noticeArr = new ArrayList<String>();
+        while (m.find()) {
+            noticeArr.add(m.group(1));
+        }
+        String[] notices = new String[noticeArr.size()];
+        return noticeArr.toArray(notices);
+     */
+
     // 「その他概要・特記事項」を解析
     // "担当者：XXX、設備：公営水道、本下水、都市ガス、駐車場：車庫"
     //          => [["公営水道", "本下水", "都市ガス"], ["車庫"]]
@@ -87,6 +98,7 @@ class TableDataCollector implements ICollector{
         return notices;
     }
 
+    // ===================================================================
     private static String printMap (HashMap<String, String> map) {
         StringBuffer str = new StringBuffer("{\n");
         map.forEach((m, p) -> {
@@ -96,7 +108,6 @@ class TableDataCollector implements ICollector{
         return str.toString();
     }
 
-    // ================================================================================================
     // add all the items from String array to HashMap
     private static void add2Map(HashMap<String, String> map, String[] items, String property) {
         if (items == null || items.length == 0) return;
@@ -105,13 +116,11 @@ class TableDataCollector implements ICollector{
         }
     }
 
-    // ================================================================================================
-
     public void output() throws IOException{
         Date dNow = new Date( );
-        SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_hhmmss");
+        SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_HHmmss");
         File logFile = new File("log\\Enumerate\\"
-                + "Structure_" + ft.format(dNow) + ".txt");
+                + ft.format(dNow) + "_Structure" + ".txt");
         logFile.createNewFile();
         BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
         bw.write("マンション　構造 : " + printMap(Structure));
@@ -119,35 +128,31 @@ class TableDataCollector implements ICollector{
         bw.write("一戸建て構造・工法 : " + printMap(ConstMethod));
 
         bw.close();
-        System.out.println("Structure 文件创建成功！");
+        System.out.println("Structure.log created SUCCESSFULLY!");
 
         logFile = new File("log\\Enumerate\\"
-                + "Information_" + ft.format(dNow) + ".txt");
+                + ft.format(dNow) + "_Information" + ".txt");
         logFile.createNewFile();
         bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
         bw.write("修繕積立基金 : " + printMap(RepairFund));
         bw.write("間取り : " + printMap(Madori));
         bw.write("その他面積 : " + printMap(OtherArea));
         bw.close();
-        System.out.println("Information 文件创建成功！");
+        System.out.println("Information.log created SUCCESSFULLY!");
 
         logFile = new File("log\\Enumerate\\"
-                + "Matters_" + ft.format(dNow) + ".txt");
+                + ft.format(dNow) + "_Matters" + ".txt");
         logFile.createNewFile();
         bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
         bw.write("設備 : " + printMap(Facility));
         bw.write("駐車場 : " + printMap(Parking));
         bw.write("制限事項 : " + printMap(Limits));
         bw.close();
-        System.out.println("Matters 文件创建成功！");
+        System.out.println("Matters.log created SUCCESSFULLY!");
 
     }
 
-    // parse the todofuken ichiran page, save the properties into maps
-    
-
-    
-
+    // ===================================================================
     @Override
     public void collect(Document doc, String url, String propertyKind) {
         // TODO Auto-generated method stub
@@ -180,7 +185,7 @@ class TableDataCollector implements ICollector{
                     add2Map(Limits, limits(thtd.text()), url);
                     break;
                 case "その他概要・特記事項" :
-                    // add2Map(Notices, sortNotices(thtd.text()), url);
+                    // add2Map(NoticeSorts, sortNotices(thtd.text()), url);
                     String[][] notices = notices(thtd.text());
                     add2Map(Facility, notices[0], url);
                     add2Map(Parking, notices[1], url);
@@ -189,6 +194,4 @@ class TableDataCollector implements ICollector{
             }
         }
     }
-    
-
 }

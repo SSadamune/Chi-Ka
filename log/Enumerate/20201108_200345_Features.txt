@@ -1,0 +1,4 @@
+UnexpectedFeatures : {
+    "ビルトインガレージ" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94990570/bukkengaiyo/
+    "隣家との間隔が大きい" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_92890059/bukkengaiyo/
+}

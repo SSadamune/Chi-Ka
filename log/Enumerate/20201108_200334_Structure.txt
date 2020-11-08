@@ -3,14 +3,13 @@
     "SRC" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94116319/bukkengaiyo/
 }
 マンション　階建て : {
-    "10階建" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94727490/bukkengaiyo/
+    "10階建" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_95083019/bukkengaiyo/
     "7階建一部SRC" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94926400/bukkengaiyo/
     "14階建" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_95075981/bukkengaiyo/
     "7階地下1階建" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94812906/bukkengaiyo/
     "12階地下1階建" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94743031/bukkengaiyo/
     "3階建" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94367489/bukkengaiyo/
     "8階建一部RC" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94729854/bukkengaiyo/
-    "7階建" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_95067857/bukkengaiyo/
     "6階建" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_95038317/bukkengaiyo/
     "5階建" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94863526/bukkengaiyo/
     "4階建" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94695978/bukkengaiyo/

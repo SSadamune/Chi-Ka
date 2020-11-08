@@ -4,7 +4,7 @@
 間取り : {
     "6LDK" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_93675826/bukkengaiyo/
     "3LDK+S（納戸）" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94851109/bukkengaiyo/
-    "4LDK" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94364368/bukkengaiyo/
+    "4LDK" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_92890059/bukkengaiyo/
     "5LDK" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95096247/bukkengaiyo/
     "2LDK+S（納戸）" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_93612442/bukkengaiyo/
     "1LDK" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94863526/bukkengaiyo/
@@ -12,7 +12,6 @@
     "5LDK+S（納戸）" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_93789396/bukkengaiyo/
     "3LDK" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94943658/bukkengaiyo/
     "1DK" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94704529/bukkengaiyo/
-    "2K" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_95067857/bukkengaiyo/
     "3DK" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94742874/bukkengaiyo/
     "4DK" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94990570/bukkengaiyo/
     "4LDK+S（納戸）" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_93991784/bukkengaiyo/

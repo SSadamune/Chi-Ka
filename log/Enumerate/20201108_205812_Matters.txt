@@ -1,0 +1,66 @@
+設備 : {
+    "個別LPG" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93940248/bukkengaiyo/
+    "オール電化" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_92897675/bukkengaiyo/
+    "本下水" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94414433/bukkengaiyo/
+    "公営水道" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93940248/bukkengaiyo/
+    "都市ガス" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94884278/bukkengaiyo/
+    "個別浄化槽" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93439115/bukkengaiyo/
+}
+駐車場 : {
+    "車庫" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93940100/bukkengaiyo/
+    "カースペース" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94414433/bukkengaiyo/
+    "カーポート" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94832192/bukkengaiyo/
+}
+制限事項 : {
+    "敷地面積の下限：120平方メートル　土砂災害警戒区域" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93987161/bukkengaiyo/
+    "売主の契約不適合責任は免責とします。" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_95116296/bukkengaiyo/
+    "文化財保護法による規制有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93485011/bukkengaiyo/
+    "平成28年6月" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_93943562/bukkengaiyo/
+    "月" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_91175609/bukkengaiyo/
+    "高度地区" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94884278/bukkengaiyo/
+    "本物件のガス管は隣地を経由して接続されています。" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94884278/bukkengaiyo/
+    "地役権16.57m2" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93487147/bukkengaiyo/
+    "第2種特別工業地区" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93439115/bukkengaiyo/
+    "敷地内段差有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_89034675/bukkengaiyo/
+    "高さ最高限度有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_92897675/bukkengaiyo/
+    "急傾斜地崩壊危険区域" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93651589/bukkengaiyo/
+    "バイク置場：月額500円" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_94994285/bukkengaiyo/
+    "駐車場有り" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93627742/bukkengaiyo/
+    "新町地区地区計画　" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94369068/bukkengaiyo/
+    "第2種高度地区" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93651589/bukkengaiyo/
+    "第一種高度地区" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94984448/bukkengaiyo/
+    "準防火地域" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93651589/bukkengaiyo/
+    "抵当権の抹消同意が必要" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94819636/bukkengaiyo/
+    "告知事項あり　（２０１３年頃）　" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_94714963/bukkengaiyo/
+    "11月のリフォーム内容は売主からのヒアリングに基づいています。" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_93943562/bukkengaiyo/
+    "ポーチ面積：3.39平米(約1.02坪" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_93943562/bukkengaiyo/
+    "敷地面積の下限：120平方メートル" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94984448/bukkengaiyo/
+    "地役権135m2" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_95117142/bukkengaiyo/
+    "ペット可能（管理規約制限有）　インターネット利用料" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_91175609/bukkengaiyo/
+    "景観法による規制有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93940248/bukkengaiyo/
+    "日影制限有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94414433/bukkengaiyo/
+    "セットバック：済" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93774464/bukkengaiyo/
+    "土砂災害警戒区域内" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93774464/bukkengaiyo/
+    "建物状況調査　売主側の実施無し" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94819636/bukkengaiyo/
+    "私道持分３筆有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94786494/bukkengaiyo/
+    "敷地の一部が市街化調整区域" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93651589/bukkengaiyo/
+    "22条区域　絶対高さ10ｍ　" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93485011/bukkengaiyo/
+    "第二種高度地区" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_94968383/bukkengaiyo/
+    "高さ最低限度有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93940100/bukkengaiyo/
+    "宅地造成工事規制区域" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93651589/bukkengaiyo/
+    "駐車場：敷金3ヶ月分" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_94994285/bukkengaiyo/
+    "1780円" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_91175609/bukkengaiyo/
+    "西側の隣地から上下水道管の引込みあり" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_95028167/bukkengaiyo/
+    "航空法による規制有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93940248/bukkengaiyo/
+    "敷地面積最低限度有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94414433/bukkengaiyo/
+    "地勢：平坦" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93627742/bukkengaiyo/
+    "建物面積最低限度有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94984448/bukkengaiyo/
+    "安全条例による規制有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94789195/bukkengaiyo/
+    "高さの限度：10メートル" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94984448/bukkengaiyo/
+    "土砂災害警戒区域（土石流）" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_91085652/bukkengaiyo/
+    "使用料無償)" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_93943562/bukkengaiyo/
+    "現況有姿売買　契約不適合責任　免責" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_94819636/bukkengaiyo/
+    "建物面積最高限度有" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93940100/bukkengaiyo/
+    "第一種特別工業地区" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_94826068/bukkengaiyo/
+    "駐輪場：年額2400円" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_94994285/bukkengaiyo/
+}
