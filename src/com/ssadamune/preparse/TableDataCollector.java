@@ -11,19 +11,17 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.ssadamune.crawler.SuumoParser;
 
 /*
  * all files of this package are useless for the Finished project
  * this file was made to enumerate all the 「その他事項」
  */
 
-public class EnumerateTableData {
+class TableDataCollector implements ICollector{
 
     static HashMap<String, String> Structure = new HashMap<String, String>();
     static HashMap<String, String> Floor = new HashMap<String, String>();
@@ -40,52 +38,8 @@ public class EnumerateTableData {
 
     // ================================================================================================
     // parse houses or mansions
-    static void parseProperty(String todofuken, int ucCode, String propertyKind) throws IOException {
-        String url = propertyKind.equals("house")
-                ? "https://suumo.jp/chukoikkodate/tokyo/sc_"
-                : "https://suumo.jp/ms/chuko/tokyo/sc_";
-        url += todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
-
-        Document doc = Jsoup.connect(url).get();
-        Elements thtdElements = doc.select("table[summary=表]").eq(0).select("tr > *");
-        if (propertyKind.equals("mansion")) thtdElements.addAll(doc.select("table[summary=表]").eq(1).select("tr > *"));
-
-        String curItem = "";
-        for (Element thtd : thtdElements) {
-            if (thtd.is("th")) {
-                curItem = thtd.children().first().text();
-            } else if (thtd.is("td")) {
-                switch (curItem) {
-                case "構造・階建て" :
-                    String[] sf = structureFloor(thtd.text());
-                    Structure.putIfAbsent(sf[0], url);
-                    Floor.putIfAbsent(sf[1], url);
-                    break;
-                case "構造・工法" :
-                    ConstMethod.putIfAbsent(thtd.text(), url);
-                    break;
-                case "修繕積立基金" :
-                    RepairFund.putIfAbsent(thtd.text(), url);
-                    break;
-                case "間取り" :
-                    Madori.putIfAbsent(thtd.text(), url);
-                    break;
-                case "その他面積" :
-                    add2Map(OtherArea, sortOtherArea(thtd.text()), url);
-                    break;
-                case "その他制限事項" :
-                    add2Map(Limits, limits(thtd.text()), url);
-                    break;
-                case "その他概要・特記事項" :
-                    // add2Map(Notices, sortNotices(thtd.text()), url);
-                    String[][] notices = notices(thtd.text());
-                    add2Map(Facility, notices[0], url);
-                    add2Map(Parking, notices[1], url);
-                    break;
-                }
-            }
-        }
-    }
+    
+        
 
     // ================================================================================================
     private static String[] structureFloor (String text) {
@@ -153,10 +107,10 @@ public class EnumerateTableData {
 
     // ================================================================================================
 
-    private static void writeLog() throws IOException{
+    public void output() throws IOException{
         Date dNow = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_hhmmss");
-        File logFile = new File("C:\\Users\\zwieb\\Documents\\MDproject\\MDproject\\log\\Enumerate\\"
+        File logFile = new File("log\\Enumerate\\"
                 + "Structure_" + ft.format(dNow) + ".txt");
         logFile.createNewFile();
         BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
@@ -167,7 +121,7 @@ public class EnumerateTableData {
         bw.close();
         System.out.println("Structure 文件创建成功！");
 
-        logFile = new File("C:\\Users\\zwieb\\Documents\\MDproject\\MDproject\\log\\Enumerate\\"
+        logFile = new File("log\\Enumerate\\"
                 + "Information_" + ft.format(dNow) + ".txt");
         logFile.createNewFile();
         bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
@@ -177,7 +131,7 @@ public class EnumerateTableData {
         bw.close();
         System.out.println("Information 文件创建成功！");
 
-        logFile = new File("C:\\Users\\zwieb\\Documents\\MDproject\\MDproject\\log\\Enumerate\\"
+        logFile = new File("log\\Enumerate\\"
                 + "Matters_" + ft.format(dNow) + ".txt");
         logFile.createNewFile();
         bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
@@ -190,39 +144,51 @@ public class EnumerateTableData {
     }
 
     // parse the todofuken ichiran page, save the properties into maps
-    static void parseTodofuken (String tdfk, int maxHousePages, int maxMansionPages) throws IOException {
-        var houseCodes = SuumoParser.getHousesUcList(tdfk, maxHousePages); //20
-        var mansionCodes = SuumoParser.getMansionsUcList(tdfk, maxMansionPages); //50
-        int houseNum = houseCodes.size();
-        int mansionNum = mansionCodes.size();
-        System.out.println(houseNum + " houses and " + mansionNum + " mansions found in " + tdfk);
+    
 
-        int properties = 0;
-        for (int nc : houseCodes) {
-            parseProperty(tdfk, nc, "house");
-            properties += 1;
-            if (properties % 100 == 0) System.out.println(properties +"/"+ houseNum + " houses parsed");
+    
+
+    @Override
+    public void collect(Document doc, String url, String propertyKind) {
+        // TODO Auto-generated method stub
+        Elements thtdElements = doc.select("table[summary=表]").eq(0).select("tr > *");
+        if (propertyKind.equals("mansion")) thtdElements.addAll(doc.select("table[summary=表]").eq(1).select("tr > *"));
+        String curItem = "";
+        for (Element thtd : thtdElements) {
+            if (thtd.is("th")) {
+                curItem = thtd.children().first().text();
+            } else if (thtd.is("td")) {
+                switch (curItem) {
+                case "構造・階建て" :
+                    String[] sf = structureFloor(thtd.text());
+                    Structure.putIfAbsent(sf[0], url);
+                    Floor.putIfAbsent(sf[1], url);
+                    break;
+                case "構造・工法" :
+                    ConstMethod.putIfAbsent(thtd.text(), url);
+                    break;
+                case "修繕積立基金" :
+                    RepairFund.putIfAbsent(thtd.text(), url);
+                    break;
+                case "間取り" :
+                    Madori.putIfAbsent(thtd.text(), url);
+                    break;
+                case "その他面積" :
+                    add2Map(OtherArea, sortOtherArea(thtd.text()), url);
+                    break;
+                case "その他制限事項" :
+                    add2Map(Limits, limits(thtd.text()), url);
+                    break;
+                case "その他概要・特記事項" :
+                    // add2Map(Notices, sortNotices(thtd.text()), url);
+                    String[][] notices = notices(thtd.text());
+                    add2Map(Facility, notices[0], url);
+                    add2Map(Parking, notices[1], url);
+                    break;
+                }
+            }
         }
-        System.out.println(houseNum + " houses completed in " + tdfk);
-
-        properties = 0;
-        for (int nc : mansionCodes) {
-            parseProperty(tdfk, nc, "mansion");
-            properties += 1;
-            if (properties % 100 == 0) System.out.println(properties +"/"+ mansionNum + " mansions parsed");
-        }
-        System.out.println(mansionNum + " mansions completed in " + tdfk);
-        System.out.println("=====================");
     }
-
-    public static void main(String[] args) throws IOException {
-        parseTodofuken("nerima", 13, 26);
-        parseTodofuken("shinjuku", 6, 46);
-        parseTodofuken("musashino", 3, 7);
-        parseTodofuken("hachioji", 17, 15);
-        parseTodofuken("edogawa", 10, 20);
-        parseTodofuken("setagaya", 20, 50);
-        writeLog();
-    }
+    
 
 }
