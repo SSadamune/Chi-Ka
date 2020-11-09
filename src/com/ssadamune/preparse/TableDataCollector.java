@@ -36,16 +36,28 @@ class TableDataCollector implements ICollector{
     static HashMap<String, String> Parking = new HashMap<String, String>();
 
     // 「構造・階建て」を解析
-    // "RC55階地下2階建一部鉄骨" => ["RC一部鉄骨", "55階地下2階建"]
-    private static String[] structureFloor (String text) {
-        String struc = "";
-        String floor = "";
-        Matcher m = Pattern.compile("(^\\D*)(\\d+.*$)").matcher(text);
-        if (m.find()) {
-            struc = m.group(1);
-            floor = m.group(2);
-        }
-        return new String[] {struc, floor};
+    // "RC55階地下2階建一部鉄骨" => {{"RC", "一部鉄骨"}, {"[55, -2]"}}
+    // "RC造一部鉄骨造・地上5階　地下1階" => {{"RC", "一部鉄骨"}, {"[5, -1]"}}
+    // "ＳＲＣ・ＲＣ・鉄骨12階建" => {{"ＳＲＣ", "ＲＣ", "鉄骨"}, {"[12, 0]"}}
+    private static String[][] structureFloor (String text) {
+        String strucs = "";
+        String floorUp = "";
+        String floorDown = "0";
+
+        Matcher mStruc = Pattern.compile("(^[^\\d地一]*)").matcher(text);
+        if (mStruc.find()) strucs = mStruc.group(1);
+        String[] sturcArr = strucs.replace("造", "").replace("　", "").split("、|・|\\+|＋");
+        Matcher mPart = Pattern.compile(".*(一部[^地]*)").matcher(text);
+        if (mPart.find()) sturcArr = add2Arr(sturcArr, mPart.group(1)
+                .replace("造", "").replace("　", "").replace("・", ""));
+
+        Matcher mUp = Pattern.compile("[^\\d下]*(\\d+)階").matcher(text);
+        Matcher mDown = Pattern.compile("地下(\\d+)階").matcher(text);
+        if (mUp.find()) floorUp = mUp.group(1);
+        if (mDown.find()) floorDown = "-" + mDown.group(1);
+        String[] floorUpDown = {"[" + floorUp + ", " + floorDown + "]"};
+
+        return new String[][] {sturcArr, floorUpDown};
     }
 
     // 「その他制限事項」を解析
@@ -87,7 +99,7 @@ class TableDataCollector implements ICollector{
 
     // 「その他概要・特記事項」を解析
     // "担当者：XXX、設備：公営水道、本下水、都市ガス、駐車場：車庫"
-    //          => [["公営水道", "本下水", "都市ガス"], ["車庫"]]
+    //          => {{"公営水道", "本下水", "都市ガス"}, {"車庫"}}
     static String[][] notices(String text) {
         if (text.equals("-")||text.equals("無")) return new String[][] {{},{}};
         String[][] notices = new String[2][];
@@ -108,11 +120,21 @@ class TableDataCollector implements ICollector{
         return str.toString();
     }
 
+    private static String[] add2Arr(String[] arr, String... strings){
+        String[] tempArr = new String[arr.length + strings.length];
+        System.arraycopy(arr, 0, tempArr, 0, arr.length);
+
+        for(int i=0; i < strings.length; i++)
+            tempArr[arr.length+i] = strings[i];
+        return tempArr;
+
+    }
+
     // add all the items from String array to HashMap
     private static void add2Map(HashMap<String, String> map, String[] items, String property) {
         if (items == null || items.length == 0) return;
         for (String item : items) {
-            if (item.isBlank()==false) map.putIfAbsent(item.trim(), property);
+            if (!item.isBlank()) map.putIfAbsent(item.trim(), property);
         }
     }
 
@@ -165,9 +187,9 @@ class TableDataCollector implements ICollector{
             } else if (thtd.is("td")) {
                 switch (curItem) {
                 case "構造・階建て" :
-                    String[] sf = structureFloor(thtd.text());
-                    Structure.putIfAbsent(sf[0], url);
-                    Floor.putIfAbsent(sf[1], url);
+                    String[][] sf = structureFloor(thtd.text());
+                    add2Map(Structure, sf[0], url);
+                    Floor.putIfAbsent(sf[1][0], url);
                     break;
                 case "構造・工法" :
                     ConstMethod.putIfAbsent(thtd.text(), url);

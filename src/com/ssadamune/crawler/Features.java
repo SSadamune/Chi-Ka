@@ -90,6 +90,8 @@ public class Features {
             Map.entry("カースペース", "318"),
             Map.entry("カーポート", "319"),
             Map.entry("ビルトインガレージ", "320"),
+            Map.entry("駐車２台可", "321"),
+            Map.entry("駐車３台以上可", "322"),
             // 物件・マンション施設
             Map.entry("宅配ボックス", "330"),
             Map.entry("エレベーター", "331"),
@@ -149,12 +151,12 @@ public class Features {
             Map.entry("鉄骨鉄筋コンクリート", "386"),
             Map.entry("SRC", "386"),
             Map.entry("ＳＲＣ", "386"),
-            // 物件・政策
-            Map.entry("ペット相談", "390"),
-            Map.entry("バイク置場", "391"),
-            Map.entry("２４時間ゴミ出し可", "392"),
-            Map.entry("駐車２台可", "393"),
-            Map.entry("駐車３台以上可", "394"),
+            Map.entry("一部木", "390"),
+            Map.entry("一部軽量鉄骨", "391"),
+            Map.entry("一部鉄骨", "393"),
+            Map.entry("一部S", "393"),
+            Map.entry("一部RC", "394"),
+            Map.entry("一部SRC", "396"),
 
             // 部屋・リフォーム
             Map.entry("内装リフォーム", "400"),
@@ -227,7 +229,11 @@ public class Features {
             Map.entry("バルコニー・屋上に水栓あり", "496"),
             Map.entry("家庭菜園", "497"),
             Map.entry("前道６ｍ以上", "498"),
-            // 部屋・間取り？
+
+            // 規約
+            Map.entry("ペット相談", "500"),
+            Map.entry("バイク置場", "501"),
+            Map.entry("２４時間ゴミ出し可", "502"),
 
             // その他
             Map.entry("即入居可", "900"),

@@ -1,0 +1,440 @@
+マンション　構造 : {
+    "一部銅板葺陸屋根アル…" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94489192/bukkengaiyo/
+    "SRC" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95088871/bukkengaiyo/
+    "鉄筋コンクリート陸屋根" : https://suumo.jp/ms/chuko/tokyo/sc_setagaya/nc_92067158/bukkengaiyo/
+    "WRC" : https://suumo.jp/ms/chuko/tokyo/sc_setagaya/nc_94026333/bukkengaiyo/
+    "一部RC" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95088871/bukkengaiyo/
+    "一部軽量鉄骨" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_95080130/bukkengaiyo/
+    "一部PC" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_91905709/bukkengaiyo/
+    "（ＳＲＣ" : https://suumo.jp/ms/chuko/tokyo/sc_bunkyo/nc_94425196/bukkengaiyo/
+    "（SRC" : https://suumo.jp/ms/chuko/tokyo/sc_adachi/nc_94745775/bukkengaiyo/
+    "一部SRC" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95088870/bukkengaiyo/
+    "鉄筋" : https://suumo.jp/ms/chuko/tokyo/sc_toshima/nc_94444413/bukkengaiyo/
+    "一部セメント瓦葺" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_94978224/bukkengaiyo/
+    "ＲＣ銅板葺" : https://suumo.jp/ms/chuko/tokyo/sc_toshima/nc_95082093/bukkengaiyo/
+    "一部ＲＣ12階建" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_94531577/bukkengaiyo/
+    "一部HPC" : https://suumo.jp/ms/chuko/tokyo/sc_setagaya/nc_92549246/bukkengaiyo/
+    "一部アルミニューム板茸" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94734698/bukkengaiyo/
+    "その他構" : https://suumo.jp/ms/chuko/tokyo/sc_sumida/nc_95074742/bukkengaiyo/
+    "備考参照" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_95101695/bukkengaiyo/
+    "軽量鉄骨" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94711938/bukkengaiyo/
+    "ＲＣ）" : https://suumo.jp/ms/chuko/tokyo/sc_bunkyo/nc_94425196/bukkengaiyo/
+    "一部ＲＣ10階" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94369873/bukkengaiyo/
+    "木" : https://suumo.jp/ms/chuko/tokyo/sc_meguro/nc_94860091/bukkengaiyo/
+    "一部鉄骨" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94730557/bukkengaiyo/
+    "ＲＣ" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_95034156/bukkengaiyo/
+    "備考に記載" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_95124527/bukkengaiyo/
+    "RC" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94441315/bukkengaiyo/
+    "鉄骨鉄筋コンクリート" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94935172/bukkengaiyo/
+    "PC" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94718317/bukkengaiyo/
+    "Ｓ" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93927848/bukkengaiyo/
+    "鉄骨" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95088870/bukkengaiyo/
+    "一部木" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95054643/bukkengaiyo/
+    "ALC" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_95106483/bukkengaiyo/
+    "鉄骨鉄筋" : https://suumo.jp/ms/chuko/tokyo/sc_toshima/nc_94444413/bukkengaiyo/
+    "ＳＲＣ" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_95034156/bukkengaiyo/
+    "一部コンクリートブロック" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94714047/bukkengaiyo/
+    "RC）" : https://suumo.jp/ms/chuko/tokyo/sc_adachi/nc_94745775/bukkengaiyo/
+}
+マンション　階建て : {
+    "[5, -5]" : https://suumo.jp/ms/chuko/tokyo/sc_itabashi/nc_94674861/bukkengaiyo/
+    "[7, -6]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94728360/bukkengaiyo/
+    "[28, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_sumida/nc_95074742/bukkengaiyo/
+    "[6, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_93037444/bukkengaiyo/
+    "[31, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_95009932/bukkengaiyo/
+    "[49, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94209014/bukkengaiyo/
+    "[47, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95096760/bukkengaiyo/
+    "[3, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94439943/bukkengaiyo/
+    "[14, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94007630/bukkengaiyo/
+    "[12, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95110110/bukkengaiyo/
+    "[9, -7]" : https://suumo.jp/ms/chuko/tokyo/sc_toshima/nc_95093776/bukkengaiyo/
+    "[20, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94545210/bukkengaiyo/
+    "[16, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_bunkyo/nc_95033898/bukkengaiyo/
+    "[55, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_94838366/bukkengaiyo/
+    "[47, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94813874/bukkengaiyo/
+    "[33, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_93669574/bukkengaiyo/
+    "[18, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_taito/nc_94953914/bukkengaiyo/
+    "[32, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94710096/bukkengaiyo/
+    "[7, -5]" : https://suumo.jp/ms/chuko/tokyo/sc_taito/nc_95099433/bukkengaiyo/
+    "[9, -9]" : https://suumo.jp/ms/chuko/tokyo/sc_taito/nc_94224186/bukkengaiyo/
+    "[31, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_musashino/nc_94867326/bukkengaiyo/
+    "[28, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94560309/bukkengaiyo/
+    "[11, -6]" : https://suumo.jp/ms/chuko/tokyo/sc_adachi/nc_94900209/bukkengaiyo/
+    "[14, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94891044/bukkengaiyo/
+    "[39, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_95107078/bukkengaiyo/
+    "[16, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94840059/bukkengaiyo/
+    "[43, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_95094913/bukkengaiyo/
+    "[33, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93702004/bukkengaiyo/
+    "[26, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94811424/bukkengaiyo/
+    "[2, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_ota/nc_94180822/bukkengaiyo/
+    "[19, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93865409/bukkengaiyo/
+    "[5, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93290380/bukkengaiyo/
+    "[10, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94784787/bukkengaiyo/
+    "[28, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_shinagawa/nc_94928356/bukkengaiyo/
+    "[28, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_94992489/bukkengaiyo/
+    "[35, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94456290/bukkengaiyo/
+    "[3, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95064658/bukkengaiyo/
+    "[11, -9]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94719675/bukkengaiyo/
+    "[45, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95059840/bukkengaiyo/
+    "[9, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94787209/bukkengaiyo/
+    "[54, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94252848/bukkengaiyo/
+    "[26, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93850013/bukkengaiyo/
+    "[10, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94411883/bukkengaiyo/
+    "[, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_shinagawa/nc_94757092/bukkengaiyo/
+    "[5, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_ome/nc_94812912/bukkengaiyo/
+    "[7, -7]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95042074/bukkengaiyo/
+    "[23, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_95085404/bukkengaiyo/
+    "[40, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94982843/bukkengaiyo/
+    "[45, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_sumida/nc_91845281/bukkengaiyo/
+    "[36, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95089309/bukkengaiyo/
+    "[3, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94929759/bukkengaiyo/
+    "[16, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_95133270/bukkengaiyo/
+    "[54, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_95064228/bukkengaiyo/
+    "[5, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95106812/bukkengaiyo/
+    "[39, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_shinagawa/nc_94229314/bukkengaiyo/
+    "[25, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93905974/bukkengaiyo/
+    "[21, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_sumida/nc_94792395/bukkengaiyo/
+    "[23, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93740112/bukkengaiyo/
+    "[52, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_95109309/bukkengaiyo/
+    "[6, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94805038/bukkengaiyo/
+    "[15, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_93906331/bukkengaiyo/
+    "[5, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94714723/bukkengaiyo/
+    "[9, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_taito/nc_94341800/bukkengaiyo/
+    "[42, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93758957/bukkengaiyo/
+    "[53, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_95015398/bukkengaiyo/
+    "[24, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94752662/bukkengaiyo/
+    "[4, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95035044/bukkengaiyo/
+    "[23, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_92397632/bukkengaiyo/
+    "[38, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_92319448/bukkengaiyo/
+    "[25, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94991945/bukkengaiyo/
+    "[5, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94640857/bukkengaiyo/
+    "[49, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94799315/bukkengaiyo/
+    "[39, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94907706/bukkengaiyo/
+    "[58, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94201532/bukkengaiyo/
+    "[52, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_95041167/bukkengaiyo/
+    "[24, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93651315/bukkengaiyo/
+    "[44, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_94924716/bukkengaiyo/
+    "[58, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94732413/bukkengaiyo/
+    "[35, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94236103/bukkengaiyo/
+    "[29, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_92668082/bukkengaiyo/
+    "[60, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_94654201/bukkengaiyo/
+    "[4, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_95084816/bukkengaiyo/
+    "[27, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_shinagawa/nc_93854385/bukkengaiyo/
+    "[34, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95001090/bukkengaiyo/
+    "[25, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94473147/bukkengaiyo/
+    "[49, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_95113770/bukkengaiyo/
+    "[43, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93623589/bukkengaiyo/
+    "[14, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94360033/bukkengaiyo/
+    "[1, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_taito/nc_94339219/bukkengaiyo/
+    "[37, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94834199/bukkengaiyo/
+    "[43, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94793018/bukkengaiyo/
+    "[53, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_95034381/bukkengaiyo/
+    "[33, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_95091108/bukkengaiyo/
+    "[16, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94921972/bukkengaiyo/
+    "[54, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_95133969/bukkengaiyo/
+    "[11, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94743656/bukkengaiyo/
+    "[34, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95095470/bukkengaiyo/
+    "[15, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95066850/bukkengaiyo/
+    "[9, -6]" : https://suumo.jp/ms/chuko/tokyo/sc_sumida/nc_92662680/bukkengaiyo/
+    "[111, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_ota/nc_94682910/bukkengaiyo/
+    "[14, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_hachioji/nc_94983128/bukkengaiyo/
+    "[43, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94568090/bukkengaiyo/
+    "[48, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_95023091/bukkengaiyo/
+    "[53, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94795106/bukkengaiyo/
+    "[29, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94856703/bukkengaiyo/
+    "[30, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94986723/bukkengaiyo/
+    "[22, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94884743/bukkengaiyo/
+    "[8, -7]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_93646070/bukkengaiyo/
+    "[2, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_setagaya/nc_95026390/bukkengaiyo/
+    "[36, -5]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94297950/bukkengaiyo/
+    "[49, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94762413/bukkengaiyo/
+    "[44, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93549190/bukkengaiyo/
+    "[15, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_92877367/bukkengaiyo/
+    "[30, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94054430/bukkengaiyo/
+    "[17, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95088870/bukkengaiyo/
+    "[32, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94787569/bukkengaiyo/
+    "[30, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94934984/bukkengaiyo/
+    "[8, -6]" : https://suumo.jp/ms/chuko/tokyo/sc_shinagawa/nc_94375986/bukkengaiyo/
+    "[12, -7]" : https://suumo.jp/ms/chuko/tokyo/sc_adachi/nc_94955694/bukkengaiyo/
+    "[8, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94331023/bukkengaiyo/
+    "[15, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_itabashi/nc_95030404/bukkengaiyo/
+    "[44, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_93082433/bukkengaiyo/
+    "[45, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_95124771/bukkengaiyo/
+    "[17, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95026161/bukkengaiyo/
+    "[13, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94441315/bukkengaiyo/
+    "[26, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95064016/bukkengaiyo/
+    "[14, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95069883/bukkengaiyo/
+    "[32, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_95094923/bukkengaiyo/
+    "[27, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_94793402/bukkengaiyo/
+    "[6, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_setagaya/nc_95106685/bukkengaiyo/
+    "[8, -5]" : https://suumo.jp/ms/chuko/tokyo/sc_shinagawa/nc_94989060/bukkengaiyo/
+    "[39, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95034308/bukkengaiyo/
+    "[20, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_95010237/bukkengaiyo/
+    "[6, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_meguro/nc_92855179/bukkengaiyo/
+    "[42, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_setagaya/nc_95096251/bukkengaiyo/
+    "[9, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95023038/bukkengaiyo/
+    "[42, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94880776/bukkengaiyo/
+    "[34, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94557984/bukkengaiyo/
+    "[17, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94239433/bukkengaiyo/
+    "[25, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_92861725/bukkengaiyo/
+    "[68, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94895052/bukkengaiyo/
+    "[58, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94730557/bukkengaiyo/
+    "[13, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_94217650/bukkengaiyo/
+    "[19, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_kita/nc_95042966/bukkengaiyo/
+    "[32, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_meguro/nc_93950052/bukkengaiyo/
+    "[11, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94890662/bukkengaiyo/
+    "[48, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94453805/bukkengaiyo/
+    "[4, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94073710/bukkengaiyo/
+    "[29, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94932972/bukkengaiyo/
+    "[44, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_94709979/bukkengaiyo/
+    "[1, -7]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_93018825/bukkengaiyo/
+    "[20, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94818988/bukkengaiyo/
+    "[23, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94959348/bukkengaiyo/
+    "[9, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94673846/bukkengaiyo/
+    "[53, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_93797063/bukkengaiyo/
+    "[6, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94898907/bukkengaiyo/
+    "[17, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94467430/bukkengaiyo/
+    "[14, -8]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_94921216/bukkengaiyo/
+    "[10, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94866296/bukkengaiyo/
+    "[42, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94821796/bukkengaiyo/
+    "[13, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_bunkyo/nc_94541583/bukkengaiyo/
+    "[26, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_nakano/nc_94575782/bukkengaiyo/
+    "[7, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94939909/bukkengaiyo/
+    "[1, -6]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94066307/bukkengaiyo/
+    "[13, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94453367/bukkengaiyo/
+    "[10, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_taito/nc_94476572/bukkengaiyo/
+    "[41, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95101537/bukkengaiyo/
+    "[36, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_90743758/bukkengaiyo/
+    "[12, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94986214/bukkengaiyo/
+    "[38, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94704160/bukkengaiyo/
+    "[37, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94795262/bukkengaiyo/
+    "[22, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_93844419/bukkengaiyo/
+    "[11, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94915948/bukkengaiyo/
+    "[40, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94951948/bukkengaiyo/
+    "[7, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_93923231/bukkengaiyo/
+    "[8, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94398928/bukkengaiyo/
+    "[26, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_adachi/nc_95086924/bukkengaiyo/
+    "[55, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94639709/bukkengaiyo/
+    "[41, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95040364/bukkengaiyo/
+    "[36, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93765792/bukkengaiyo/
+    "[21, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94986288/bukkengaiyo/
+    "[38, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_taito/nc_95106796/bukkengaiyo/
+    "[15, -8]" : https://suumo.jp/ms/chuko/tokyo/sc_shinagawa/nc_94870346/bukkengaiyo/
+    "[7, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94948453/bukkengaiyo/
+    "[19, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94878619/bukkengaiyo/
+    "[22, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_94069005/bukkengaiyo/
+    "[6, -8]" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_94740262/bukkengaiyo/
+    "[40, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94391673/bukkengaiyo/
+    "[11, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_95082347/bukkengaiyo/
+    "[31, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_89952841/bukkengaiyo/
+    "[12, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94770839/bukkengaiyo/
+    "[47, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95113738/bukkengaiyo/
+    "[35, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_91260618/bukkengaiyo/
+    "[18, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_93283157/bukkengaiyo/
+    "[52, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_95086369/bukkengaiyo/
+    "[8, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95088871/bukkengaiyo/
+    "[2, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_95087599/bukkengaiyo/
+    "[41, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_94462771/bukkengaiyo/
+    "[60, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_95040804/bukkengaiyo/
+    "[27, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94957715/bukkengaiyo/
+    "[12, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_94851881/bukkengaiyo/
+    "[29, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95094931/bukkengaiyo/
+    "[1, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_suginami/nc_93899899/bukkengaiyo/
+    "[41, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_shinagawa/nc_93069956/bukkengaiyo/
+    "[24, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_shinjuku/nc_93246817/bukkengaiyo/
+    "[18, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_93763931/bukkengaiyo/
+    "[10, -6]" : https://suumo.jp/ms/chuko/tokyo/sc_sumida/nc_95073498/bukkengaiyo/
+    "[7, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_chiyoda/nc_95055566/bukkengaiyo/
+    "[36, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_shibuya/nc_95023232/bukkengaiyo/
+    "[31, -1]" : https://suumo.jp/ms/chuko/tokyo/sc_koto/nc_94425332/bukkengaiyo/
+    "[11, -4]" : https://suumo.jp/ms/chuko/tokyo/sc_setagaya/nc_94878213/bukkengaiyo/
+    "[3, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_95008866/bukkengaiyo/
+    "[50, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94836441/bukkengaiyo/
+    "[37, -2]" : https://suumo.jp/ms/chuko/tokyo/sc_taito/nc_94625532/bukkengaiyo/
+    "[27, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_nerima/nc_94507881/bukkengaiyo/
+    "[18, 0]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94914648/bukkengaiyo/
+    "[6, -6]" : https://suumo.jp/ms/chuko/tokyo/sc_minato/nc_94611009/bukkengaiyo/
+    "[40, -3]" : https://suumo.jp/ms/chuko/tokyo/sc_chuo/nc_94091999/bukkengaiyo/
+}
+一戸建て構造・工法 : {
+    "木・鉄筋コンクリート2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_92291974/bukkengaiyo/
+    "木造一部RC造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_toshima/nc_95013699/bukkengaiyo/
+    "木造3階建（在来木造）" : https://suumo.jp/chukoikkodate/tokyo/sc_arakawa/nc_94401970/bukkengaiyo/
+    "木・鉄筋コンクリート3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_94267796/bukkengaiyo/
+    "鉄骨3階地下1階建一部鉄骨" : https://suumo.jp/chukoikkodate/tokyo/sc_bunkyo/nc_94216070/bukkengaiyo/
+    "SRC7階建" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_94855214/bukkengaiyo/
+    "RC3階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_shinagawa/nc_94121983/bukkengaiyo/
+    "木造3階建（在来）" : https://suumo.jp/chukoikkodate/tokyo/sc_sumida/nc_94772264/bukkengaiyo/
+    "軽量鉄骨2階地下1階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_94570328/bukkengaiyo/
+    "SRC3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_adachi/nc_94855939/bukkengaiyo/
+    "木造2階建（ビッグフレーム工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94871236/bukkengaiyo/
+    "SRC2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_94552605/bukkengaiyo/
+    "鉄筋コンクリート造2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94316717/bukkengaiyo/
+    "軽量鉄骨2階建（ユニット工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_95002374/bukkengaiyo/
+    "木造2階建（軸組工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_bunkyo/nc_94232345/bukkengaiyo/
+    "軽量鉄骨2階建（在来）" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_94758611/bukkengaiyo/
+    "軽量鉄骨2階建（軸組工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94272511/bukkengaiyo/
+    "木造2階地下1階建一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_shinagawa/nc_94445405/bukkengaiyo/
+    "木造2階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_94962802/bukkengaiyo/
+    "地下RC造木造3階建3階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94959381/bukkengaiyo/
+    "RC3階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_92091728/bukkengaiyo/
+    "木造3階建一部鉄骨" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94033566/bukkengaiyo/
+    "木造2階建（ＳＷ工法）一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_katsushika/nc_94949694/bukkengaiyo/
+    "木造1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_adachi/nc_94763763/bukkengaiyo/
+    "鉄骨3階建（在来）" : https://suumo.jp/chukoikkodate/tokyo/sc_arakawa/nc_95129992/bukkengaiyo/
+    "鉄骨造　地上3階" : https://suumo.jp/chukoikkodate/tokyo/sc_sumida/nc_94705573/bukkengaiyo/
+    "木造3階地下1階建（２×４工法）一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_93671216/bukkengaiyo/
+    "軽量鉄骨2階建（軸組工法）一部軽量鉄骨" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_93720984/bukkengaiyo/
+    "鉄骨2階建一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_92621102/bukkengaiyo/
+    "鉄骨・木造3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_koto/nc_94930588/bukkengaiyo/
+    "木造3階建て" : https://suumo.jp/chukoikkodate/tokyo/sc_adachi/nc_94616799/bukkengaiyo/
+    "RC1階地下2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_95127715/bukkengaiyo/
+    "木造・鉄筋コンクリー2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_94866973/bukkengaiyo/
+    "その他構造3階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_93627720/bukkengaiyo/
+    "木造2階地下1階建（在来）一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_mitaka/nc_93777720/bukkengaiyo/
+    "木造一部RC造　地上3階" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_94732738/bukkengaiyo/
+    "木造３階建て" : https://suumo.jp/chukoikkodate/tokyo/sc_nakano/nc_94949988/bukkengaiyo/
+    "木・RCスレート造3階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_94112148/bukkengaiyo/
+    "RC3階建一部SRC" : https://suumo.jp/chukoikkodate/tokyo/sc_itabashi/nc_93361002/bukkengaiyo/
+    "木・RC造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_93918551/bukkengaiyo/
+    "-" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94502632/bukkengaiyo/
+    "木造2階地下2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_95108956/bukkengaiyo/
+    "木造合金メッキ銅板葺2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_adachi/nc_91796642/bukkengaiyo/
+    "その他構造2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_94687382/bukkengaiyo/
+    "木造3階建（軸組工法）一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_toshima/nc_95116106/bukkengaiyo/
+    "木造2階建（木造在来工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_tachikawa/nc_94851919/bukkengaiyo/
+    "RC2階地下1階建一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_94308229/bukkengaiyo/
+    "木造サイディング造スレート葺2階建て" : https://suumo.jp/chukoikkodate/tokyo/sc_adachi/nc_94786192/bukkengaiyo/
+    "RC4階建" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_92913066/bukkengaiyo/
+    "木造２階建" : https://suumo.jp/chukoikkodate/tokyo/sc_tachikawa/nc_94786064/bukkengaiyo/
+    "鉄骨5階建" : https://suumo.jp/chukoikkodate/tokyo/sc_chiyoda/nc_94351649/bukkengaiyo/
+    "木造3階地下1階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94965586/bukkengaiyo/
+    "木造2階建一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_95076824/bukkengaiyo/
+    "軽量鉄骨2階建（２×４工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_mitaka/nc_93981626/bukkengaiyo/
+    "鉄骨2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_95102581/bukkengaiyo/
+    "RC造　地上2階" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_94149782/bukkengaiyo/
+    "木造一部RC造　地上2階" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_92411060/bukkengaiyo/
+    "木造2階地下1階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94251534/bukkengaiyo/
+    "RC5階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_95121580/bukkengaiyo/
+    "その他構造2階地下1階建（在来）" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_94835291/bukkengaiyo/
+    "木造2階地下1階建（軸組工法）一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_93427003/bukkengaiyo/
+    "SRC4階建" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_90924926/bukkengaiyo/
+    "木・RC造2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94466076/bukkengaiyo/
+    "RC+木造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_93612700/bukkengaiyo/
+    "木造2階建一部鉄骨" : https://suumo.jp/chukoikkodate/tokyo/sc_tachikawa/nc_94408509/bukkengaiyo/
+    "RC・軽量鉄骨2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_94279233/bukkengaiyo/
+    "木造・ＲＣ造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_shibuya/nc_94737175/bukkengaiyo/
+    "RC3階地下1階建一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_92090234/bukkengaiyo/
+    "木造3階建（軸組工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_95102102/bukkengaiyo/
+    "RC3階建一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_shibuya/nc_94824168/bukkengaiyo/
+    "PC3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_94367328/bukkengaiyo/
+    "軽量鉄骨3階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_nakano/nc_93335683/bukkengaiyo/
+    "木造4階建" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_94232367/bukkengaiyo/
+    "木造2階地下1階建一部鉄骨" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94326644/bukkengaiyo/
+    "木造2階地下1階建（２×４工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_92721834/bukkengaiyo/
+    "木造2階建（２×４工法）一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_94942119/bukkengaiyo/
+    "RC造　地上3階" : https://suumo.jp/chukoikkodate/tokyo/sc_taito/nc_94670075/bukkengaiyo/
+    "RC1階地下3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_94651339/bukkengaiyo/
+    "RC3階地下1階建一部SRC" : https://suumo.jp/chukoikkodate/tokyo/sc_nakano/nc_94623900/bukkengaiyo/
+    "木造　地上3階" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_93831724/bukkengaiyo/
+    "木造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94393498/bukkengaiyo/
+    "木造2階地下1階建（在来）" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_92968318/bukkengaiyo/
+    "軽量鉄骨2階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_94719301/bukkengaiyo/
+    "木造・ＲＣ造3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_itabashi/nc_94913977/bukkengaiyo/
+    "その他構造3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_94906852/bukkengaiyo/
+    "RC3階地下1階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_shibuya/nc_94319898/bukkengaiyo/
+    "鉄骨コンクリートブロ5階建" : https://suumo.jp/chukoikkodate/tokyo/sc_chuo/nc_93981940/bukkengaiyo/
+    "木造合金メッキ鋼板葺3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_katsushika/nc_94582248/bukkengaiyo/
+    "鉄骨3階建（軸組工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_shinagawa/nc_94351165/bukkengaiyo/
+    "鉄骨4階建" : https://suumo.jp/chukoikkodate/tokyo/sc_chuo/nc_95092552/bukkengaiyo/
+    "RC3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_95050577/bukkengaiyo/
+    "軽量鉄骨造　地上2階" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_94790619/bukkengaiyo/
+    "RC4階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_taito/nc_95124533/bukkengaiyo/
+    "ＲＣ造+木造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_93538976/bukkengaiyo/
+    "鉄骨2階建（鉄骨造陸屋根）" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_94967409/bukkengaiyo/
+    "鉄骨3階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_95097440/bukkengaiyo/
+    "木造2階地下1階建（軸組工法）一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_shibuya/nc_92449536/bukkengaiyo/
+    "ブロック造3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_taito/nc_94680307/bukkengaiyo/
+    "木造2階地下1階建一部SRC" : https://suumo.jp/chukoikkodate/tokyo/sc_nakano/nc_94406449/bukkengaiyo/
+    "ＲＣ造+木造3階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_94922066/bukkengaiyo/
+    "木造3階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_89977583/bukkengaiyo/
+    "木・RC造3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_92952234/bukkengaiyo/
+    "木造　地上2階" : https://suumo.jp/chukoikkodate/tokyo/sc_koto/nc_94126592/bukkengaiyo/
+    "軽量鉄骨・RC2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_93531912/bukkengaiyo/
+    "RC2階地下2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_94756544/bukkengaiyo/
+    "その他構造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_95124486/bukkengaiyo/
+    "木造2階地下1階建（２×６工法）一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_94986450/bukkengaiyo/
+    "木造2階地下1階建（２×４工法）一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_94859800/bukkengaiyo/
+    "RC2階建（プレキャスト壁式工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_93834701/bukkengaiyo/
+    "木造1階地下2階建一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_94216100/bukkengaiyo/
+    "木造3階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_94653386/bukkengaiyo/
+    "軽量鉄骨2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_91093838/bukkengaiyo/
+    "木・鉄筋コンクリート2階地下1階建（軸組工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94315212/bukkengaiyo/
+    "木造スレート葺３階建" : https://suumo.jp/chukoikkodate/tokyo/sc_musashino/nc_94866317/bukkengaiyo/
+    "木造1階建一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_toshima/nc_95086415/bukkengaiyo/
+    "木造3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_chiyoda/nc_94079468/bukkengaiyo/
+    "RC3階建一部鉄骨" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_95094780/bukkengaiyo/
+    "RC造・木造3階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_92230863/bukkengaiyo/
+    "備考２参照2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_92596331/bukkengaiyo/
+    "木造2階地下1階建（軸組工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_nakano/nc_94538544/bukkengaiyo/
+    "RC2階建（２×４工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_koto/nc_93166514/bukkengaiyo/
+    "RC6階建" : https://suumo.jp/chukoikkodate/tokyo/sc_taito/nc_94948201/bukkengaiyo/
+    "RC木造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_94240740/bukkengaiyo/
+    "木造スレート葺2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_95102467/bukkengaiyo/
+    "鉄骨3階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_sumida/nc_94905325/bukkengaiyo/
+    "木・ＲＣ造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94111476/bukkengaiyo/
+    "RC3階建（在来）" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_93440804/bukkengaiyo/
+    "RC2階地下1階建一部亜鉛メッキ鋼板葺" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_93554606/bukkengaiyo/
+    "軽量鉄骨・鉄骨造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_95060300/bukkengaiyo/
+    "SRC3階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_92853717/bukkengaiyo/
+    "木造3階地下1階建（在来）" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_89938204/bukkengaiyo/
+    "木造2階建（プレハブ工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95043320/bukkengaiyo/
+    "軽量鉄骨2階建一部軽量鉄骨" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94573121/bukkengaiyo/
+    "木造3階建（２×４工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_93938702/bukkengaiyo/
+    "木造3階建（ＳＥ工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_94721437/bukkengaiyo/
+    "RC2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94976786/bukkengaiyo/
+    "木造2階地下1階建（２×４工法）一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_94720663/bukkengaiyo/
+    "木造1階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93987161/bukkengaiyo/
+    "鉄骨3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_chiyoda/nc_94317512/bukkengaiyo/
+    "木造スレート茸2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_94425241/bukkengaiyo/
+    "RC造　地上2階　地下1階（一部）" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_86543153/bukkengaiyo/
+    "軽量鉄骨2階建（プレハブ工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_adachi/nc_93799321/bukkengaiyo/
+    "鉄骨2階建（在来）" : https://suumo.jp/chukoikkodate/tokyo/sc_katsushika/nc_94835493/bukkengaiyo/
+    "RC2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_92871708/bukkengaiyo/
+    "木造一部RC造　地上2階　地下1階（一部）" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_94364253/bukkengaiyo/
+    "木造2階地下1階建一部ALC" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_94485183/bukkengaiyo/
+    "SRC2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_95056268/bukkengaiyo/
+    "木造3階地下1階建一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_94519180/bukkengaiyo/
+    "木造2階建（パネル工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94501500/bukkengaiyo/
+    "木造2階建（ＳＥ工法）一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_hachioji/nc_95032162/bukkengaiyo/
+    "RC5階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_93530165/bukkengaiyo/
+    "木造2階建（在来）" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94878208/bukkengaiyo/
+    "軽量鉄骨3階建" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_94752703/bukkengaiyo/
+    "木造3階建一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_minato/nc_95080566/bukkengaiyo/
+    "木造2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_chiyoda/nc_94797766/bukkengaiyo/
+    "軽量鉄骨2階地下1階建一部軽量鉄骨" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_91898655/bukkengaiyo/
+    "鉄骨3階建（２×４工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_katsushika/nc_94906889/bukkengaiyo/
+    "RC2階地下1階建一部RC" : https://suumo.jp/chukoikkodate/tokyo/sc_ota/nc_95101827/bukkengaiyo/
+    "木造+RC造3階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_93585973/bukkengaiyo/
+    "木造・RC造2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_95053001/bukkengaiyo/
+    "木造1階建（軸組工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_edogawa/nc_94930195/bukkengaiyo/
+    "木造2階建（２×４工法）" : https://suumo.jp/chukoikkodate/tokyo/sc_adachi/nc_94640877/bukkengaiyo/
+    "鉄骨3階建一部鉄骨" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_93886486/bukkengaiyo/
+    "RC2階地下1階建一部銅板葺" : https://suumo.jp/chukoikkodate/tokyo/sc_shinagawa/nc_92164533/bukkengaiyo/
+    "RC1階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_93792800/bukkengaiyo/
+    "RC5階建" : https://suumo.jp/chukoikkodate/tokyo/sc_bunkyo/nc_92241117/bukkengaiyo/
+    "木・鉄筋コンクリート造スレート葺地下１階付2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_nerima/nc_92828095/bukkengaiyo/
+    "木造2階建（軸組工法）一部PC" : https://suumo.jp/chukoikkodate/tokyo/sc_setagaya/nc_94893017/bukkengaiyo/
+    "備考参照2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_94398321/bukkengaiyo/
+    "木造2階建（軸組工法）一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_shinjuku/nc_93899540/bukkengaiyo/
+    "木造3階建一部亜鉛メッキ鋼板葺" : https://suumo.jp/chukoikkodate/tokyo/sc_shibuya/nc_94464495/bukkengaiyo/
+    "木造3階建（軸組工法）一部木造" : https://suumo.jp/chukoikkodate/tokyo/sc_koto/nc_95032115/bukkengaiyo/
+    "軽量鉄骨2階地下1階建" : https://suumo.jp/chukoikkodate/tokyo/sc_bunkyo/nc_93088143/bukkengaiyo/
+    "木造1階地下2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_95057931/bukkengaiyo/
+    "木造" : https://suumo.jp/chukoikkodate/tokyo/sc_suginami/nc_94627262/bukkengaiyo/
+    "備考参照2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_adachi/nc_95083942/bukkengaiyo/
+    "鉄骨6階建" : https://suumo.jp/chukoikkodate/tokyo/sc_sumida/nc_94490436/bukkengaiyo/
+    "鉄骨2階建" : https://suumo.jp/chukoikkodate/tokyo/sc_chiyoda/nc_93318449/bukkengaiyo/
+    "RC、S、木造、組積造1階建（混構造）" : https://suumo.jp/chukoikkodate/tokyo/sc_meguro/nc_93086850/bukkengaiyo/
+    "軽量鉄骨3階建一部軽量鉄骨" : https://suumo.jp/chukoikkodate/tokyo/sc_adachi/nc_94913909/bukkengaiyo/
+}

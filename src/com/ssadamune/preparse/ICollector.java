@@ -46,10 +46,16 @@ class TodofukenParser{
                 : "https://suumo.jp/ms/chuko/tokyo/sc_";
         url += todofuken + "/nc_" + ucCode + "/bukkengaiyo/";
 
-        Document doc = Jsoup.connect(url).get();
-        for (ICollector c : collectors) {
-            c.collect(doc, url, propertyKind);
+        try {
+            Document doc = Jsoup.connect(url).get();
+            for (ICollector c : collectors) {
+                c.collect(doc, url, propertyKind);
+            }
+        } catch (org.jsoup.HttpStatusException hse) {
+            System.out.println("HttpStatusException : " + hse.getStatusCode());
+            System.out.println("URL : " + hse.getUrl());
         }
+
     }
 
     public static void collectWholeTokyo(ICollector[] collectors) throws IOException {
@@ -74,9 +80,11 @@ class TodofukenParser{
         // parseTodofuken("hachioji", 17, 15, collector);
         // parseTodofuken("edogawa", 10, 20, collector);
         // parseTodofuken("setagaya", 20, 50, collector);
-        parseTodofuken("ome", 99, 99, collector);
+        parseTodofuken("ome", 3, 3, new ICollector[] {collector});
+        parseTodofuken("setagaya", 3, 3, new ICollector[] {collector});
         collector.output();
         */
+
     }
 }
 
