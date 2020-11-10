@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,18 +23,18 @@ import org.jsoup.select.Elements;
 
 class TableDataCollector implements ICollector{
 
-    static HashMap<String, String> Structure = new HashMap<String, String>();
-    static HashMap<String, String> Floor = new HashMap<String, String>();
-    static HashMap<String, String> ConstMethod = new HashMap<String, String>();
+    static HashMap<String, String> structure = new HashMap<>();
+    static HashMap<String, String> floor = new HashMap<>();
+    static HashMap<String, String> constMethod = new HashMap<>();
 
-    static HashMap<String, String> RepairFund = new HashMap<String, String>();
-    static HashMap<String, String> Madori = new HashMap<String, String>();
-    static HashMap<String, String> OtherArea = new HashMap<String, String>();
+    static HashMap<String, String> repairFund = new HashMap<>();
+    static HashMap<String, String> madori = new HashMap<>();
+    static HashMap<String, String> otherArea = new HashMap<>();
 
     // static HashMap<String, String> NoticeSorts = new HashMap<String, String>();
-    static HashMap<String, String> Limits = new HashMap<String, String>();
-    static HashMap<String, String> Facility = new HashMap<String, String>();
-    static HashMap<String, String> Parking = new HashMap<String, String>();
+    static HashMap<String, String> limits = new HashMap<>();
+    static HashMap<String, String> facility = new HashMap<>();
+    static HashMap<String, String> parking = new HashMap<>();
 
     // 「構造・階建て」を解析
     // "RC55階地下2階建一部鉄骨" => {{"RC", "一部鉄骨"}, {"[55, -2]"}}
@@ -62,8 +63,8 @@ class TableDataCollector implements ICollector{
 
     // 「その他制限事項」を解析
     // "高度地区、準防火地域、風致地区、景観地区、日影制限有"
-    static String[] limits(String text) {
-        if (text.equals("-")||text.equals("無")) return null;
+    static String[] limitMatters(String text) {
+        if (text.equals("-")||text.equals("無")) return new String[]{};
         return text.split("、|／|■|●|◆|※|・");
     }
 
@@ -71,9 +72,9 @@ class TableDataCollector implements ICollector{
     // "バルコニー面積：35.15m2、ルーフバルコニー：35.15m2（使用料無）"
     //          => ["バルコニー面積", "ルーフバルコニー"]
     static String[] sortOtherArea(String text) {
-        if (text.equals("-")||text.equals("無")) return null;
+        if (text.equals("-")||text.equals("無")) return new String[]{};
         Matcher m = Pattern.compile("(?:^|、)([^、：]*)：").matcher(text);
-        ArrayList<String> areaArr = new ArrayList<String>();
+        ArrayList<String> areaArr = new ArrayList<>();
         while (m.find()) {
             areaArr.add(m.group(1));
         }
@@ -112,10 +113,8 @@ class TableDataCollector implements ICollector{
 
     // ===================================================================
     private static String printMap (HashMap<String, String> map) {
-        StringBuffer str = new StringBuffer("{\n");
-        map.forEach((m, p) -> {
-            str.append("    \"" + m + "\" : " + p + "\n");
-        });
+        StringBuilder str = new StringBuilder("{\n");
+        map.forEach((m, p) -> str.append("    \"" + m + "\" : " + p + "\n"));
         str.append("}\n");
         return str.toString();
     }
@@ -139,39 +138,43 @@ class TableDataCollector implements ICollector{
     }
 
     public void output() throws IOException{
+        Logger logger = Logger.getLogger("LoggingDemo");
+        String logLocat = "log\\Enumerate\\";
         Date dNow = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_HHmmss");
-        File logFile = new File("log\\Enumerate\\"
-                + ft.format(dNow) + "_Structure" + ".txt");
+        File logFile = new File( logLocat + ft.format(dNow) + "_Structure" + ".txt");
         logFile.createNewFile();
-        BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
-        bw.write("マンション　構造 : " + printMap(Structure));
-        bw.write("マンション　階建て : " + printMap(Floor));
-        bw.write("一戸建て構造・工法 : " + printMap(ConstMethod));
-
-        bw.close();
-        System.out.println("Structure.log created SUCCESSFULLY!");
-
-        logFile = new File("log\\Enumerate\\"
-                + ft.format(dNow) + "_Information" + ".txt");
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
+            bw.write("マンション　構造 : " + printMap(structure));
+            bw.write("マンション　階建て : " + printMap(floor));
+            bw.write("一戸建て構造・工法 : " + printMap(constMethod));
+            logger.info("Structure.log created SUCCESSFULLY!");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        logFile = new File( logLocat + ft.format(dNow) + "_Information" + ".txt");
         logFile.createNewFile();
-        bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
-        bw.write("修繕積立基金 : " + printMap(RepairFund));
-        bw.write("間取り : " + printMap(Madori));
-        bw.write("その他面積 : " + printMap(OtherArea));
-        bw.close();
-        System.out.println("Information.log created SUCCESSFULLY!");
-
-        logFile = new File("log\\Enumerate\\"
-                + ft.format(dNow) + "_Matters" + ".txt");
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
+            bw.write("修繕積立基金 : " + printMap(repairFund));
+            bw.write("間取り : " + printMap(madori));
+            bw.write("その他面積 : " + printMap(otherArea));
+            logger.info("Information.log created SUCCESSFULLY!");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        logFile = new File( logLocat + ft.format(dNow) + "_Matters" + ".txt");
         logFile.createNewFile();
-        bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
-        bw.write("設備 : " + printMap(Facility));
-        bw.write("駐車場 : " + printMap(Parking));
-        bw.write("制限事項 : " + printMap(Limits));
-        bw.close();
-        System.out.println("Matters.log created SUCCESSFULLY!");
-
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
+            bw.write("設備 : " + printMap(facility));
+            bw.write("駐車場 : " + printMap(parking));
+            bw.write("制限事項 : " + printMap(limits));
+            logger.info("Matters.log created SUCCESSFULLY!");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // ===================================================================
@@ -188,29 +191,31 @@ class TableDataCollector implements ICollector{
                 switch (curItem) {
                 case "構造・階建て" :
                     String[][] sf = structureFloor(thtd.text());
-                    add2Map(Structure, sf[0], url);
-                    Floor.putIfAbsent(sf[1][0], url);
+                    add2Map(structure, sf[0], url);
+                    floor.putIfAbsent(sf[1][0], url);
                     break;
                 case "構造・工法" :
-                    ConstMethod.putIfAbsent(thtd.text(), url);
+                    constMethod.putIfAbsent(thtd.text(), url);
                     break;
                 case "修繕積立基金" :
-                    RepairFund.putIfAbsent(thtd.text(), url);
+                    repairFund.putIfAbsent(thtd.text(), url);
                     break;
                 case "間取り" :
-                    Madori.putIfAbsent(thtd.text(), url);
+                    madori.putIfAbsent(thtd.text(), url);
                     break;
                 case "その他面積" :
-                    add2Map(OtherArea, sortOtherArea(thtd.text()), url);
+                    add2Map(otherArea, sortOtherArea(thtd.text()), url);
                     break;
                 case "その他制限事項" :
-                    add2Map(Limits, limits(thtd.text()), url);
+                    add2Map(limits, limitMatters(thtd.text()), url);
                     break;
                 case "その他概要・特記事項" :
                     // add2Map(NoticeSorts, sortNotices(thtd.text()), url);
                     String[][] notices = notices(thtd.text());
-                    add2Map(Facility, notices[0], url);
-                    add2Map(Parking, notices[1], url);
+                    add2Map(facility, notices[0], url);
+                    add2Map(parking, notices[1], url);
+                    break;
+                default:
                     break;
                 }
             }

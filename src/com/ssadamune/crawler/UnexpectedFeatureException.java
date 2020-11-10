@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import com.google.gson.JsonParseException;
 
 public class UnexpectedFeatureException extends JsonParseException {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private ArrayList<String> features;
 
     public UnexpectedFeatureException(ArrayList<String> features) {
