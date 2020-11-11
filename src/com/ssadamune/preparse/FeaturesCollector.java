@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 import org.jsoup.nodes.Document;
 
@@ -32,34 +33,37 @@ import com.ssadamune.crawler.UnexpectedFeatureException;
 
 public class FeaturesCollector implements ICollector{
 
-    static HashMap<String, String> UnexpectedFeatures = new HashMap<String, String>();
+    static HashMap<String, String> unexpectedFeatures = new HashMap<>();
 
     private static void add2Map(HashMap<String, String> map, String[] items, String property) {
         if (items == null || items.length == 0) return;
         for (String item : items) {
-            if (item.isBlank()==false) map.putIfAbsent(item.trim(), property);
+            if (!item.isBlank()) map.putIfAbsent(item.trim(), property);
         }
     }
 
     private static String printMap (HashMap<String, String> map) {
-        StringBuffer str = new StringBuffer("{\n");
-        map.forEach((m, p) -> {
-            str.append("    \"" + m + "\" : " + p + "\n");
-        });
+        StringBuilder str = new StringBuilder("{\n");
+        map.forEach((m, p) -> str.append("    \"" + m + "\" : " + p + "\n"));
         str.append("}\n");
         return str.toString();
     }
 
     public void output() throws IOException{
+        Logger logger = Logger.getLogger("LoggingDemo");
         Date dNow = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_HHmmss");
         File logFile = new File("log\\Enumerate\\"
                 + ft.format(dNow) + "_Features" + ".txt");
-        logFile.createNewFile();
-        BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()));
-        bw.write("UnexpectedFeatures : " + printMap(UnexpectedFeatures));
-        bw.close();
-        System.out.println("Features.log created SUCCESSFULLY!");
+        if(!logFile.createNewFile()) logger.info("create file failed");
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
+            bw.write("UnexpectedFeatures : " + printMap(unexpectedFeatures));
+            logger.info("Features.log created SUCCESSFULLY!");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
     @Override
@@ -78,7 +82,7 @@ public class FeaturesCollector implements ICollector{
         try {
             gson.fromJson(propertyJson, Mansion.class);
         } catch (UnexpectedFeatureException ufe) {
-            add2Map(UnexpectedFeatures, ufe.features(), url);
+            add2Map(unexpectedFeatures, ufe.features(), url);
         }
 
     }
@@ -97,7 +101,7 @@ class FeatureDeserializer implements JsonDeserializer<Mansion> {
         for (int i = 0; i < features.size(); i++) {
             String curFeature = features.get(i).getAsString();
             boolean hasUnexpectedFeature = false;
-            ArrayList<String> unexpectedFeatures = new ArrayList<String>();
+            ArrayList<String> unexpectedFeatures = new ArrayList<>();
             if(FEATURES.containsKey(curFeature)) {
                 curProperty.addFeature(FEATURES.get(curFeature));
             } else {
@@ -106,7 +110,7 @@ class FeatureDeserializer implements JsonDeserializer<Mansion> {
                     unexpectedFeatures.add(curFeature);
                 }
             }
-            if (hasUnexpectedFeature == true) throw new UnexpectedFeatureException(unexpectedFeatures);
+            if (hasUnexpectedFeature) throw new UnexpectedFeatureException(unexpectedFeatures);
         }
 
         return curProperty;

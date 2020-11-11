@@ -140,10 +140,11 @@ class TableDataCollector implements ICollector{
     public void output() throws IOException{
         Logger logger = Logger.getLogger("LoggingDemo");
         String logLocat = "log\\Enumerate\\";
+        String createFailedInfo = "create file failed";
         Date dNow = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_HHmmss");
         File logFile = new File( logLocat + ft.format(dNow) + "_Structure" + ".txt");
-        logFile.createNewFile();
+        if(!logFile.createNewFile()) logger.info(createFailedInfo);
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
             bw.write("マンション　構造 : " + printMap(structure));
             bw.write("マンション　階建て : " + printMap(floor));
@@ -154,7 +155,7 @@ class TableDataCollector implements ICollector{
             e.printStackTrace();
         }
         logFile = new File( logLocat + ft.format(dNow) + "_Information" + ".txt");
-        logFile.createNewFile();
+        if(!logFile.createNewFile()) logger.info(createFailedInfo);
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
             bw.write("修繕積立基金 : " + printMap(repairFund));
             bw.write("間取り : " + printMap(madori));
@@ -165,7 +166,7 @@ class TableDataCollector implements ICollector{
             e.printStackTrace();
         }
         logFile = new File( logLocat + ft.format(dNow) + "_Matters" + ".txt");
-        logFile.createNewFile();
+        if(!logFile.createNewFile()) logger.info(createFailedInfo);
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
             bw.write("設備 : " + printMap(facility));
             bw.write("駐車場 : " + printMap(parking));

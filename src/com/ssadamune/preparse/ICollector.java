@@ -73,7 +73,6 @@ class TodofukenParser{
 
     public static void main(String[] args) throws IOException {
         //collectWholeTokyo(new ICollector[]{new TableDataCollector(), new FeaturesCollector()});
-
         
         ICollector collector = new TableDataCollector();
         // parseTodofuken("nerima", 13, 26, collector);
@@ -83,7 +82,6 @@ class TodofukenParser{
         parseTodofuken("ome", 3, 3, new ICollector[] {collector});
         parseTodofuken("setagaya", 3, 3, new ICollector[] {collector});
         collector.output();
-        
 
     }
 }
