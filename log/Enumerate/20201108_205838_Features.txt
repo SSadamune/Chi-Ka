@@ -1,3 +1,0 @@
-UnexpectedFeatures : {
-    "古民家風" : https://suumo.jp/chukoikkodate/tokyo/sc_ome/nc_93940248/bukkengaiyo/
-}

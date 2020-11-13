@@ -31,7 +31,7 @@ import com.ssadamune.crawler.UnexpectedFeatureException;
  * this file was made to enumerate all the 「特徴PickupList」
  */
 
-public class FeaturesCollector implements ICollector{
+public class FeaturesCollector implements Collector{
 
     static HashMap<String, String> unexpectedFeatures = new HashMap<>();
 
@@ -44,26 +44,9 @@ public class FeaturesCollector implements ICollector{
 
     private static String printMap (HashMap<String, String> map) {
         StringBuilder str = new StringBuilder("{\n");
-        map.forEach((m, p) -> str.append("    \"" + m + "\" : " + p + "\n"));
+        map.forEach((m, p) -> str.append("    \"" + m + "\" : \"" + p + "\",\n"));
         str.append("}\n");
         return str.toString();
-    }
-
-    public void output() throws IOException{
-        Logger logger = Logger.getLogger("LoggingDemo");
-        Date dNow = new Date( );
-        SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_HHmmss");
-        File logFile = new File("log\\Enumerate\\"
-                + ft.format(dNow) + "_Features" + ".txt");
-        if(!logFile.createNewFile()) logger.info("create file failed");
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
-            bw.write("UnexpectedFeatures : " + printMap(unexpectedFeatures));
-            logger.info("Features.log created SUCCESSFULLY!");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        
     }
 
     @Override
@@ -84,7 +67,27 @@ public class FeaturesCollector implements ICollector{
         } catch (UnexpectedFeatureException ufe) {
             add2Map(unexpectedFeatures, ufe.features(), url);
         }
+    }
 
+    public void output(String dirLoc) throws IOException {
+        Logger logger = Logger.getLogger("LoggingDemo");
+        File logFile = new File( dirLoc + "\\Features.json");
+        if(!logFile.createNewFile()) logger.info("create file failed");
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
+            bw.write("{\n\"UnexpectedFeatures\" : " + printMap(unexpectedFeatures) + "\n}");
+            logger.info("Features.log created SUCCESSFULLY!");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public String output() throws IOException {
+        String dirLoc = "log\\Enumerate\\" + new SimpleDateFormat ("yyyyMMdd_HHmmss").format(new Date( ));
+        new File(dirLoc).mkdirs();
+        output(dirLoc);
+        return dirLoc;
     }
 
 }

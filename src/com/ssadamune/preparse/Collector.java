@@ -7,14 +7,16 @@ import org.jsoup.nodes.Document;
 
 import com.ssadamune.crawler.SuumoParser;
 
-public interface ICollector{
+public interface Collector{
     void collect(Document doc, String url, String propertyKind);
-    void output() throws IOException;
+    // return the directionary path
+    String output() throws IOException;
+    void output(String dir) throws IOException;
 }
 
 class TodofukenParser{
     static void parseTodofuken (String tdfk, int maxHousePages, int maxMansionPages
-            , ICollector[] collectors) throws IOException {
+            , Collector[] collectors) throws IOException {
         var houseCodes = SuumoParser.getHousesUcList(tdfk, maxHousePages); //20
         var mansionCodes = SuumoParser.getMansionsUcList(tdfk, maxMansionPages); //50
         int houseNum = houseCodes.size();
@@ -40,7 +42,7 @@ class TodofukenParser{
     }
 
     static void parseProperty(String todofuken, int ucCode, String propertyKind
-            , ICollector[] collectors) throws IOException {
+            , Collector[] collectors) throws IOException {
         String url = propertyKind.equals("house")
                 ? "https://suumo.jp/chukoikkodate/tokyo/sc_"
                 : "https://suumo.jp/ms/chuko/tokyo/sc_";
@@ -48,7 +50,7 @@ class TodofukenParser{
 
         try {
             Document doc = Jsoup.connect(url).get();
-            for (ICollector c : collectors) {
+            for (Collector c : collectors) {
                 c.collect(doc, url, propertyKind);
             }
         } catch (org.jsoup.HttpStatusException hse) {
@@ -58,31 +60,34 @@ class TodofukenParser{
 
     }
 
-    public static void collectWholeTokyo(ICollector[] collectors) throws IOException {
+    public static void collectWholeTokyo(Collector[] collectors) throws IOException {
         final String[] TOKYO_TDFK = {"chiyoda", "chuo", "minato", "shinjuku", "bunkyo", "shibuya"
                 , "taito", "sumida", "koto", "arakawa", "adachi", "katsushika", "edogawa", "shinagawa"
                 , "meguro", "ota", "setagaya", "nakano", "suginami", "nerima", "toshima", "kita"
                 , "itabashi", "hachioji", "tachikawa", "musashino", "mitaka", "ome"};
+        String dir = null;
         for (String tdfk : TOKYO_TDFK) {
             parseTodofuken(tdfk, 99, 99, collectors);
         }
-        for (ICollector c : collectors) {
-            c.output();
+        for (Collector c : collectors) {
+            if (dir == null) {
+                dir = c.output();
+            } else {
+                c.output(dir);
+            }
         }
     }
 
     public static void main(String[] args) throws IOException {
         //collectWholeTokyo(new ICollector[]{new TableDataCollector(), new FeaturesCollector()});
         
-        ICollector collector = new TableDataCollector();
-        // parseTodofuken("nerima", 13, 26, collector);
-        // parseTodofuken("hachioji", 17, 15, collector);
-        // parseTodofuken("edogawa", 10, 20, collector);
-        // parseTodofuken("setagaya", 20, 50, collector);
-        parseTodofuken("ome", 3, 3, new ICollector[] {collector});
-        parseTodofuken("setagaya", 3, 3, new ICollector[] {collector});
-        collector.output();
-
+        String dir;
+        Collector tc = new TableDataCollector();
+        Collector fc = new FeaturesCollector();
+        parseTodofuken("ome", 3, 3, new Collector[] {tc, fc});
+        parseTodofuken("setagaya", 3, 3, new Collector[] {tc, fc});
+        dir = tc.output();
+        fc.output(dir);
     }
 }
 

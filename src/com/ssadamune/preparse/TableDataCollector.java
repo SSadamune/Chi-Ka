@@ -21,7 +21,7 @@ import org.jsoup.select.Elements;
  * this file was made to enumerate some table data of properties
  */
 
-class TableDataCollector implements ICollector{
+class TableDataCollector implements Collector{
 
     static HashMap<String, String> structure = new HashMap<>();
     static HashMap<String, String> floor = new HashMap<>();
@@ -50,7 +50,7 @@ class TableDataCollector implements ICollector{
         String[] sturcArr = strucs.replace("造", "").replace("　", "").split("、|・|\\+|＋");
         Matcher mPart = Pattern.compile(".*(一部[^地]*)").matcher(text);
         if (mPart.find()) sturcArr = add2Arr(sturcArr, mPart.group(1)
-                .replace("造", "").replace("　", "").replace("・", ""));
+                .replace("造", "").replace("　", "").replace("・", "").replace("）", "").replace("（", ""));
 
         Matcher mUp = Pattern.compile("[^\\d下]*(\\d+)階").matcher(text);
         Matcher mDown = Pattern.compile("地下(\\d+)階").matcher(text);
@@ -114,8 +114,8 @@ class TableDataCollector implements ICollector{
     // ===================================================================
     private static String printMap (HashMap<String, String> map) {
         StringBuilder str = new StringBuilder("{\n");
-        map.forEach((m, p) -> str.append("    \"" + m + "\" : " + p + "\n"));
-        str.append("}\n");
+        map.forEach((m, p) -> str.append("    \"" + m + "\" : \"" + p + "\",\n"));
+        str.append("}");
         return str.toString();
     }
 
@@ -137,53 +137,14 @@ class TableDataCollector implements ICollector{
         }
     }
 
-    public void output() throws IOException{
-        Logger logger = Logger.getLogger("LoggingDemo");
-        String logLocat = "log\\Enumerate\\";
-        String createFailedInfo = "create file failed";
-        Date dNow = new Date( );
-        SimpleDateFormat ft = new SimpleDateFormat ("yyyyMMdd_HHmmss");
-        File logFile = new File( logLocat + ft.format(dNow) + "_Structure" + ".txt");
-        if(!logFile.createNewFile()) logger.info(createFailedInfo);
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
-            bw.write("マンション　構造 : " + printMap(structure));
-            bw.write("マンション　階建て : " + printMap(floor));
-            bw.write("一戸建て構造・工法 : " + printMap(constMethod));
-            logger.info("Structure.log created SUCCESSFULLY!");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        logFile = new File( logLocat + ft.format(dNow) + "_Information" + ".txt");
-        if(!logFile.createNewFile()) logger.info(createFailedInfo);
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
-            bw.write("修繕積立基金 : " + printMap(repairFund));
-            bw.write("間取り : " + printMap(madori));
-            bw.write("その他面積 : " + printMap(otherArea));
-            logger.info("Information.log created SUCCESSFULLY!");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        logFile = new File( logLocat + ft.format(dNow) + "_Matters" + ".txt");
-        if(!logFile.createNewFile()) logger.info(createFailedInfo);
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
-            bw.write("設備 : " + printMap(facility));
-            bw.write("駐車場 : " + printMap(parking));
-            bw.write("制限事項 : " + printMap(limits));
-            logger.info("Matters.log created SUCCESSFULLY!");
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     // ===================================================================
     @Override
     public void collect(Document doc, String url, String propertyKind) {
         // TODO Auto-generated method stub
         Elements thtdElements = doc.select("table[summary=表]").eq(0).select("tr > *");
-        if (propertyKind.equals("mansion")) thtdElements.addAll(doc.select("table[summary=表]").eq(1).select("tr > *"));
+        if (propertyKind.equals("mansion")) {
+            thtdElements.addAll(doc.select("table[summary=表]").eq(1).select("tr > *"));
+        }
         String curItem = "";
         for (Element thtd : thtdElements) {
             if (thtd.is("th")) {
@@ -221,5 +182,52 @@ class TableDataCollector implements ICollector{
                 }
             }
         }
+    }
+
+    public void output(String dirLoc) throws IOException{
+        String createFailedInfo = "create file failed";
+        Logger logger = Logger.getLogger("LoggingDemo");
+        File logFile = new File( dirLoc + "\\Structure.json");
+        if(!logFile.createNewFile()) logger.info(createFailedInfo);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
+            bw.write("{\"マンション　構造\" : " + printMap(structure) + ",\n");
+            bw.write("\"マンション　階建て\" : " + printMap(floor) + ",\n");
+            bw.write("\"一戸建て構造・工法\" : " + printMap(constMethod) + "}");
+            logger.info("Structure.log created SUCCESSFULLY!");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        logFile = new File( dirLoc + "\\FundMadoriArea.json");
+        if(!logFile.createNewFile()) logger.info(createFailedInfo);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
+            bw.write("{\"修繕積立基金\" : " + printMap(repairFund) + ",\n");
+            bw.write("\"間取り\" : " + printMap(madori) + ",\n");
+            bw.write("\"その他面積\" : " + printMap(otherArea) + "}");
+            logger.info("Information.log created SUCCESSFULLY!");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        logFile = new File( dirLoc + "\\FacilityParkingLimits.json");
+        if(!logFile.createNewFile()) logger.info(createFailedInfo);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
+            bw.write("{\"設備\" : " + printMap(facility) + ",\n");
+            bw.write("\"駐車場\" : " + printMap(parking) + ",\n");
+            bw.write("\"制限事項\" : " + printMap(limits) + "}");
+            logger.info("Matters.log created SUCCESSFULLY!");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public String output() throws IOException{
+        String now = new SimpleDateFormat ("yyyyMMdd_HHmmss").format(new Date( ));
+        String dirLoc = "log\\Enumerate\\" + now;
+        new File(dirLoc).mkdirs();
+        output(dirLoc);
+        return dirLoc;
     }
 }
