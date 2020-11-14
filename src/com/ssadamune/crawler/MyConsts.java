@@ -2,7 +2,7 @@ package com.ssadamune.crawler;
 
 import java.util.Map;
 
-public class Features {
+public class MyConsts {
     public static final Map<String, String> FEATURES = Map.ofEntries(
             // 住所・交通
             Map.entry("２沿線以上利用可", "100"),
@@ -38,6 +38,7 @@ public class Features {
             Map.entry("角地", "163"),
             Map.entry("土地50坪以上", "164"),
             Map.entry("土地100坪以上", "165"),
+            Map.entry("畑", "170"),
 
             // 方位・採光
             Map.entry("陽当り良好", "200"),
@@ -134,29 +135,6 @@ public class Features {
             Map.entry("個別プロパンガス", "376"),
             Map.entry("集中LPG", "377"),
             Map.entry("集中プロパンガス", "377"),
-            // 構造
-            Map.entry("木", "380"),
-            Map.entry("軽量鉄骨", "381"),
-            Map.entry("軽量気泡コンクリート", "382"),
-            Map.entry("ALC", "382"),
-            Map.entry("鉄骨ALC", "382"),
-            Map.entry("S造(ALC)", "382"),
-            Map.entry("重量鉄骨", "383"),
-            Map.entry("鉄骨", "383"),
-            Map.entry("S", "383"),
-            Map.entry("鉄筋コンクリート", "384"),
-            Map.entry("RC", "384"),
-            Map.entry("ＲＣ", "384"),
-            Map.entry("WRC", "385"),
-            Map.entry("鉄骨鉄筋コンクリート", "386"),
-            Map.entry("SRC", "386"),
-            Map.entry("ＳＲＣ", "386"),
-            Map.entry("一部木", "390"),
-            Map.entry("一部軽量鉄骨", "391"),
-            Map.entry("一部鉄骨", "393"),
-            Map.entry("一部S", "393"),
-            Map.entry("一部RC", "394"),
-            Map.entry("一部SRC", "396"),
 
             // 部屋・リフォーム
             Map.entry("内装リフォーム", "400"),
@@ -173,6 +151,7 @@ public class Features {
             Map.entry("全居室複層ガラスか複層サッシ", "412"),
             Map.entry("全居室フローリング", "413"),
             Map.entry("適合リノベーション", "414"),
+            Map.entry("古民家風", "415"),
             // 部屋・室
             Map.entry("和室", "420"),
             Map.entry("全居室６畳以上", "421"),
@@ -230,10 +209,62 @@ public class Features {
             Map.entry("家庭菜園", "497"),
             Map.entry("前道６ｍ以上", "498"),
 
+            // 構造
+            Map.entry("木", "500"),
+            Map.entry("軽量鉄骨", "501"),
+            Map.entry("軽量気泡コンクリート", "502"),
+            Map.entry("ALC", "502"),
+            Map.entry("鉄骨ALC", "502"),
+            Map.entry("S造(ALC)", "502"),
+            Map.entry("重量鉄骨", "503"),
+            Map.entry("鉄骨", "503"),
+            Map.entry("S", "503"),
+            Map.entry("Ｓ", "503"),
+            Map.entry("鉄筋コンクリート", "504"),
+            Map.entry("RC", "504"),
+            Map.entry("ＲＣ", "504"),
+            Map.entry("WRC", "505"),
+            Map.entry("鉄骨鉄筋コンクリート", "506"),
+            Map.entry("SRC", "506"),
+            Map.entry("ＳＲＣ", "506"),
+            Map.entry("鉄骨プレキャストコンクリート", "507"),
+            Map.entry("HPC", "507"),
+            
+            Map.entry("一部木", "510"),
+            Map.entry("一部軽量鉄骨", "511"),
+            Map.entry("一部ALC", "512"),
+            Map.entry("一部鉄骨", "513"),
+            Map.entry("一部S", "513"),
+            Map.entry("一部RC", "514"),
+            Map.entry("一部WRC", "515"),
+            Map.entry("一部SRC", "516"),
+            Map.entry("一部HPC", "517"),
+            Map.entry("一部コンクリートブロック", "518"),
+
+            // https://style.tokyu-resort.co.jp/roof-kind
+            Map.entry("陸屋根", "520"),
+            Map.entry("瓦葺", "522"),
+            Map.entry("セメント瓦葺", "523"),
+            Map.entry("亜鉛メッキ鋼板葺", "524"),
+            Map.entry("ステンレス鋼板", "524"),
+            Map.entry("ガルバリウム鋼板", "524"),
+            Map.entry("アルミ金属板合金メッキ鋼板茸", "524"),
+            Map.entry("銅板葺", "525"),
+            Map.entry("アルミニューム板茸", "526"),
+            Map.entry("カラー鉄板アルミニューム板茸", "526"),
+            Map.entry("スレート茸", "527"),
+            Map.entry("石綿セメント茸", "528"),
+            Map.entry("石綿セメント板茸", "528"),
+            Map.entry("カラーベスト茸", "529"),
+            Map.entry("コロニアル茸", "529"),
+            
+            Map.entry("ログハウス", "590"),
+
             // 規約
-            Map.entry("ペット相談", "500"),
-            Map.entry("バイク置場", "501"),
-            Map.entry("２４時間ゴミ出し可", "502"),
+            Map.entry("ペット相談", "600"),
+            Map.entry("バイク置場", "601"),
+            Map.entry("２４時間ゴミ出し可", "602"),
+            Map.entry("温泉引き込み可", "603"),
 
             // その他
             Map.entry("即入居可", "900"),
@@ -249,7 +280,10 @@ public class Features {
             Map.entry("建築士等の建物検査報告書", "941"),
             Map.entry("長期優良住宅認定通知書", "943"),
             Map.entry("法適合状況調査報告書", "944"),
-            Map.entry("空き家バンク登録物件", "950"),
+            Map.entry("BELS/省エネ基準適合認定書あり", "950"),
+            Map.entry("低炭素住宅", "951"),
+            Map.entry("エコポイント対象住宅", "952"),
+            Map.entry("空き家バンク登録物件", "960"),
             Map.entry("省エネルギー対策", "999")
             );
 
