@@ -13,6 +13,10 @@ import java.util.regex.Pattern;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
 import com.ssadamune.utils.DirectoryPath;
 
 /*
@@ -22,18 +26,9 @@ import com.ssadamune.utils.DirectoryPath;
 
 class TableDataCollector extends Collector {
 
-    static HashMap<String, String> structure = new HashMap<>();
-    static HashMap<String, String> floor = new HashMap<>();
-    static HashMap<String, String> constMethod = new HashMap<>();
-
-    static HashMap<String, String> repairFund = new HashMap<>();
-    static HashMap<String, String> madori = new HashMap<>();
-    static HashMap<String, String> otherArea = new HashMap<>();
-
-    // static HashMap<String, String> NoticeSorts = new HashMap<String, String>();
-    static HashMap<String, String> limits = new HashMap<>();
-    static HashMap<String, String> facility = new HashMap<>();
-    static HashMap<String, String> parking = new HashMap<>();
+    StructFloorMethod sfm = new StructFloorMethod();
+    FundMadoriArea fma = new FundMadoriArea();
+    LimitFacilityParking lfp = new LimitFacilityParking();
 
     // 「構造・階建て」を解析
     // "RC55階地下2階建一部鉄骨" => {{"RC", "一部鉄骨"}, {"[55, -2]"}}
@@ -86,21 +81,6 @@ class TableDataCollector extends Collector {
         return areaArr.toArray(otherAreas);
     }
 
-    // 「その他概要・特記事項」を分類
-    // "担当者：XXX、設備：公営水道、本下水、都市ガス、駐車場：車庫"
-    // => ["担当者", "設備", "駐車場"]
-    /*
-     * static String[] sortNotices(String text) { if
-     * (text.equals("-")||text.equals("無")) return null; Matcher m =
-     * Pattern.compile("(?:^|、)([^、：]*)：").matcher(text); ArrayList<String>
-     * noticeArr = new ArrayList<String>(); while (m.find()) {
-     * noticeArr.add(m.group(1)); } String[] notices = new String[noticeArr.size()];
-     * return noticeArr.toArray(notices);
-     */
-
-    // 「その他概要・特記事項」を解析
-    // "担当者：XXX、設備：公営水道、本下水、都市ガス、駐車場：車庫"
-    // => {{"公営水道", "本下水", "都市ガス"}, {"車庫"}}
     static String[][] notices(String text) {
         if (text.equals("-") || text.equals("無"))
             return new String[][] { {}, {} };
@@ -129,30 +109,30 @@ class TableDataCollector extends Collector {
             } else if (thtd.is("td")) {
                 switch (curItem) {
                     case "構造・階建て":
-                        String[][] sf = structureFloor(thtd.text());
-                        add2Map(structure, sf[0], url);
-                        floor.putIfAbsent(sf[1][0], url);
+                        String[][] structure = structureFloor(thtd.text());
+                        add2Map(sfm.structure, structure[0], url);
+                        sfm.floor.putIfAbsent(structure[1][0], url);
                         break;
                     case "構造・工法":
-                        constMethod.putIfAbsent(thtd.text(), url);
+                        sfm.constMethod.putIfAbsent(thtd.text(), url);
                         break;
                     case "修繕積立基金":
-                        repairFund.putIfAbsent(thtd.text(), url);
+                        fma.repairFund.putIfAbsent(thtd.text(), url);
                         break;
                     case "間取り":
-                        madori.putIfAbsent(thtd.text(), url);
+                        fma.madori.putIfAbsent(thtd.text(), url);
                         break;
                     case "その他面積":
-                        add2Map(otherArea, sortOtherArea(thtd.text()), url);
+                        add2Map(fma.otherArea, sortOtherArea(thtd.text()), url);
                         break;
                     case "その他制限事項":
-                        add2Map(limits, limitMatters(thtd.text()), url);
+                        add2Map(lfp.limits, limitMatters(thtd.text()), url);
                         break;
                     case "その他概要・特記事項":
                         // add2Map(NoticeSorts, sortNotices(thtd.text()), url);
                         String[][] notices = notices(thtd.text());
-                        add2Map(facility, notices[0], url);
-                        add2Map(parking, notices[1], url);
+                        add2Map(lfp.facility, notices[0], url);
+                        add2Map(lfp.parking, notices[1], url);
                         break;
                     default:
                         break;
@@ -161,42 +141,76 @@ class TableDataCollector extends Collector {
         }
     }
 
+    private void writefile(String path, UnexpectedTableData... tableData) throws IOException {
+
+        Logger log = Logger.getLogger("EnumLog");
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+        File logFile;
+        for (UnexpectedTableData data : tableData) {
+            logFile = new File(path, data.getName() + ".json");
+            if (!logFile.createNewFile())
+                log.info("{data.getName()}.json failed to create");
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
+                bw.write(gson.toJson(data));
+                log.info("{data.getName()}.json created SUCCESSFULLY!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void output() throws IOException {
         DirectoryPath dir = DirectoryPath.getInstance();
-        String createFailedInfo = "create file failed";
-        Logger log = Logger.getLogger("EnumLog");
-        File logFile = new File(dir.path() + "\\Structure.json");
-        if (!logFile.createNewFile())
-            log.info(createFailedInfo);
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
-            bw.write("{\n\"マンション　構造\" : " + printMap(structure) + ",\n");
-            bw.write("\"マンション　階建て\" : " + printMap(floor) + ",\n");
-            bw.write("\"一戸建て構造・工法\" : " + printMap(constMethod) + "}");
-            log.info("Structure.log created SUCCESSFULLY!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        logFile = new File(dir.path() + "\\FundMadoriArea.json");
-        if (!logFile.createNewFile())
-            log.info(createFailedInfo);
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
-            bw.write("{\n\"修繕積立基金\" : " + printMap(repairFund) + ",\n");
-            bw.write("\"間取り\" : " + printMap(madori) + ",\n");
-            bw.write("\"その他面積\" : " + printMap(otherArea) + "}");
-            log.info("Information.log created SUCCESSFULLY!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        logFile = new File(dir.path() + "\\FacilityParkingLimits.json");
-        if (!logFile.createNewFile())
-            log.info(createFailedInfo);
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
-            bw.write("{\n\"設備\" : " + printMap(facility) + ",\n");
-            bw.write("\"駐車場\" : " + printMap(parking) + ",\n");
-            bw.write("\"制限事項\" : " + printMap(limits) + "}");
-            log.info("Matters.log created SUCCESSFULLY!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String dirPath = dir.path();
+        writefile(dirPath, this.sfm, this.fma, this.lfp);
+    }
+}
+
+interface UnexpectedTableData {
+    String getName();
+}
+
+class StructFloorMethod implements UnexpectedTableData {
+    @Expose(serialize = true, deserialize = true)
+    HashMap<String, String> structure = new HashMap<>();
+    @Expose(serialize = true, deserialize = true)
+    HashMap<String, String> floor = new HashMap<>();
+    @Expose(serialize = true, deserialize = true)
+    HashMap<String, String> constMethod = new HashMap<>();
+    @Expose(serialize = false)
+    private String name = "StructFloorMethod";
+
+    public String getName() {
+        return this.name;
+    }
+}
+
+class FundMadoriArea implements UnexpectedTableData {
+    @Expose(serialize = true, deserialize = true)
+    HashMap<String, String> repairFund = new HashMap<>();
+    @Expose(serialize = true, deserialize = true)
+    HashMap<String, String> madori = new HashMap<>();
+    @Expose(serialize = true, deserialize = true)
+    HashMap<String, String> otherArea = new HashMap<>();
+    @Expose(serialize = false)
+    private String name = "FundMadoriArea";
+
+    public String getName() {
+        return this.name;
+    }
+}
+
+class LimitFacilityParking implements UnexpectedTableData {
+    @Expose(serialize = true, deserialize = true)
+    HashMap<String, String> limits = new HashMap<>();
+    @Expose(serialize = true, deserialize = true)
+    HashMap<String, String> facility = new HashMap<>();
+    @Expose(serialize = true, deserialize = true)
+    HashMap<String, String> parking = new HashMap<>();
+    @Expose(serialize = false)
+    private String name = "LimitFacilityParking";
+
+    public String getName() {
+        return this.name;
     }
 }

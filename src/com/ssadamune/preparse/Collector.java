@@ -3,8 +3,6 @@ package com.ssadamune.preparse;
 import java.io.IOException;
 import java.util.HashMap;
 import org.jsoup.nodes.Document;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 public abstract class Collector {
     abstract void collect(Document doc, String url, String propertyKind);
@@ -28,18 +26,6 @@ public abstract class Collector {
             if (!item.isBlank())
                 map.putIfAbsent(item.trim(), property);
         }
-    }
-
-    protected String printMap(HashMap<String, String> map) {
-
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(map);
-        /*
-         * StringBuilder str = new StringBuilder("{\n"); map.forEach((m, p) ->
-         * str.append("    \"" + m + "\" : \"" + p + "\",\n")); return str.substring(0,
-         * str.length() - 2) + "\n}";
-         */
-
     }
 
 }

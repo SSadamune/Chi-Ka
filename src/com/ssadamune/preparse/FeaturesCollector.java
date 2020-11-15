@@ -32,7 +32,7 @@ import com.ssadamune.utils.DirectoryPath;
 
 public class FeaturesCollector extends Collector {
 
-    static HashMap<String, String> unexpectedFeatures = new HashMap<>();
+    HashMap<String, String> unexpectedFeatures = new HashMap<>();
 
     @Override
     public void collect(Document doc, String url, String propertyKind) {
@@ -53,14 +53,20 @@ public class FeaturesCollector extends Collector {
     }
 
     public void output() throws IOException {
-        DirectoryPath dir = DirectoryPath.getInstance();
         Logger log = Logger.getLogger("EnumLog");
-        File logFile = new File(dir.path() + "\\Features.json");
+        if (this.unexpectedFeatures.size() == 0) {
+            log.info("no unxepected feature");
+            return;
+        }
+        DirectoryPath dir = DirectoryPath.getInstance();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        File logFile = new File(dir.path() + "\\unxepectedFeatures.json");
         if (!logFile.createNewFile())
-            log.info("create file failed");
+            log.warning("unxepectedFeatures.json failed to create");
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(logFile.getAbsoluteFile()))) {
-            bw.write("{\n\"UnexpectedFeatures\" : " + printMap(unexpectedFeatures) + "}");
-            log.info("Features.log created SUCCESSFULLY!");
+            bw.write(gson.toJson(this));
+            log.info("unxepectedFeatures.json created SUCCESSFULLY!");
         } catch (Exception e) {
             e.printStackTrace();
         }
