@@ -2,8 +2,9 @@ package com.ssadamune.crawler;
 
 import org.jsoup.nodes.Document;
 
-public class MansionParser {
-    public void buildProperty(Mansion mansion, Document doc, String url){
+public class MansionParser implements ParseProperty {
+    
+    public void buildProperty(Property property, Document doc, String url){
         // TODO
     }
     public void outputSurpirses() {

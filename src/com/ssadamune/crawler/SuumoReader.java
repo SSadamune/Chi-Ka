@@ -15,7 +15,7 @@ import org.jsoup.select.Elements;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class SuumoParser {
+public class SuumoReader {
 
     private static String mansionIchiranUrl (String todofuken, int page) {
         return "https://suumo.jp/ms/chuko/tokyo/sc_" + todofuken + "/pnz1" + page + ".html";

@@ -11,11 +11,11 @@ class WebCrawler {
     // 1. 是不是应该把 hp, mp 在此方法内部声明，并此方法的最后执行 .output()，而非传入 hp, mp
     // 2. 是不是应该再次抽象，将本函数内部的 houseXX, mansionXX 统一成 propertyXX，传入参数改成 PropertyParser pp...
     // 3. 28-30 行：不如直接给 House() 加上构造方法，传入 url 生成 doc, 这样 buildProperty() 方法只需要传入 curHouse 一个参数
-    // 4. 或者，干脆就把从一览url到生成doc的这一段全都放进构造函数里，这样这整个方法都不需要了
+    // 4. 或者，干脆就把从一览url到生成doc的这一段全都放进构造函数里，直接向构造函数传 tdfk 和 maxPage。然后删掉本方法
     static void parseIchiran(String tdfk, int maxHousePages, int maxMansionPages, HouseParser hp, MansionParser mp)
             throws IOException {
-        var houseCodes = SuumoParser.getHousesUcList(tdfk, maxHousePages); 
-        var mansionCodes = SuumoParser.getMansionsUcList(tdfk, maxMansionPages); 
+        var houseCodes = SuumoReader.getHousesUcList(tdfk, maxHousePages); 
+        var mansionCodes = SuumoReader.getMansionsUcList(tdfk, maxMansionPages); 
         int houseNum = houseCodes.size();
         int mansionNum = mansionCodes.size();
         System.out.println(houseNum + " houses and " + mansionNum + " mansions found in " + tdfk);

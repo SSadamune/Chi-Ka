@@ -6,14 +6,14 @@ import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import com.ssadamune.crawler.SuumoParser;
+import com.ssadamune.crawler.SuumoReader;
 
 class WebCrawler {
 
 	static void parseIchiran(String tdfk, int maxHousePages, int maxMansionPages, Collector[] collectors) 
             throws IOException {
-        var houseCodes = SuumoParser.getHousesUcList(tdfk, maxHousePages); // 20
-        var mansionCodes = SuumoParser.getMansionsUcList(tdfk, maxMansionPages); // 50
+        var houseCodes = SuumoReader.getHousesUcList(tdfk, maxHousePages); // 20
+        var mansionCodes = SuumoReader.getMansionsUcList(tdfk, maxMansionPages); // 50
         int houseNum = houseCodes.size();
         int mansionNum = mansionCodes.size();
         System.out.println(houseNum + " houses and " + mansionNum + " mansions found in " + tdfk);
