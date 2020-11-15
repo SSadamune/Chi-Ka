@@ -1,6 +1,6 @@
 package com.ssadamune.crawler;
 
-import static com.ssadamune.crawler.MyConsts.*;
+import static com.ssadamune.utils.MyConsts.*;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -62,7 +62,7 @@ public class PropertyDeserializer implements JsonDeserializer<Mansion> {
                     unexpectedFeatures.add(curFeature);
                 }
             }
-            if (hasUnexpectedFeature == true) throw new UnexpectedFeatureException(unexpectedFeatures);
+            if (hasUnexpectedFeature) throw new UnexpectedFeatureException(unexpectedFeatures);
         }
 
         return curProperty;

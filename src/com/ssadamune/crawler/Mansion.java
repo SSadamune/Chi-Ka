@@ -1,7 +1,7 @@
 package com.ssadamune.crawler;
 
 public class Mansion extends Property{
-
+    // TODO
 
 
 

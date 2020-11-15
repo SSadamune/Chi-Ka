@@ -16,7 +16,6 @@ import org.jsoup.select.Elements;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.annotations.Expose;
 import com.ssadamune.utils.DirectoryPath;
 
 /*
@@ -144,7 +143,7 @@ class TableDataCollector extends Collector {
     private void writefile(String path, UnexpectedTableData... tableData) throws IOException {
 
         Logger log = Logger.getLogger("EnumLog");
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         File logFile;
         for (UnexpectedTableData data : tableData) {
             logFile = new File(path, data.getName() + ".json");
@@ -171,14 +170,11 @@ interface UnexpectedTableData {
 }
 
 class StructFloorMethod implements UnexpectedTableData {
-    @Expose(serialize = true, deserialize = true)
+    
     HashMap<String, String> structure = new HashMap<>();
-    @Expose(serialize = true, deserialize = true)
     HashMap<String, String> floor = new HashMap<>();
-    @Expose(serialize = true, deserialize = true)
     HashMap<String, String> constMethod = new HashMap<>();
-    @Expose(serialize = false)
-    private String name = "StructFloorMethod";
+    private transient String name = "StructFloorMethod";
 
     public String getName() {
         return this.name;
@@ -186,14 +182,11 @@ class StructFloorMethod implements UnexpectedTableData {
 }
 
 class FundMadoriArea implements UnexpectedTableData {
-    @Expose(serialize = true, deserialize = true)
+
     HashMap<String, String> repairFund = new HashMap<>();
-    @Expose(serialize = true, deserialize = true)
     HashMap<String, String> madori = new HashMap<>();
-    @Expose(serialize = true, deserialize = true)
     HashMap<String, String> otherArea = new HashMap<>();
-    @Expose(serialize = false)
-    private String name = "FundMadoriArea";
+    private transient String name = "FundMadoriArea";
 
     public String getName() {
         return this.name;
@@ -201,14 +194,11 @@ class FundMadoriArea implements UnexpectedTableData {
 }
 
 class LimitFacilityParking implements UnexpectedTableData {
-    @Expose(serialize = true, deserialize = true)
+    
     HashMap<String, String> limits = new HashMap<>();
-    @Expose(serialize = true, deserialize = true)
     HashMap<String, String> facility = new HashMap<>();
-    @Expose(serialize = true, deserialize = true)
     HashMap<String, String> parking = new HashMap<>();
-    @Expose(serialize = false)
-    private String name = "LimitFacilityParking";
+    private transient String name = "LimitFacilityParking";
 
     public String getName() {
         return this.name;

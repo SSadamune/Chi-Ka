@@ -1,6 +1,6 @@
 package com.ssadamune.preparse;
 
-import static com.ssadamune.crawler.MyConsts.*;
+import static com.ssadamune.utils.MyConsts.FEATURES;
 
 import java.io.BufferedWriter;
 import java.io.File;
