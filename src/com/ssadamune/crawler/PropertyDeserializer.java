@@ -1,6 +1,6 @@
 package com.ssadamune.crawler;
 
-import static com.ssadamune.crawler.Features.*;
+import static com.ssadamune.crawler.MyConsts.*;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class PropertyDeserializer implements JsonDeserializer<Mansion> {
         for (int i = 0; i < features.size(); i++) {
             String curFeature = features.get(i).getAsString();
             boolean hasUnexpectedFeature = false;
-            ArrayList<String> unexpectedFeatures = new ArrayList<String>();
+            ArrayList<String> unexpectedFeatures = new ArrayList<>();
             if(FEATURES.containsKey(curFeature)) {
                 curProperty.addFeature(FEATURES.get(curFeature));
             } else {

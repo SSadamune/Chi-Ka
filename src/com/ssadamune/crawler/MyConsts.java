@@ -3,6 +3,7 @@ package com.ssadamune.crawler;
 import java.util.Map;
 
 public class MyConsts {
+    private MyConsts(){};
     public static final Map<String, String> FEATURES = Map.ofEntries(
             // 住所・交通
             Map.entry("２沿線以上利用可", "100"),
@@ -229,7 +230,6 @@ public class MyConsts {
             Map.entry("ＳＲＣ", "506"),
             Map.entry("鉄骨プレキャストコンクリート", "507"),
             Map.entry("HPC", "507"),
-            
             Map.entry("一部木", "510"),
             Map.entry("一部軽量鉄骨", "511"),
             Map.entry("一部ALC", "512"),
@@ -240,8 +240,7 @@ public class MyConsts {
             Map.entry("一部SRC", "516"),
             Map.entry("一部HPC", "517"),
             Map.entry("一部コンクリートブロック", "518"),
-
-            // https://style.tokyu-resort.co.jp/roof-kind
+            // 屋根 https://style.tokyu-resort.co.jp/roof-kind
             Map.entry("陸屋根", "520"),
             Map.entry("瓦葺", "522"),
             Map.entry("セメント瓦葺", "523"),
@@ -257,6 +256,7 @@ public class MyConsts {
             Map.entry("石綿セメント板茸", "528"),
             Map.entry("カラーベスト茸", "529"),
             Map.entry("コロニアル茸", "529"),
+            // 工法
             
             Map.entry("ログハウス", "590"),
 
