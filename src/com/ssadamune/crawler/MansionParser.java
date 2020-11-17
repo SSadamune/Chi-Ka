@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import org.jsoup.nodes.Document;
 
-public class MansionParser extends PropertyParser {
+public class MansionParser extends SuumoReader implements parsePropertyParse {
     private String tdfkName;
     private int maxPage;
     private HashSet<Integer> ncCodes = new HashSet<>();
@@ -18,16 +18,25 @@ public class MansionParser extends PropertyParser {
         this.maxPage = maxPage;
     }
 
+    public void parse() throws IOException {
+        readIchiran();
+        for (int nc : this.ncCodes) {
+            String url = "https://suumo.jp/chukoikkodate/tokyo/sc_" + this.tdfkName + "/nc_" + nc + "/bukkengaiyo/";
+            buildMansion(url); 
+        }
+    }
+
     public void readIchiran() throws IOException {
         this.ncCodes = getUcList(tdfkName, maxPage);
     }
 
-    public void buildProperty(String url) throws IOException {
+    public void outputSurpirses() {
+        // TODO
+    }
+
+    private void buildMansion(String url) throws IOException {
         
         // TODO
     }
     
-    public void outputSurpirses() {
-        // TODO
-    }
 }

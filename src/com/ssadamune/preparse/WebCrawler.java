@@ -6,8 +6,6 @@ import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import com.ssadamune.crawler.SuumoReader;
-
 class WebCrawler {
 
 	static void parseIchiran(String tdfk, int maxHousePages, int maxMansionPages, Collector[] collectors) 
