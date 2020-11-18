@@ -14,8 +14,8 @@ class WebCrawler {
     // 4. 或者，干脆就把从一览url到生成doc的这一段全都放进构造函数里，直接向构造函数传 tdfk 和 maxPage。然后删掉本方法
     static void parseIchiran(String tdfk, int maxHousePages, int maxMansionPages, HouseParser hp, MansionParser mp)
             throws IOException {
-        var houseCodes = SuumoReader.getHousesUcList(tdfk, maxHousePages); 
-        var mansionCodes = SuumoReader.getMansionsUcList(tdfk, maxMansionPages); 
+        var houseCodes = SummoReader.getHousesUcList(tdfk, maxHousePages); 
+        var mansionCodes = SummoReader.getMansionsUcList(tdfk, maxMansionPages); 
         int houseNum = houseCodes.size();
         int mansionNum = mansionCodes.size();
         System.out.println(houseNum + " houses and " + mansionNum + " mansions found in " + tdfk);

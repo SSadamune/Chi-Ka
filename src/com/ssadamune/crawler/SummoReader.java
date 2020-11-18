@@ -10,8 +10,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public abstract class SuumoReader {
-  abstract String propertyIchiranUrl(String todofuken, int page);
+abstract class SuumoReader {
+  protected abstract String ichiranUrl(String todofuken, int page);
 
   protected HashSet<Integer> getUcList(String todofuken, int endPage) throws IOException {
     // all the uc-code of this todofuken, use HashSet to avoid duplicate values
@@ -21,12 +21,12 @@ public abstract class SuumoReader {
       return ucList;
 
     // regex pattern of link, which included the uc-code
-    String pattern = "(/chukoikkodate/tokyo/sc_" + todofuken + "/nc_)(\\d*)(/)";
+    String pattern = "(/tokyo/sc_" + todofuken + "/nc_)(\\d*)(/)";
 
     int curPage = 1;
     while (curPage <= endPage) {
       // parse the html of ichiran-page
-      Document doc = Jsoup.connect(propertyIchiranUrl(todofuken, curPage)).get();
+      Document doc = Jsoup.connect(ichiranUrl(todofuken, curPage)).get();
       if (curPage == 1)
         endPage = Math.min(endPage, maxPage(doc));
 
@@ -50,5 +50,10 @@ public abstract class SuumoReader {
   private static int maxPage(Document doc) throws IOException {
     Elements pages = doc.select("ol[class=pagination-parts]").first().select("li");
     return Integer.parseInt(pages.last().text());
+  }
+
+  public static void main(String[] args) throws IOException {
+    HouseParser hp = new HouseParser("ome", 5);
+    hp.parse();
   }
 }
