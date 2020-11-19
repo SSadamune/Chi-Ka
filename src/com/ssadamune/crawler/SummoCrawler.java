@@ -8,18 +8,18 @@ public class SummoCrawler {
     // field
     // ==============================================
 
-    private HandleProperty hp;
+    private HandleProperty handler;
 
     // ==============================================
     // constructor
     // ==============================================
 
     public SummoCrawler(HandleProperty hp) {
-        this.hp = hp;
+        this.handler = hp;
     }
 
     public SummoCrawler() {
-        this.hp = new DbWriter();
+        this.handler = new DbWriter();
     }
 
     // ==============================================
@@ -28,14 +28,15 @@ public class SummoCrawler {
 
     public void crawlHouse(String todofuken, int maxPage) throws IOException {
         IchiranPage ip = new IchiranPage(todofuken, maxPage, "house");
+        HouseParser parser = new HouseParser();
         for (int uc : ip.getUcList()) {
             House house = new House();
             /**
-             * TODO: house = parseHouse();
+             * TODO: house = parser.parse(doc);
              */
-            hp.handle(house);
+            handler.handle(house);
         }
-        hp.outputSurpirses();
+        parser.outputSurpirses();
     }
 
     public void crawlMansion(String todofuken, int maxPage) {

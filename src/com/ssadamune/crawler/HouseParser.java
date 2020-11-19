@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-public class HouseParser extends SuumoReader implements ParseProperty {
+public class HouseParser implements ParseProperty {
     private String tdfkName;
     private int maxPage;
     private HashSet<Integer> ncCodes = new HashSet<>();
