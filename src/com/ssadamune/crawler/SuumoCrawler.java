@@ -109,23 +109,17 @@ public class SuumoCrawler {
         int curPage = 1;
         while (curPage <= endPage) {
             String url = "https://suumo.jp/" + kind + "/tokyo/sc_" + tdfk + "/pnz1" + curPage + ".html";
-
-            /** parse the html of ichiran-page */
             Document doc = Jsoup.connect(url).get();
 
             /** set endPage no more than the maxPage */
             if (curPage == 1)
                 endPage = Math.min(endPage, maxPage(doc));
 
-            /** all the links in ichiran-page */
-            Elements links = doc.select("a[href]");
-
-            for (Element link : links) {
+            /** extract nc-code from all links in the document */
+            for (Element link : doc.select("a[href]")) {
                 String curLink = link.attr("href");
-                /** match current-link and regex-pattern */ 
                 Matcher m = Pattern.compile(pattern).matcher(curLink);
                 if (m.find()) {
-                    /** add uc-code into set */ 
                     ncSet.add(Integer.parseInt(m.group(1)));
                 }
             }
