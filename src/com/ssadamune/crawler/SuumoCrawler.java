@@ -36,43 +36,11 @@ public class SuumoCrawler {
     // ====================================================
 
     public void crawlHouse(String todofuken, int endPage) throws IOException {
-        HouseParser parser = new HouseParser();
-        HashSet<Integer> ncSet = readIchiran(todofuken, "chukoikkodate", endPage);
-        int num = 0;
-        int max = ncSet.size();
-        System.out.println("[Start] Crawler find " + max + " houses in " + todofuken);
-        for (int nc : ncSet) {
-            Document doc = readBukkengaiyo(todofuken, "chukoikkodate", nc);
-            House house = parser.parse(doc);
-            if (house == null)
-                continue;
-            handler.handle(house);
-            num += 1;
-            if (num % 100 == 0)
-                System.out.println(num + "/" + max + " houses handled");
-        }
-        parser.outputSurpirses();
-        System.out.println("[Finish] " + num + " houses in " + todofuken + " crawled");
+        crawlProperty(todofuken, endPage, true);
     }
 
     public void crawlMansion(String todofuken, int endPage) throws IOException {
-        MansionParser parser = new MansionParser();
-        HashSet<Integer> ncSet = readIchiran(todofuken, "ms/chuko", endPage);
-        int num = 0;
-        int max = ncSet.size();
-        System.out.println("[Start] Crawler find " + max + " mansions in " + todofuken);
-        for (int nc : ncSet) {
-            Document doc = readBukkengaiyo(todofuken, "ms/chuko", nc);
-            Mansion mansion = parser.parse(doc);
-            if (mansion == null)
-                continue;
-            handler.handle(mansion);
-            num += 1;
-            if (num % 100 == 0)
-                System.out.println(num + "/" + max + " mansions handled");
-        }
-        parser.outputSurpirses();
-        System.out.println("[Finish] " + num + " mansions in " + todofuken + " crawled");
+        crawlProperty(todofuken, endPage, false);
     }
 
     public void crawlAll(String... tdfkList) throws IOException {
@@ -85,6 +53,29 @@ public class SuumoCrawler {
     // ====================================================
     // private method
     // ====================================================
+
+    private void crawlProperty(String todofuken, int endPage, boolean isHouse) throws IOException {
+        String propertyType = isHouse ? "house" : "mansion";
+        String typeFragment = isHouse ? "chukoikkodate" : "ms/chuko";
+        Parse parser = isHouse ? new HouseParser() : new MansionParser();
+
+        HashSet<Integer> ncSet = readIchiran(todofuken, typeFragment, endPage);
+        int num = 0;
+        int max = ncSet.size();
+        System.out.println("[Start] Crawler find " + max + " " + propertyType + "s in " + todofuken);
+        for (int nc : ncSet) {
+            Document doc = readBukkengaiyo(todofuken, typeFragment, nc);
+            Property property = parser.parse(doc);
+            if (property == null)
+                continue;
+            handler.handle(property);
+            num += 1;
+            if (num % 100 == 0)
+                System.out.println(num + "/" + max + " " + propertyType + "s handled");
+        }
+        parser.outputSurpirses();
+        System.out.println("[Finish] " + num + " " + propertyType + "s in " + todofuken + " crawled");
+    }
 
     /**
      * read ichiran-page at suumo
@@ -153,6 +144,10 @@ public class SuumoCrawler {
         }
         return doc;
     }
+
+    // ====================================================
+    // test
+    // ====================================================
 
     public static void main(String[] args) throws IOException {
         // collectWholeTokyo(new Collector[]{new TableDataCollector(), new
