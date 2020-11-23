@@ -4,12 +4,17 @@ import java.io.IOException;
 
 import org.jsoup.nodes.Document;
 
-abstract class Parse {
+/**
+ * use abstract class instead of interface, to make methods package accessly but
+ * not public
+ */
+abstract class Parser {
     abstract Property parse(Document doc) throws IOException;
+
     abstract void outputSurpirses();
 }
 
-class HouseParser extends Parse{
+class HouseParser extends Parser {
 
     Property parse(Document doc) throws IOException {
         Property house = new House();
@@ -23,7 +28,7 @@ class HouseParser extends Parse{
 
 }
 
-class MansionParser extends Parse{
+class MansionParser extends Parser {
 
     Property parse(Document doc) throws IOException {
         Property mansion = new Mansion();

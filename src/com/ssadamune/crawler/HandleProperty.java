@@ -12,6 +12,6 @@ class Recorder implements HandleProperty {
 
 class DbWriter implements HandleProperty {
     public void handle(Property p) {
-        System.out.println("insert " + p.getId());
+        // TODO
     }
 }

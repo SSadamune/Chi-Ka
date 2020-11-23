@@ -35,18 +35,22 @@ public class SuumoCrawler {
     // public method
     // ====================================================
 
-    public void crawlHouse(String todofuken, int endPage) throws IOException {
-        crawlProperty(todofuken, endPage, true);
+    public void crawlHouse(int endPage, String... tdfkList) throws IOException {
+        for (String todofuken : tdfkList) {
+            crawlProperty(todofuken, endPage, true);
+        }
     }
 
-    public void crawlMansion(String todofuken, int endPage) throws IOException {
-        crawlProperty(todofuken, endPage, false);
+    public void crawlMansion(int endPage, String... tdfkList) throws IOException {
+        for (String todofuken : tdfkList) {
+            crawlProperty(todofuken, endPage, false);
+        }
     }
 
     public void crawlAll(String... tdfkList) throws IOException {
         for (String todofuken : tdfkList) {
-            crawlHouse(todofuken, 999);
-            crawlMansion(todofuken, 999);
+            crawlProperty(todofuken, 999, true);
+            crawlProperty(todofuken, 999, false);
         }
     }
 
@@ -57,7 +61,7 @@ public class SuumoCrawler {
     private void crawlProperty(String todofuken, int endPage, boolean isHouse) throws IOException {
         String propertyType = isHouse ? "house" : "mansion";
         String typeFragment = isHouse ? "chukoikkodate" : "ms/chuko";
-        Parse parser = isHouse ? new HouseParser() : new MansionParser();
+        Parser parser = isHouse ? new HouseParser() : new MansionParser();
 
         HashSet<Integer> ncSet = readIchiran(todofuken, typeFragment, endPage);
         int num = 0;
@@ -81,12 +85,12 @@ public class SuumoCrawler {
      * read ichiran-page at suumo
      * 
      * @param tdfk    todofuken name
-     * @param kind    "ms/chuko" for mansion, "chukoikkodate" for house
+     * @param typeFragment    "ms/chuko" for mansion, "chukoikkodate" for house
      * @param endPage how many pages to read
      * @return a set of nc codes
      * @throws IOException
      */
-    private static HashSet<Integer> readIchiran(String tdfk, String kind, int endPage) throws IOException {
+    private static HashSet<Integer> readIchiran(String tdfk, String typeFragment, int endPage) throws IOException {
 
         /** all the uc-code of this todofuken, use HashSet to avoid duplicate values */
         HashSet<Integer> ncSet = new HashSet<>();
@@ -95,11 +99,11 @@ public class SuumoCrawler {
             return ncSet;
 
         /** regex pattern of link, which included the uc-code */
-        String pattern = kind + "/tokyo/sc_" + tdfk + "/nc_(\\d*)(/)";
+        String pattern = typeFragment + "/tokyo/sc_" + tdfk + "/nc_(\\d*)(/)";
 
         int curPage = 1;
         while (curPage <= endPage) {
-            String url = "https://suumo.jp/" + kind + "/tokyo/sc_" + tdfk + "/pnz1" + curPage + ".html";
+            String url = "https://suumo.jp/" + typeFragment + "/tokyo/sc_" + tdfk + "/pnz1" + curPage + ".html";
             Document doc = Jsoup.connect(url).get();
 
             /** set endPage no more than the maxPage */
@@ -128,13 +132,13 @@ public class SuumoCrawler {
      * read bukkengaiyo-page
      * 
      * @param tdfk   todofuken name
-     * @param kind   "ms/chuko" for mansion, "chukoikkodate" for house
+     * @param typeFragment   "ms/chuko" for mansion, "chukoikkodate" for house
      * @param ncCode code of property
      * @return a json Document of current page
      * @throws IOException
      */
-    private static Document readBukkengaiyo(String tdfk, String kind, int ncCode) throws IOException {
-        String url = "https://suumo.jp/" + kind + "/tokyo/sc_" + tdfk + "/nc_" + ncCode + "/bukkengaiyo/";
+    private static Document readBukkengaiyo(String tdfk, String typeFragment, int ncCode) throws IOException {
+        String url = "https://suumo.jp/" + typeFragment + "/tokyo/sc_" + tdfk + "/nc_" + ncCode + "/bukkengaiyo/";
         Logger log = Logger.getLogger("crawler");
         Document doc = null;
         try {
@@ -154,8 +158,8 @@ public class SuumoCrawler {
         // FeaturesCollector()});
 
         SuumoCrawler sc = new SuumoCrawler();
-        sc.crawlHouse("ome", 3);
-        sc.crawlHouse("setagaya", 3);
+        sc.crawlAll("ome");
+        sc.crawlHouse(3, "setagaya");
 
     }
 }
