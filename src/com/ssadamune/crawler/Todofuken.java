@@ -58,11 +58,11 @@ class Todofuken {
         return allMansions;
     }
 
-    String houseUrl(int nc) {
+    public String houseUrl(int nc) {
         return "https://suumo.jp/chukoikkodate/tokyo/sc_" + name + "/nc_" + nc + "/bukkengaiyo/";
     }
 
-    String mansionUrl(int nc) {
+    public String mansionUrl(int nc) {
         return "https://suumo.jp/ms/chuko/tokyo/sc_" + name + "/nc_" + nc + "/bukkengaiyo/";
     }
 
@@ -94,13 +94,11 @@ class Todofuken {
             for (Element link : doc.select("a[href]")) {
                 String curLink = link.attr("href");
                 Matcher m = Pattern.compile(pattern).matcher(curLink);
-                if (m.find() && set.add(Integer.parseInt(m.group(1)))) {
-                    num++;
-                    if (maxProperties != null && maxProperties <= num) {
-                        System.out.println("======== max " + maxProperties + ", current " + num);
-                        break;
-                    }
-                }
+                if (!m.find() || !set.add(Integer.parseInt(m.group(1))))
+                    continue;
+                num++;
+                if (maxProperties != null && maxProperties <= num) 
+                    break;
             }
             curPage++;
 
