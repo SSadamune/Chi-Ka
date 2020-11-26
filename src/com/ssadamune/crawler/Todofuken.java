@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.logging.Logger;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,6 +23,7 @@ class Todofuken {
     private Integer maxMansions;
     private HashSet<Integer> allHouses;
     private HashSet<Integer> allMansions;
+    static Logger log = Logger.getLogger("todofuken");
 
     // ====================================================
     // constructor
@@ -45,30 +47,55 @@ class Todofuken {
         return name;
     }
 
-    public Set<Integer> getAllHouses() {
+    public void parseAllHouses(Handle handler) {
+        HouseParser hp = new HouseParser();
+        parseAllProperties(hp, true, handler);
+        hp.outputSurpirses();
+    }
+
+    public void parseAllMansions(Handle handler) {
+        MansionParser mp = new MansionParser();
+        parseAllProperties(mp, false, handler);
+        mp.outputSurpirses();
+    }
+
+    // ====================================================
+    // private method
+    // ====================================================
+
+    private Set<Integer> getAllHouses() {
         if (allHouses == null)
             this.allHouses = bulidSet(maxHouses, "chukoikkodate");
         return allHouses;
 
     }
 
-    public Set<Integer> getAllMansions() {
+    private Set<Integer> getAllMansions() {
         if (allMansions == null)
             this.allMansions = bulidSet(maxMansions, "ms/chuko");
         return allMansions;
     }
 
-    public String houseUrl(int nc) {
-        return "https://suumo.jp/chukoikkodate/tokyo/sc_" + name + "/nc_" + nc + "/bukkengaiyo/";
-    }
+    private void parseAllProperties(Parser parser, boolean isHouse, Handle handler) {
+        String propertyType = isHouse ? "house" : "mansion";
+        Set<Integer> ncSet = isHouse ? this.getAllHouses() : this.getAllMansions();
 
-    public String mansionUrl(int nc) {
-        return "https://suumo.jp/ms/chuko/tokyo/sc_" + name + "/nc_" + nc + "/bukkengaiyo/";
-    }
+        int num = 0;
+        int maxNum = ncSet.size();
 
-    // ====================================================
-    // private method
-    // ====================================================
+        log.info("Crawler find " + maxNum + " " + propertyType + "s in " + getName());
+        for (int nc : ncSet) {
+            Document doc = readBukkengaiyo(isHouse ? houseUrl(nc) : mansionUrl(nc));
+            Property property = parser.parse(doc);
+            if (property == null)
+                continue;
+            handler.handle(property);
+            num += 1;
+            if (num % 100 == 0)
+                System.out.println(num + "/" + maxNum + " " + propertyType + "s handled");
+        }
+        log.info("<Finish> " + num + " " + propertyType + "s in " + getName() + " crawled");
+    }
 
     private HashSet<Integer> bulidSet(Integer maxProperties, String urlFragment) {
         HashSet<Integer> set = new HashSet<>();
@@ -114,6 +141,35 @@ class Todofuken {
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        }
+        return doc;
+    }
+
+    private String houseUrl(int nc) {
+        return "https://suumo.jp/chukoikkodate/tokyo/sc_" + name + "/nc_" + nc + "/bukkengaiyo/";
+    }
+
+    private String mansionUrl(int nc) {
+        return "https://suumo.jp/ms/chuko/tokyo/sc_" + name + "/nc_" + nc + "/bukkengaiyo/";
+    }
+
+    /**
+     * read bukkengaiyo-page
+     * 
+     * @param tdfk         todofuken name
+     * @param typeFragment "ms/chuko" for mansion, "chukoikkodate" for house
+     * @param ncCode       code of property
+     * @return a json Document of current page
+     * @throws IOException
+     */
+    private static Document readBukkengaiyo(String url) {
+        Document doc = null;
+        try {
+            doc = Jsoup.connect(url).get();
+        } catch (org.jsoup.HttpStatusException hse) {
+            log.warning("HttpStatusException: " + hse.getStatusCode() + ", at: \n" + hse.getUrl());
+        } catch (IOException ioe) {
+            log.warning(ioe.getMessage());
         }
         return doc;
     }

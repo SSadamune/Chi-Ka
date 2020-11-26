@@ -9,14 +9,14 @@ import org.jsoup.nodes.Document;
  * not public
  */
 abstract class Parser {
-    abstract Property parse(Document doc) throws IOException;
+    abstract Property parse(Document doc) ;
 
     abstract void outputSurpirses();
 }
 
 class HouseParser extends Parser {
 
-    Property parse(Document doc) throws IOException {
+    Property parse(Document doc) {
         Property house = new House();
         // TODO
         return house;
@@ -30,7 +30,7 @@ class HouseParser extends Parser {
 
 class MansionParser extends Parser {
 
-    Property parse(Document doc) throws IOException {
+    Property parse(Document doc) {
         Property mansion = new Mansion();
         // TODO
         return mansion;
