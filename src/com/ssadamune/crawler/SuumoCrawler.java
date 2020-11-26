@@ -77,9 +77,8 @@ public class SuumoCrawler {
         // FeaturesCollector()});
 
         SuumoCrawler sc = new SuumoCrawler();
-        // sc.crawlAll("ome");
-        // sc.crawlAll(200, 200, "setagaya", "shinjuku");
-        sc.crawlHouse(100, "nerima");
-        sc.crawlMansion(100, "nerima");
+        sc.crawlAll("ome");
+        sc.crawlAll(120, 120, "setagaya", "shinjuku");
+        sc.crawlHouse(120, "nerima");
     }
 }
